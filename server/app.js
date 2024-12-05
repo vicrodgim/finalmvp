@@ -4,8 +4,8 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const cors = require("cors");
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
+var jobsRoutes = require("./routes/jobsRoutes");
+var externalJobsRoutes = require("./routes/externalJobsRoutes");
 
 var app = express();
 
@@ -16,7 +16,10 @@ app.use(cookieParser());
 app.use(cors());
 // app._router.app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/api", indexRouter);
-app.use("/api/users", usersRouter);
+//manages jobs saved in the database (CRUD)
+app.use("/api/jobs", jobsRoutes);
+
+//interacts external API
+app.use("/api/external-jobs", externalJobsRoutes);
 
 module.exports = app;
