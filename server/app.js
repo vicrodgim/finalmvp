@@ -18,4 +18,7 @@ app.use(cors());
 //manages jobs saved in the database (CRUD)
 app.use("/api/jobs", jobsRoutes);
 
+//manages users routes for authentication and authorization
+app.use("/api/users", usersRoutes);
+
 module.exports = app;
