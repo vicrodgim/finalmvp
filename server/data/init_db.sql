@@ -19,8 +19,7 @@ CREATE TABLE `users`(
     `location` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
     `password` VARCHAR(255) NOT NULL,
-    `imageUrl` VARCHAR(255) NOT NULL,
-    `proficiency_level` VARCHAR(255) NOT NULL
+    `imageUrl` VARCHAR(255) NOT NULL
 );
 CREATE TABLE `jobs`(
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -46,7 +45,8 @@ CREATE TABLE `skills`(
 );
 CREATE TABLE `skills_users`(
     `user_id` INT UNSIGNED NOT NULL,
-    `skill_id` INT UNSIGNED NOT NULL
+    `skill_id` INT UNSIGNED NOT NULL,
+    `proficiency_level` VARCHAR(255) NOT NULL
 );
 ALTER TABLE
     `skills_users` ADD CONSTRAINT `skills_users_user_id_foreign` FOREIGN KEY(`user_id`) REFERENCES `users`(`id`);

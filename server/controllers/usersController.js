@@ -35,7 +35,6 @@ const registerUser = async (req, res) => {
       email,
       password,
       imageUrl,
-      proficiency_level,
     } = req.body;
 
     const hash = await bcrypt.hash(password, saltRounds);
@@ -48,8 +47,7 @@ const registerUser = async (req, res) => {
       !location ||
       !email ||
       !password ||
-      !imageUrl ||
-      !proficiency_level
+      !imageUrl
     ) {
       return res.status(400).json({
         error: "Failed to create user",
@@ -63,8 +61,7 @@ const registerUser = async (req, res) => {
               location,
               email,
               password,
-              imageUrl,
-              proficiency_level) VALUES ('${username}', '${first_name}', '${last_name}', '${description}', '${location}', '${email}', '${hash}', '${imageUrl}', '${proficiency_level}' );`
+              imageUrl) VALUES ('${username}', '${first_name}', '${last_name}', '${description}', '${location}', '${email}', '${hash}', '${imageUrl}');`
     );
     res.status(201).send({ message: "Register successful" });
   } catch (error) {
@@ -105,7 +102,7 @@ const login = async (req, res) => {
 
 const getProfile = async (req, res) => {
   const [results] = await pool.query(
-    `SELECT username, first_name, last_name, description, location, email, imageUrl, proficiency_level FROM users WHERE id = ${req.user_id}`
+    `SELECT username, first_name, last_name, description, location, email, imageUrl FROM users WHERE id = ${req.user_id}`
   );
   res.send(results[0]);
 };
