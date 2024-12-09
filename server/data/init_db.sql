@@ -48,10 +48,12 @@ CREATE TABLE `skills_users`(
     `skill_id` INT UNSIGNED NOT NULL,
     `proficiency_level` VARCHAR(255) NOT NULL
 );
+
+-- Used ON CASCADE in both of these entries of the junction table, so that if a user is erased, it's entry on the users_skills table is erased too, and the same with the skill
 ALTER TABLE
-    `skills_users` ADD CONSTRAINT `skills_users_user_id_foreign` FOREIGN KEY(`user_id`) REFERENCES `users`(`id`);
+    `skills_users` ADD CONSTRAINT `skills_users_user_id_foreign` FOREIGN KEY(`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE;
 ALTER TABLE
-    `skills_users` ADD CONSTRAINT `skills_users_skill_id_foreign` FOREIGN KEY(`skill_id`) REFERENCES `skills`(`id`);
+    `skills_users` ADD CONSTRAINT `skills_users_skill_id_foreign` FOREIGN KEY(`skill_id`) REFERENCES `skills`(`id`) ON DELETE CASCADE;
 
 CREATE TABLE `resources`(
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -68,10 +70,12 @@ CREATE TABLE `jobs_skills`(
     `skills_id` INT UNSIGNED NOT NULL
 );
 
+-- Used ON CASCADE in both of these entries of the junction table, so that if a job is erased, it's entry on the jobs_skills table is erased too, and the same with the skill
 ALTER TABLE
-    `jobs_skills` ADD CONSTRAINT `jobs_skills_job_id_foreign` FOREIGN KEY(`job_id`) REFERENCES `jobs`(`id`);
+    `jobs_skills` ADD CONSTRAINT `jobs_skills_job_id_foreign` FOREIGN KEY(`job_id`) REFERENCES `jobs`(`id`) ON DELETE CASCADE;
 ALTER TABLE
-    `jobs_skills` ADD CONSTRAINT `jobs_skills_skills_id_foreign` FOREIGN KEY(`skills_id`) REFERENCES `skills`(`id`);
+    `jobs_skills` ADD CONSTRAINT `jobs_skills_skills_id_foreign` FOREIGN KEY(`skills_id`) REFERENCES `skills`(`id`) ON DELETE CASCADE;
 
+-- Used ON CASCADE here, so that if a user is deleted, a job associated with this user is deleted too
 ALTER TABLE
-    `jobs` ADD CONSTRAINT `jobs_user_id_foreign` FOREIGN KEY(`user_id`) REFERENCES `users`(`id`);
+    `jobs` ADD CONSTRAINT `jobs_user_id_foreign` FOREIGN KEY(`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE;
