@@ -1,0 +1,14 @@
+.body-nav-button {
+  background-color: white;
+  border: 1px solid black;
+  padding: 10px 15px;
+  font-size: 16px;
+}
+
+button.body-nav-button:hover {
+  background-color: rgb(220, 217, 217);
+  border: 1px solid black;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
