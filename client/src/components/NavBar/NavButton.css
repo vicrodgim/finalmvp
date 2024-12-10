@@ -1,0 +1,16 @@
+button.nav-button {
+  background-color: white;
+  border: 1px solid;
+  margin: 20px 0;
+  padding: 10px 15px;
+  font-size: 16px;
+}
+
+button.nav-button:hover {
+  background-color: rgb(220, 217, 217);
+  border: 1px solid;
+  margin: 20px 0;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
