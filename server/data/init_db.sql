@@ -40,9 +40,10 @@ CREATE TABLE `jobs`(
 CREATE TABLE `skills`(
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `title` VARCHAR(255) NOT NULL,
-    `category` VARCHAR(255) NOT NULL,
-    `flag` VARCHAR(255) NOT NULL
+    `category` VARCHAR(255) NOT NULL
 );
+
+
 CREATE TABLE `skills_users`(
     `user_id` INT UNSIGNED NOT NULL,
     `skill_id` INT UNSIGNED NOT NULL,
@@ -79,3 +80,31 @@ ALTER TABLE
 -- Used ON CASCADE here, so that if a user is deleted, a job associated with this user is deleted too
 ALTER TABLE
     `jobs` ADD CONSTRAINT `jobs_user_id_foreign` FOREIGN KEY(`user_id`) REFERENCES `users`(`id`) ON DELETE CASCADE;
+
+-- Insert predefined skills
+
+INSERT INTO skills (title, category) VALUES
+
+
+('HTML', 'frontend'),
+('CSS', 'frontend'),
+('JavaScript', 'frontend'),
+('React', 'frontend'),
+('Vue.js', 'frontend'),
+('TypeScript', 'frontend'),
+('Bootstrap', 'frontend'),
+('Node.js', 'backend'),
+('Express.js', 'backend'),
+('Python', 'backend'),
+('Django', 'backend'),
+('Java', 'backend'),
+('Spring Boot', 'backend'),
+('MySQL', 'backend'),
+('RESTful APIs', 'fullstack'),
+('GraphQL', 'fullstack'),
+('Git', 'fullstack'),
+('Authentication (OAuth/JWT)', 'fullstack'),
+('Microservices', 'fullstack'),
+('Testing (e.g., Jest/Mocha)', 'fullstack'),
+('Docker', 'fullstack');
+
