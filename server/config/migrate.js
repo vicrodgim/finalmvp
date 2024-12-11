@@ -3,10 +3,10 @@ const mysql = require("mysql2");
 const fs = require("fs");
 
 // get access info from .env
-const DB_HOST = process.env.DB_HOST;
-const DB_USERNAME = process.env.DB_USERNAME;
-const DB_PASSWORD = process.env.DB_PASSWORD;
-const DB_NAME = process.env.DB_NAME;
+const DB_HOST = "localhost";
+const DB_USERNAME = "root";
+const DB_PASSWORD = "password";
+const DB_NAME = "finalmvp";
 
 // connect to SQL database
 const con = mysql.createConnection({
