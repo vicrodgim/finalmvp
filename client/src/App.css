@@ -5,3 +5,12 @@
 
 #root {
 }
+
+/* use for app name only */
+h1 {
+  font-size: 36px;
+}
+
+/* use for page titles only */
+h2 {
+}

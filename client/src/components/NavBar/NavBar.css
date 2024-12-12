@@ -8,8 +8,6 @@
   justify-content: space-between;
 }
 
-#app-name {
+.app-name {
   margin-right: auto;
-
-  font-size: 36px;
 }

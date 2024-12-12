@@ -4,9 +4,7 @@ import "./NavBar.css";
 export const NavBar = () => {
   return (
     <nav className="navbar">
-      <div className="nav-links" id="app-name">
-        APP NAME
-      </div>
+      <h1 className="app-name">APP NAME</h1>
       <NavButton title="MY JOBS" />
       <NavButton title="MY PROFILE" />
       <NavButton title="LEARN" />
