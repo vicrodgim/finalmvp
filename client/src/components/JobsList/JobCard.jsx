@@ -16,6 +16,9 @@ export const JobCard = ({
       <div className="job-card job-deadline">{jobDeadline}</div>
       <div className="job-card job-skills">{jobSkills}</div>
       <div className="job-card job-has-applied">{hasApplied}</div>
+      <div className="job-card more-details">
+        <button>MORE DETAILS</button>
+      </div>
     </div>
   );
 };

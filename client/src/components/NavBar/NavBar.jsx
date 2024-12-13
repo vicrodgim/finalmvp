@@ -5,9 +5,9 @@ export const NavBar = () => {
   return (
     <nav className="navbar">
       <h1 className="app-name">APP NAME</h1>
-      <NavButton title="MY JOBS" />
-      <NavButton title="MY PROFILE" />
-      <NavButton title="LEARN" />
+      <NavButton text="MY JOBS" />
+      <NavButton text="MY PROFILE" />
+      <NavButton text="LEARN" />
     </nav>
   );
 };

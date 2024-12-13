@@ -1,19 +1,21 @@
 import "./JobDetailsCard.css";
 
-export const JobDetailsCard = ({
-  jobTitle,
-  jobCompany,
-  jobLocation,
-  locationType,
-  jobDeadline,
-  jobType,
-  jobSkills,
-  hasApplied,
-  jobUrl,
-  minSalary,
-  maxSalary,
-  jobDescription,
-}) => {
+export const JobDetailsCard = ({ job }) => {
+  const {
+    jobTitle,
+    jobCompany,
+    jobLocation,
+    locationType,
+    jobDeadline,
+    jobType,
+    jobSkills,
+    hasApplied,
+    jobUrl,
+    minSalary,
+    maxSalary,
+    jobDescription,
+  } = job;
+
   return (
     <div className="job-details-container">
       <div className="job-details">{jobTitle}</div>
@@ -22,6 +24,7 @@ export const JobDetailsCard = ({
       <div className="job-details">{locationType}</div>
       <div className="job-details">{jobDeadline}</div>
       <div className="job-details">{jobType}</div>
+      {/* skills is an array in the job object so might need to use the map method here to display all skills for each job */}
       <div className="job-details">{jobSkills}</div>
       <div className="job-details">{hasApplied}</div>
       <div className="job-details">{jobUrl}</div>
