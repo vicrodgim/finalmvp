@@ -1,6 +1,6 @@
-import "./FilterMenu.css";
+import "./JobsFilterMenu.css";
 
-export const FilterMenu = () => {
+export const JobsFilterMenu = () => {
   return (
     <div className="filter-menu-container">
       <h3>FILTER MENU</h3>
