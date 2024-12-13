@@ -1,27 +1,64 @@
 // import the DB pool from your config folder
 const pool = require("../config/db");
 
-//data needs to be treated before sending it back
+//Gets all jobs for a specific user (can apply filters)
 const getJobs = async (req, res) => {
   try {
     //get user id from request object
     const userId = req.user_id;
 
-    //select all columns in jobs and the title and id from the skill, connect it with junction table on jobs.id, left join skills table on skill.id.
+    //get key-value pair from query
+    const { key, value } = req.query;
 
-    const [result] = await pool.query(
-      "SELECT jobs.id AS jobs_id, jobs.title AS jobs_title, jobs.company_name, jobs.location, jobs.location_type, jobs.description, jobs.type, jobs.date_range,jobs.min_salary,jobs.max_salary,jobs.has_applied,jobs.created_at,jobs.url, skills.title AS skills_title, skills.id AS skills_id FROM jobs LEFT JOIN jobs_skills ON jobs.id = jobs_skills.job_id LEFT JOIN skills ON jobs_skills.skills_id = skills.id WHERE jobs.user_id = ?",
-      [userId]
-    );
+    console.log("key:", key);
+    console.log("value:", value);
 
-    console.log("results", result);
+    //select all columns in jobs and the title and id from skills FROM jobs, LEFT join  with junction table on jobs.id, LEFT join skills table on job_skills.skils_id.
+
+    let sqlQuery = `SELECT jobs.id AS jobs_id, jobs.title AS jobs_title, jobs.company_name, jobs.location, jobs.location_type, jobs.description, jobs.type, jobs.date_range,jobs.min_salary,jobs.max_salary,jobs.has_applied,jobs.created_at,jobs.url, skills.title AS skills_title, skills.id AS skills_id FROM jobs LEFT JOIN jobs_skills ON jobs.id = jobs_skills.job_id LEFT JOIN skills ON jobs_skills.skills_id = skills.id WHERE jobs.user_id = ?`;
+
+    //check if there are some filters
+    if (key && value) {
+      sqlQuery = `${sqlQuery} AND jobs.${key}=?`;
+    }
+
+    //if there are add userId and value as params, otherwise, only userId
+    const params = key && value ? [userId, value] : [userId];
+
+    const [jobs] = await pool.query(sqlQuery, params);
+
+    //process results to group jobs and skills
+
+    //temporary object to track jobs by ID
+    const jobsMap = {};
+
+    for (const item of jobs) {
+      const { jobs_id, skills_id, skills_title, ...jobDetails } = item;
+
+      // Check if this job is already in the groupedArray
+      if (!jobsMap[jobs_id]) {
+        jobsMap[jobs_id] = {
+          jobs_id,
+          ...jobDetails,
+          skills: [],
+        };
+      }
+
+      // Add the skill to the corresponding job's skills array
+      jobsMap[jobs_id].skills.push({ skills_id, skills_title });
+    }
+
+    // console.log(jobsMap)
+    const result = Object.values(jobsMap);
+    console.log(result);
+
     res.status(200).send(result);
   } catch (error) {
     return res.status(500).json({ error: "Failed to get all jobs" });
   }
 };
 
-//helper function to process jobs data
+//Helper function to process get jobs by id
 const treatJobsData = (data) => {
   const result = {
     jobs_id: data[0].jobs_id,
@@ -50,6 +87,7 @@ const treatJobsData = (data) => {
   return result;
 };
 
+//Gets a job by specific ID
 const getJobById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -78,6 +116,7 @@ const getJobById = async (req, res) => {
   }
 };
 
+//Adds a job (also adds to the skills table)
 const addJob = async (req, res) => {
   try {
     const userId = req.user_id;
@@ -141,9 +180,8 @@ const addJob = async (req, res) => {
 
     console.log("Resulted Id:", jobId);
 
-    //insert into jobs_skills
     //check if skills exist/non-empty
-    //loop through each skill, insert the id
+    //loop through each skill, insert the id and jobId from result
     if (skills && skills.length > 0) {
       for (let skillId of skills) {
         await pool.query(
@@ -162,6 +200,7 @@ const addJob = async (req, res) => {
   }
 };
 
+//Updates the has_applied column
 const updateJob = async (req, res) => {
   try {
     const { id } = req.params;
@@ -193,6 +232,8 @@ const updateJob = async (req, res) => {
     });
   }
 };
+
+//deletes a job
 
 const deleteJob = async (req, res) => {
   try {
