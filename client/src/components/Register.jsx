@@ -34,9 +34,9 @@ function Register() {
 
   return (
     <div className="container">
-      <h1>REGISTER</h1>
+      <h2>REGISTER</h2>
       <p>Please fill in this form to create an account</p>
-      <form onSubmit={handleRegister}>
+      <form className="form" onSubmit={handleRegister}>
         {/* Email Input */}
         <label htmlFor="email">
           <b>Email</b>
@@ -80,7 +80,9 @@ function Register() {
         ></input>
 
         {/* Submit Button */}
-        <button type="submit" className="registerbtn"></button>
+        <button type="submit" className="registerbtn">
+          Submit
+        </button>
         <div className="container signin">
           <p>
             Already have an account? <a href="/login">Sign in</a>.
