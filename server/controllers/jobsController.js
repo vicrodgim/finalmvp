@@ -193,6 +193,7 @@ const addJob = async (req, res) => {
     res.status(201).json({
       message: "Job was added successfully",
       jobId,
+      job: { ...req.body },
     });
   } catch (error) {
     console.error(error.message);

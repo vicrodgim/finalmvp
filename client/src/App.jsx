@@ -1,5 +1,6 @@
 import { NavBar } from "./components/NavBar/NavBar.jsx";
 import "./App.css";
+import { MyJobs } from "./pages/MyJobs.jsx";
 
 function App() {
   return (
@@ -7,7 +8,9 @@ function App() {
       <header>
         <NavBar />
       </header>
-      <main></main>
+      <main>
+        <MyJobs />
+      </main>
     </>
   );
 }
