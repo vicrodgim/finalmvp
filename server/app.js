@@ -6,6 +6,7 @@ const cors = require("cors");
 
 var jobsRoutes = require("./routes/jobsRoutes");
 const usersRoutes = require("./routes/usersRoutes");
+const skillsRoutes = require("./routes/skillsRoutes");
 
 var app = express();
 
@@ -20,5 +21,7 @@ app.use(cors());
 app.use("/api/jobs", jobsRoutes);
 //manages users routes for authentication and authorization
 app.use("/api/users", usersRoutes);
+//manages skills routes
+app.use("/api/skills", skillsRoutes);
 
 module.exports = app;
