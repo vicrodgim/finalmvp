@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { JobCard } from "./JobCard";
+import axios from "axios";
 import "./JobsList.css";
 
 export const JobsList = () => {
@@ -10,7 +11,7 @@ export const JobsList = () => {
   const fetchJobs = async () => {
     try {
       //communcate with databasa
-      let response = await axios.get("/api/jobs/");
+      let response = await axios.get("http://localhost:4000/api/jobs/");
       setJobs(response.data);
     } catch (error) {
       // handle errors
