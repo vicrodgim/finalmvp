@@ -24,6 +24,48 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+const getSkillsByUserId = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const [result] = await pool.query(
+      `select * from skills_users
+	JOIN skills on skills_users.skill_id = skills.id
+		and skills_users.user_id = ${id};`
+    );
+
+    if (result.length === 0) {
+      return res.status(404).json({
+        error: "These user's skills are not found",
+      });
+    }
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json({
+      error: "Failed to get user's skills",
+    });
+  }
+};
+
+const addSkillToUser = async (req, res) => {
+  try {
+    const { user_id, skill_id, proficiency_level } = req.body;
+
+    if (!user_id || !skill_id || !proficiency_level) {
+      return res.status(400).json({
+        error: "Failed to add skill",
+      });
+    }
+    const [result] = await pool.query(
+      `INSERT INTO skills_users(user_id, skill_id, proficiency_level) VALUES (${user_id}, ${skill_id}, '${proficiency_level}')`
+    );
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      error: "Failed to add skill to user",
+    });
+  }
+};
+
 const registerUser = async (req, res) => {
   try {
     const {
@@ -100,6 +142,7 @@ const login = async (req, res) => {
   }
 };
 
+//Maybe here put the JOIN query to select the skills_users
 const getProfile = async (req, res) => {
   const [results] = await pool.query(
     `SELECT username, first_name, last_name, description, location, email, imageUrl FROM users WHERE id = ${req.user_id}`
@@ -125,6 +168,8 @@ const deleteUser = async (req, res) => {
 
 module.exports = {
   getAllUsers,
+  getSkillsByUserId,
+  addSkillToUser,
   registerUser,
   login,
   getProfile,
