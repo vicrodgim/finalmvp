@@ -1,10 +1,9 @@
 /* This component returns the 'Register' page */
 
-import React from "react";
 import { useState } from "react";
 import "./Register.css";
 
-function Register() {
+const Register = () => {
   //states for form fields
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -89,6 +88,6 @@ function Register() {
       </form>
     </div>
   );
-}
+};
 
 export default Register;

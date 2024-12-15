@@ -1,6 +1,8 @@
 import { NavBar } from "./components/NavBar/NavBar.jsx";
 import "./App.css";
-import { MyJobs } from "./pages/MyJobs.jsx";
+// import { MyJobs } from "./pages/MyJobs.jsx";
+// import Register from "./components/Register.jsx";
+import Login from "./components/Login.jsx";
 
 function App() {
   return (
@@ -9,7 +11,9 @@ function App() {
         <NavBar />
       </header>
       <main>
-        <MyJobs />
+        {/* <MyJobs />
+        <Register /> */}
+        <Login />
       </main>
     </>
   );

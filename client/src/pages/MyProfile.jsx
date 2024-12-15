@@ -1,5 +1,7 @@
 import "./MyProfile.css";
 
-export const MyProfile = () => {
+const MyProfile = () => {
   return <div>MY Profile</div>;
 };
+
+export default MyProfile;
