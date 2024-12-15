@@ -19,7 +19,7 @@ router.get("/", getAllUsers);
 // add a route to get all skills by used id: GET /
 router.get("/:id/skills", userShouldBeLoggedIn, getSkillsByUserId);
 
-// add a route to post skills by user: GET /
+// add a route to post skills by user: POST /
 router.post("/addSkill", userShouldBeLoggedIn, addSkillToUser);
 
 // add a route to register a user: POST /

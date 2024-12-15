@@ -24,6 +24,24 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+//Helper function for treat skills data on GET skills by Id
+const treatSkillsData = (data) => {
+  const result = {
+    user_id: data[0].user_id,
+    skills: [],
+  };
+
+  data.forEach((info) => {
+    result.skills.push({
+      skill_id: info.skill_id,
+      title: info.title,
+      category: info.category,
+      proficiency_level: info.proficiency_level,
+    });
+  });
+  return result;
+};
+
 const getSkillsByUserId = async (req, res) => {
   try {
     const { id } = req.params;
@@ -38,6 +56,7 @@ const getSkillsByUserId = async (req, res) => {
         error: "These user's skills are not found",
       });
     }
+    return res.status(200).json(treatSkillsData(result));
   } catch (error) {
     console.log(error.message);
     return res.status(500).json({
@@ -58,6 +77,8 @@ const addSkillToUser = async (req, res) => {
     const [result] = await pool.query(
       `INSERT INTO skills_users(user_id, skill_id, proficiency_level) VALUES (${user_id}, ${skill_id}, '${proficiency_level}')`
     );
+
+    return res.status(200).json(result);
   } catch (error) {
     console.log(error);
     return res.status(500).json({
