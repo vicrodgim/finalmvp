@@ -1,5 +1,9 @@
 import "./NavButton.css";
 
-export const NavButton = ({ text }) => {
-  return <button className="nav-button">{text}</button>;
+export const NavButton = ({ text, onClick }) => {
+  return (
+    <button className="nav-button" onClick={onClick}>
+      {text}
+    </button>
+  );
 };
