@@ -7,7 +7,6 @@ import axios from "axios";
 import { useState } from "react";
 import AuthContext from "./context/AuthContext.js";
 // import PrivateRoute from "./components/PrivateRoute.jsx";
-// import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
