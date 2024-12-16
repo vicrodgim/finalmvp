@@ -1,5 +1,4 @@
 import { NavBar } from "./components/NavBar/NavBar.jsx";
-import Register from "./components/Register.jsx";
 import "./App.css";
 
 function App() {
@@ -8,9 +7,7 @@ function App() {
       <header>
         <NavBar />
       </header>
-      <main>
-        <Register />
-      </main>
+      <main></main>
     </>
   );
 }

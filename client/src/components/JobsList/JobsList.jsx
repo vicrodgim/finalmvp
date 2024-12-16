@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { JobCard } from "./JobCard";
 import axios from "axios";
 import "./JobsList.css";
