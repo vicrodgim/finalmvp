@@ -6,7 +6,11 @@ export const ProfileBanner = () => {
       <div className="profile-photo-container">
         <img className="profile-photo"></img>
       </div>
-      <div className="profile-data-container">DATA</div>
+      <div className="profile-data-container">
+        <p>FIRST NAME LAST NAME</p>
+        <p>USERNAME</p>
+        <p>LOCATION</p>
+      </div>
       <div className="profile-description-container">
         <p>DESCRIPTION</p>
       </div>

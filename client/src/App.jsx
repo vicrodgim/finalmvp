@@ -10,7 +10,7 @@ function App() {
         <NavBar />
       </header>
       <main>
-        <MyJobs />
+        {/* <MyJobs /> */}
         <MyProfile />
       </main>
     </>

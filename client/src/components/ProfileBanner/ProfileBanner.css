@@ -4,6 +4,8 @@
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  border: solid 1px;
+  padding: 20px;
 }
 
 .profile-photo-container {

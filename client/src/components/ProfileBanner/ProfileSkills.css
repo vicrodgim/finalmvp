@@ -1,0 +1,24 @@
+.skills {
+  border: solid 1px;
+}
+
+.profile-skills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 0.5fr 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.skills-title {
+  grid-area: 1 / 1 / 2 / 4;
+}
+.skills-advanced {
+  grid-area: 2 / 1 / 3 / 2;
+}
+.skills-intermediate {
+  grid-area: 2 / 2 / 3 / 3;
+}
+.skills-beginner {
+  grid-area: 2 / 3 / 3 / 4;
+}
