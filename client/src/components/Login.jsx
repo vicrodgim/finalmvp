@@ -1,6 +1,7 @@
 /* This component returns the 'Login' page */
 
-import { useState } from "react";
+import { useState, useContext } from "react";
+import AuthContext from "../context/AuthContext.js";
 import axios from "axios";
 import MyProfile from "../pages/MyProfile.jsx";
 import "./Login.css";
@@ -12,26 +13,14 @@ const Login = () => {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // const handleLogin = (e) => {
-  //   e.preventDefault();
-  //   console.log("Email:", email);
-  //   console.log("Password:", password);
-  //   setIsLoading(true);
-  //   setTimeout(() => {
-  //     setIsLoading(false);
-  //     alert("Login successful!");
-  //   }, 3000);
-  // };
-
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
   });
 
   const [userData, setUserData] = useState(null);
-  const [logged, setLogged] = useState(false);
+  // const [logged, setLogged] = useState(false);
 
-  //   const isLoggedIn = localStorage.getItem("token") !== null;
   const { username, password } = credentials;
 
   const handleChange = (e) => {
@@ -39,31 +28,15 @@ const Login = () => {
     setCredentials({ ...credentials, [name]: value });
   };
 
-  const login = async () => {
-    try {
-      const { data } = await axios("/api/users/login", {
-        method: "POST",
-        data: credentials,
-      });
+  //Context consume
+  const auth = useContext(AuthContext); // auth = {isLoggedIn, login, logout}
 
-      console.log(data);
-      //store it locally
-      localStorage.setItem("token", data.token);
-      setLogged(true);
-      setIsLoading(true);
-      setTimeout(() => {
-        setIsLoading(false);
-        alert("Login successful!");
-      }, 1000);
-    } catch (error) {
-      console.log(error);
-    }
+  const login = async () => {
+    auth.login(credentials);
   };
 
   const logout = () => {
-    localStorage.removeItem("token");
-    setUserData(null);
-    setLogged(false);
+    auth.logout();
   };
 
   const requestProfileData = async () => {
@@ -112,12 +85,12 @@ const Login = () => {
         >
           {showPassword ? "Hide" : "Show"}
         </button>
-        {!logged && (
+
+        {!auth.isLoggedIn ? (
           <button className="btn btn-primary" onClick={login}>
             Log in
           </button>
-        )}
-        {logged && (
+        ) : (
           <button className="btn btn-outline-dark ml-2" onClick={logout}>
             Log out
           </button>
@@ -127,7 +100,7 @@ const Login = () => {
       {/* Submit Button */}
       {/* <button type="submit">{isLoading ? "Loading..." : "Login"}</button> */}
       <div>
-        {logged && (
+        {auth.isLoggedIn && (
           <button onClick={requestProfileData}>
             Click here to see your profile
           </button>

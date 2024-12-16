@@ -13,7 +13,7 @@ function App() {
 
   const login = async (userData) => {
     try {
-      const { data } = await axios("/api/auth/login", {
+      const { data } = await axios("/api/users/login", {
         method: "POST",
         data: userData,
       });
