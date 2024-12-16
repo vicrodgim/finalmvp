@@ -6,9 +6,7 @@ import AuthContext from "../context/AuthContext.js";
 import "./Login.css";
 
 const Login = () => {
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false);
+  // const [showPassword, setShowPassword] = useState(false);
   // const [error, setError] = useState("");
   // const [isLoading, setIsLoading] = useState(false);
 
@@ -16,9 +14,6 @@ const Login = () => {
     username: "",
     password: "",
   });
-
-  // const [userData, setUserData] = useState(null);
-  // const [logged, setLogged] = useState(false);
 
   const { username, password } = credentials;
 
