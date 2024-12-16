@@ -14,9 +14,10 @@ export const NavBar = () => {
   return (
     <nav className="navbar">
       <h1 className="app-name">APP NAME</h1>
+      <NavButton text="HOME PAGE" />
       {auth.isLoggedIn && <NavButton text="MY JOBS" />}
       {auth.isLoggedIn && <NavButton text="MY PROFILE" />}
-      <NavButton text="LEARN" />
+      {auth.isLoggedIn && <NavButton text="LEARN" />}
       {!auth.isLoggedIn && <NavButton text="REGISTER" />}
       {auth.isLoggedIn && <NavButton text="LOG OUT" onClick={logout} />}
     </nav>
