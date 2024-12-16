@@ -40,50 +40,51 @@ const Login = () => {
 
   return (
     <>
-      <h2>LOGIN</h2>
       <div>
-        {/* Username Input */}
-        <input
-          type="username"
-          id="username"
-          name="username"
-          value={username}
-          onChange={handleChange}
-          placeholder="Please provide your username"
-        />
-
-        {/* Password Input */}
-        <div>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-            placeholder="Password"
-          />
-          <button
-            type="button"
-            //toggling
-            onClick={() => setShowPassword(!showPassword)}
-          >
-            {showPassword ? "Hide" : "Show"}
+        {!auth.isLoggedIn ? (
+          <div>
+            <h2>LOGIN</h2>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={username}
+              onChange={handleChange}
+              placeholder="Please provide your username"
+            />
+            <div>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={handleChange}
+                placeholder="Password"
+              />
+              {/* <button
+        type="button"
+        onClick={() => setShowPassword(!showPassword)}
+      >
+        {showPassword ? "Hide" : "Show"}
+      </button> */}
+            </div>
+          </div>
+        ) : (
+          <h2>Welcome!</h2>
+        )}
+        {!auth.isLoggedIn ? (
+          <button className="btn btn-primary" onClick={login}>
+            Log in
           </button>
-
-          {!auth.isLoggedIn ? (
-            <button className="btn btn-primary" onClick={login}>
-              Log in
-            </button>
-          ) : (
-            <button className="btn btn-outline-dark ml-2" onClick={logout}>
-              Log out
-            </button>
-          )}
-        </div>
-
-        {/* Submit Button */}
-        {/* <button type="submit">{isLoading ? "Loading..." : "Login"}</button> */}
+        ) : (
+          <button className="btn btn-outline-dark ml-2" onClick={logout}>
+            Log out
+          </button>
+        )}
       </div>
+
+      {/* Submit Button */}
+      {/* <button type="submit">{isLoading ? "Loading..." : "Login"}</button> */}
     </>
   );
 };
