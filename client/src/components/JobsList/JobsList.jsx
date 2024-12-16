@@ -11,7 +11,11 @@ export const JobsList = () => {
   const fetchJobs = async () => {
     try {
       //communcate with databasa
-      let response = await axios.get("http://localhost:4000/api/jobs/");
+      let response = await axios.get("http://localhost:4000/api/jobs/", {
+        headers: {
+          authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
       setJobs(response.data);
     } catch (error) {
       // handle errors
