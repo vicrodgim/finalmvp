@@ -125,7 +125,7 @@ const Login = () => {
       </div>
 
       {/* Submit Button */}
-      <button type="submit">{isLoading ? "Loading..." : "Login"}</button>
+      {/* <button type="submit">{isLoading ? "Loading..." : "Login"}</button> */}
       <div>
         {logged && (
           <button onClick={requestProfileData}>
