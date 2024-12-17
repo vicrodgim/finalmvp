@@ -85,16 +85,19 @@ function Register() {
         ></input>
 
         <label htmlFor="description">
-          <b>Your last name</b>
+          <b>
+            Please write here about you, your academical and work experience and
+            projects
+          </b>
         </label>
-        <input
+        <textarea
           type="text"
           name="description"
           id="description"
           value={registerForm.description}
           onChange={handleChange}
           required
-        ></input>
+        ></textarea>
 
         <label htmlFor="location">
           <b>Were are you living currently?</b>
