@@ -1,8 +1,8 @@
 import { NavBar } from "./components/NavBar/NavBar.jsx";
 import "./App.css";
 // import { MyJobs } from "./pages/MyJobs.jsx";
-// import Register from "./components/Register.jsx";
-import Login from "./components/Login.jsx";
+import Register from "./components/Register.jsx";
+// import Login from "./components/Login.jsx";
 import axios from "axios";
 import { useState } from "react";
 import AuthContext from "./context/AuthContext.js";
@@ -42,9 +42,9 @@ function App() {
         <NavBar />
       </header>
       <main>
-        {/* <MyJobs />
-        <Register /> */}
-        <Login />
+        {/* <MyJobs /> */}
+        <Register />
+        {/* <Login /> */}
       </main>
     </AuthContext.Provider>
   );
