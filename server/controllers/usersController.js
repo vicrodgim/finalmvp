@@ -62,7 +62,7 @@ const getSkillsByUserId = async (req, res) => {
         error: "These user's skills are not found",
       });
     }
-
+    console.log(treatSkillsData(result).skills);
     return res.status(200).json(treatSkillsData(result));
   } catch (error) {
     console.log(error.message);

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { SkillCard } from "./SkillCard";
 import "./ProfileSkills.css";
 
 export const ProfileSkills = () => {
@@ -15,7 +16,7 @@ export const ProfileSkills = () => {
           authorization: "Bearer " + localStorage.getItem("token"),
         },
       });
-      setUserSkills(response.data);
+      setUserSkills(response.data.skills);
     } catch (error) {
       // handle errors
       console.error(error);
@@ -29,11 +30,13 @@ export const ProfileSkills = () => {
   }, []);
 
   return (
-    <div className="skills profile-skills">
-      <div className="skills skills-title">SKILLS </div>
-      <div className="skills skills-advanced">ADVANCED</div>
-      <div className="skills skills-intermediate">INTERMEDIATE </div>
-      <div className="skills skills-beginner">BEGINNER </div>
-    </div>
+    <>
+      <h3>SKILLS</h3>
+      <div className="skill-container container">
+        {userSkills.map((skill) => (
+          <SkillCard skill={skill} key={skill.id} />
+        ))}
+      </div>
+    </>
   );
 };

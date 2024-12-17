@@ -1,3 +1,8 @@
 .my-profile-page {
   padding: 50px 300px;
 }
+
+.my-profile-page .container,
+.my-profile-page h2 {
+  margin-bottom: 25px;
+}

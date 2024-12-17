@@ -11,15 +11,23 @@ main {
 
 /* use for app name only */
 h1 {
-  font-size: 36px;
+  font-size: 42px;
 }
 
 /* use for page titles only */
 h2 {
+  font-size: 36px;
+  text-align: center;
 }
 
 /* use for subheading like form title, filter menu title, etc. */
 h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  margin-bottom: 10px;
 }
 
 /* add className="form" to any form to apply these styles */

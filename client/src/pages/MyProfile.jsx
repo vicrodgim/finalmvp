@@ -34,6 +34,7 @@ export const MyProfile = () => {
 
   return (
     <div className="my-profile-page">
+      <h2>MY PROFILE</h2>
       <ProfileBanner />
       <ProfileSkills />
     </div>
