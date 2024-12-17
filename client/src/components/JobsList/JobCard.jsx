@@ -1,13 +1,15 @@
 import "./JobCard.css";
 
-export const JobCard = ({
-  jobTitle,
-  jobCompany,
-  jobLocation,
-  jobDeadline,
-  jobSkills,
-  hasApplied,
-}) => {
+export const JobCard = ({ job }) => {
+  const {
+    jobTitle,
+    jobCompany,
+    jobLocation,
+    jobDeadline,
+    jobSkills,
+    hasApplied,
+  } = job;
+
   return (
     <div className="job-card-container">
       <div className="job-card job-title">{jobTitle}</div>

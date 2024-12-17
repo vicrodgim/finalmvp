@@ -39,4 +39,7 @@ export const MyProfile = () => {
       <ProfileSkills />
     </div>
   );
+
 };
+
+export default MyProfile;
