@@ -3,7 +3,7 @@ import { JobCard } from "./JobCard";
 import axios from "axios";
 import "./JobsList.css";
 
-export const JobsList = () => {
+const JobsList = () => {
   //variable to store all items
   const [jobs, setJobs] = useState([]);
 
@@ -30,9 +30,11 @@ export const JobsList = () => {
 
   return (
     <div className="job-list-container">
-      {jobs.map((jobs) => {
-        return <JobCard key={job.id} job={job} />;
+      {jobs.map((job) => {
+        return <JobCard key={job.jobs_id} job={job} />;
       })}
     </div>
   );
 };
+
+export default JobsList;

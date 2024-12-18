@@ -1,6 +1,6 @@
 /* This component returns the 'Register' page */
-
 import React from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import "./Register.css";
 
@@ -11,6 +11,8 @@ function Register() {
   const [error, setError] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -29,6 +31,7 @@ function Register() {
       setEmail("");
       setPassword("");
       setConfirmPassword("");
+      navigate("/login");
     }, 3000);
   };
 
@@ -85,7 +88,7 @@ function Register() {
         </button>
         <div className="container signin">
           <p>
-            Already have an account? <a href="/login">Sign in</a>.
+            Already have an account?<Link to="/login">Sign in</Link>.
           </p>
         </div>
       </form>
