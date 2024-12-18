@@ -8,7 +8,7 @@ export const JobDetailsCard = ({ job }) => {
     locationType,
     jobDeadline,
     jobType,
-    jobSkills,
+    jobSkills = [],
     hasApplied,
     jobUrl,
     minSalary,
