@@ -1,5 +1,6 @@
 /* This component returns the 'Register' page */
-
+import React from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import "./Register.css";
@@ -17,11 +18,13 @@ function Register() {
     imageUrl: "",
   };
 
-  //states for form fields
+
+//   states for form fields
   const [error, setError] = useState(false);
   const [notSubmited, setNotSubmited] = useState(false);
   const [success, setSuccess] = useState(false);
   const [registerForm, setRegisterForm] = useState(emptyForm);
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -49,6 +52,7 @@ function Register() {
       setSuccess(true);
       setError(false);
       setRegisterForm(emptyForm);
+      navigate("/login");
     } catch (error) {
       console.log(error);
       setNotSubmited(true);
@@ -183,7 +187,7 @@ function Register() {
         </button>
         <div className="container signin">
           <p>
-            Already have an account? <a href="/login">Sign in</a>.
+            Already have an account?<Link to="/login">Sign in</Link>.
           </p>
         </div>
         {error && (

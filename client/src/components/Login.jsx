@@ -1,6 +1,7 @@
 /* This component returns the 'Login' page */
 
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext.js";
 
 import "./Login.css";
@@ -15,6 +16,8 @@ const Login = () => {
     password: "",
   });
 
+  const navigate = useNavigate();
+
   const { username, password } = credentials;
 
   const handleChange = (e) => {
@@ -26,7 +29,12 @@ const Login = () => {
   const auth = useContext(AuthContext); // auth = {isLoggedIn, login, logout}
 
   const login = async () => {
-    auth.login(credentials);
+    try {
+      await auth.login(credentials);
+      navigate("/jobs");
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
   };
 
   const logout = () => {
