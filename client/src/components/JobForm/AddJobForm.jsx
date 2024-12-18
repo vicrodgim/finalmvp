@@ -135,7 +135,7 @@ const AddJobForm = () => {
         value={form.date_range}
         onChange={handleChange}
       />
-      <label htmlFor="min_salary">Minimum Salaru:</label>
+      <label htmlFor="min_salary">Minimum Salary:</label>
       <input
         type="text"
         id="min_salary"

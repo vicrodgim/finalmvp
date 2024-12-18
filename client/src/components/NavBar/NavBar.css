@@ -1,10 +1,9 @@
 .navbar {
-  padding: 10px;
+  padding: 30px;
   border-bottom: 1px solid black;
   display: flex;
   gap: 20px;
   align-items: center;
-  /* justify-content: flex-end; */
   justify-content: space-between;
 }
 

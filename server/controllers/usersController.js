@@ -44,18 +44,25 @@ const treatSkillsData = (data) => {
 
 const getSkillsByUserId = async (req, res) => {
   try {
-    const { id } = req.params;
-    const [result] = await pool.query(
+    /* const { id } = req.params; */
+    //get user id from request object
+    const userId = req.user_id;
+    /* const [result] = await pool.query(
       `select * from skills_users
 	JOIN skills on skills_users.skill_id = skills.id
 		and skills_users.user_id = ${id};`
-    );
+    ); */
+    let sqlQuery = `select * from skills_users
+	JOIN skills on skills_users.skill_id = skills.id
+		and skills_users.user_id = ?`;
+    const [result] = await pool.query(sqlQuery, userId);
 
     if (result.length === 0) {
       return res.status(404).json({
         error: "These user's skills are not found",
       });
     }
+    console.log(treatSkillsData(result).skills);
     return res.status(200).json(treatSkillsData(result));
   } catch (error) {
     console.log(error.message);

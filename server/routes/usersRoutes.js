@@ -16,8 +16,10 @@ const {
 // add a route to get all users: GET /
 router.get("/", getAllUsers);
 
-// add a route to get all skills by used id: GET /
-router.get("/:id/skills", userShouldBeLoggedIn, getSkillsByUserId);
+// add a route to get all skills by user id: GET /
+/* router.get("/:id/skills", userShouldBeLoggedIn, getSkillsByUserId); */
+
+router.get("/skills", userShouldBeLoggedIn, getSkillsByUserId);
 
 // add a route to post skills by user: POST /
 router.post("/addSkill", userShouldBeLoggedIn, addSkillToUser);

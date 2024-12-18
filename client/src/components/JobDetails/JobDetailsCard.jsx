@@ -9,7 +9,7 @@ export default function JobDetailsCard({ job }) {
     locationType,
     jobDeadline,
     jobType,
-    jobSkills,
+    jobSkills = [],
     hasApplied,
     jobUrl,
     minSalary,
