@@ -46,15 +46,13 @@ function App() {
   };
 
   const excludeNavBar = ["/"];
-  const showNavBar = !excludeNavBar.includes(location.pathname);
 
   return (
     <AuthContext.Provider value={authObj}>
-      {showNavBar && (
-        <header>
-          <NavBar />
-        </header>
-      )}
+      <header>
+        <NavBar />
+      </header>
+
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />

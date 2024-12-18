@@ -1,6 +1,6 @@
 import { NavButton } from "./NavButton.jsx";
 import { useContext } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import "./NavBar.css";
 import AuthContext from "../../context/AuthContext.js";
 
@@ -21,21 +21,27 @@ export const NavBar = () => {
 
   return (
     <nav className="navbar">
-      <h1 className="app-name">APP NAME</h1>
+      <Link to="/">
+        <h1 className="app-name">APP NAME</h1>
+      </Link>
       {isLoginPage && !auth.isLoggedIn && (
         <NavButton text="REGISTER" to="/register" />
       )}
       {isRegisterPage && !auth.isLoggedIn && (
         <NavButton text="LOG IN" to="/login" />
       )}
-
-      {!isLoginPage && !isRegisterPage && (
+      {!auth.isLoggedIn && !isRegisterPage && !isLoginPage && (
         <>
-          <NavButton text="HOME PAGE" to="/" />
-          {auth.isLoggedIn && <NavButton text="MY JOBS" to="/my-jobs" />}
-          {auth.isLoggedIn && <NavButton text="MY PROFILE" to="/my-profile" />}
-          {auth.isLoggedIn && <NavButton text="LEARN" to="/learning-page" />}
-          {auth.isLoggedIn && <NavButton text="LOG OUT" onClick={logout} />}
+          <NavButton text="REGISTER" to="/register" />
+          <NavButton text="LOG IN" to="/login" />
+        </>
+      )}
+      {!isLoginPage && !isRegisterPage && auth.isLoggedIn && (
+        <>
+          <NavButton text="MY JOBS" to="/jobs" />
+          <NavButton text="MY PROFILE" to="/my-profile" />
+          <NavButton text="LEARN" to="/learning-page" />
+          <NavButton text="LOG OUT" onClick={logout} />
         </>
       )}
     </nav>

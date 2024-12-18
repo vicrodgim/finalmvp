@@ -22,8 +22,8 @@ const HomePage = () => {
         </p>
       </div>
       <div>
-        <button onClick={handleLoginClick}>LOG IN</button>
-        <button onClick={handleRegisterClick}>REGISTER</button>
+        {/* <button onClick={handleLoginClick}>LOG IN</button>
+        <button onClick={handleRegisterClick}>REGISTER</button> */}
       </div>
     </>
   );
