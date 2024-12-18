@@ -1,0 +1,29 @@
+/* updateJob status UI in Job details page.css */
+
+.updateJob-status-Container {
+  border: 1px solid white;
+  padding: 20px;
+  margin: auto;
+}
+
+.dropdown {
+  padding: 10px;
+  margin: 10px 0;
+  width: 80%;
+}
+
+.archiveButton {
+  background-color: white;
+  border: 1px solid;
+  padding: 10px 15px;
+  font-size: 16px;
+}
+
+.archiveButton:hover {
+  background-color: rgb(220, 217, 217);
+  border: 1px solid;
+  margin: 20px 0;
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+}
