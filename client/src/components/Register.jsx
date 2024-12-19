@@ -90,7 +90,7 @@ function Register() {
         <label htmlFor="description">
           <b>
             Please write here about you, your academical and work experience and
-            projects
+            projects.
           </b>
         </label>
         <textarea

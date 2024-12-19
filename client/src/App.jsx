@@ -2,7 +2,7 @@ import { NavBar } from "./components/NavBar/NavBar.jsx";
 import "./App.css";
 import { MyJobs } from "./pages/MyJobs.jsx";
 import JobsList from "./components/JobsList/JobsList.jsx";
-import JobDetailsCard from "./components/JobDetails/JobDetailsCard.jsx";
+import JobDetail from "./components/JobDetails/JobDetail.jsx";
 import AddJobForm from "./components/JobForm/AddJobForm.jsx";
 import MyProfile from "./pages/MyProfile.jsx";
 import Register from "./components/Register.jsx";
@@ -61,7 +61,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/jobs" element={<JobsList />} />
           <Route path="/add-jobs" element={<AddJobForm />} />
-          <Route path="/jobs/:id" element={<JobDetailsCard />} />
+          <Route path="/jobs/:id" element={<JobDetail />} />
+     
+
+        
           <Route
             path="/learning-page"
             element={

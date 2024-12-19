@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { JobDetailsCard } from "./JobDetailsCard";
+import JobDetailsCard from "./JobDetailsCard";
 import "./JobDetail.css";
 
 export default function JobDetail() {
@@ -18,7 +18,11 @@ export default function JobDetail() {
 
       // make a fetch request to getJobById and pass the id of the job
       // '/api/jobs/${id}'
-      const response = await fetch(`/api/jobs/${id}`);
+      const response = await fetch(`/api/jobs/${id}`, {
+        headers: {
+          authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
       if (!response.ok) {
         throw Error("Failed to fetch job details");
       }
