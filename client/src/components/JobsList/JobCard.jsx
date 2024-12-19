@@ -5,11 +5,11 @@ export const JobCard = ({ job }) => {
   const {
     jobs_id,
     jobs_title,
-    jobCompany,
-    jobLocation,
-    jobDeadline,
-    jobSkills,
-    hasApplied,
+    company_name,
+    location,
+    date_range,
+    skills,
+    has_applied,
   } = job;
 
   const navigate = useNavigate();
@@ -21,11 +21,11 @@ export const JobCard = ({ job }) => {
   return (
     <div className="job-card-container">
       <div className="job-card job-title">{jobs_title}</div>
-      <div className="job-card job-company">{jobCompany}</div>
-      <div className="job-card job-location">{jobLocation}</div>
-      <div className="job-card job-deadline">{jobDeadline}</div>
-      <div className="job-card job-skills">{jobSkills}</div>
-      <div className="job-card job-has-applied">{hasApplied}</div>
+      <div className="job-card job-company">{company_name}</div>
+      <div className="job-card job-location">{location}</div>
+      <div className="job-card job-deadline">{date_range}</div>
+      {/* <div className="job-card job-skills">{skills}</div> */}
+      <div className="job-card job-has-applied">{has_applied}</div>
       <div className="job-card more-details">
         <button onClick={handleDetailsClick}>MORE DETAILS</button>
       </div>
