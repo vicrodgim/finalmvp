@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { MultiSelect } from "primereact/multiselect";
+import "primereact/resources/themes/md-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
 import "../../App.css";
 
 const AddJobForm = () => {
@@ -22,7 +26,6 @@ const AddJobForm = () => {
   //handle text and select inputs
   const handleChange = (event) => {
     const { name, value } = event.target;
-
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -30,6 +33,11 @@ const AddJobForm = () => {
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
     setForm((prev) => ({ ...prev, [name]: checked }));
+  };
+
+  //handle primereact multiselect
+  const handleSkillsChange = (event) => {
+    setForm((prev) => ({ ...prev, skills: event.value }));
   };
 
   const handleSubmit = async (e) => {
@@ -159,7 +167,6 @@ const AddJobForm = () => {
           name="has_applied"
           checked={form.has_applied}
           onChange={handleCheckboxChange}
-          required
         />
       </label>
       <label htmlFor="created_at">Job created at:</label>
@@ -180,35 +187,37 @@ const AddJobForm = () => {
         required
       />
       <label htmlFor="skills"> What skills are required?</label>
-      <select
+      <MultiSelect
         id="skills"
         name="skills"
         value={form.skills}
-        onChange={handleChange}
-        multiple
-      >
-        <option value="1">HTML</option>
-        <option value="2">CSS</option>
-        <option value="3">JavaScript</option>
-        <option value="4">React</option>
-        <option value="5">Vue.js</option>
-        <option value="6">TypeScript</option>
-        <option value="7">Bootstrap</option>
-        <option value="8">Node.js</option>
-        <option value="9">Express.js</option>
-        <option value="10">Phyton</option>
-        <option value="11">Django</option>
-        <option value="12">Java</option>
-        <option value="13">Spring Boot</option>
-        <option value="14">MySQL</option>
-        <option value="15">RESTful APIs</option>
-        <option value="16">GraphQL</option>
-        <option value="17">Git</option>
-        <option value="18">Authentication (OAuth/JWT)</option>
-        <option value="19">Microservices</option>
-        <option value="20">Testing</option>
-        <option value="21">Docker</option>
-      </select>
+        onChange={handleSkillsChange}
+        options={[
+          { label: "HTML", value: "1" },
+          { label: "CSS", value: "2" },
+          { label: "JavaScript", value: "3" },
+          { label: "React", value: "4" },
+          { label: "Vue.js", value: "5" },
+          { label: "TypeScript", value: "6" },
+          { label: "Bootstrap", value: "7" },
+          { label: "Node.js", value: "8" },
+          { label: "Express.js", value: "9" },
+          { label: "Phyton", value: "10" },
+          { label: "Django", value: "11" },
+          { label: "Java", value: "12" },
+          { label: "Spring Boot", value: "13" },
+          { label: "MySQL", value: "14" },
+          { label: "RESTful APIs", value: "15" },
+          { label: "GraphQL", value: "16" },
+          { label: "Git", value: "17" },
+          { label: "Authentication (OAuth/JWT)", value: "18" },
+          { label: "Microservices", value: "19" },
+          { label: "Testing", value: "20" },
+          { label: "Docker", value: "21" },
+        ]}
+        placeholder="Select required skills"
+        display="chip"
+      />
       <button type="submit">Add Job</button>
     </form>
   );
