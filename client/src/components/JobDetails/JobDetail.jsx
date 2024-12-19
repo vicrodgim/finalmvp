@@ -1,3 +1,5 @@
+import BodyNavButton from "../../elements/BodyNavButton";
+import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import JobDetailsCard from "./JobDetailsCard";
@@ -9,6 +11,12 @@ export default function JobDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { id } = useParams();
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/jobs");
+  };
 
   const getJobDetail = async () => {
     try {
@@ -39,9 +47,13 @@ export default function JobDetail() {
   }, [id]);
 
   return (
-    <div className="job-detail-container">
-      {jobDetail && <JobDetailsCard job={jobDetail} />}
-      <UpdateJobForm jobId={id} onUpdate={getJobDetail} />
+    <div className="job-details-page">
+      <BodyNavButton text="< back to all jobs" clickFunction={handleClick} />
+      <div className="job-detail-container">
+        {jobDetail && <JobDetailsCard job={jobDetail} />}
+
+        <UpdateJobForm jobId={id} onUpdate={getJobDetail} />
+      </div>
     </div>
   );
 }

@@ -55,15 +55,11 @@ export const EditProfile = () => {
     try {
       const token = localStorage.getItem("token");
 
-      const response = await axios.post(
-        "http://localhost:4000/api/users/addSkill",
-        form,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.post(`/api/users/addSkill`, form, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       console.log("Added skill:", response.data);
       //reset form
@@ -71,6 +67,7 @@ export const EditProfile = () => {
         proficiency_level: "",
         skill_id: "",
       });
+      navigate("/my-profile");
     } catch (error) {
       console.log("Error adding the skill:", error.message);
     }

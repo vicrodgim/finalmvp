@@ -12,6 +12,7 @@ main {
 /* use for app name only */
 h1 {
   font-size: 42px;
+  color: black;
 }
 
 /* use for page titles only */
@@ -57,5 +58,22 @@ form button[type="submit"] {
   padding: 10px 15px;
   margin: 0 auto; /* Centers the button horizontally */
   display: block; /* Standard block behavior */
+}
 
+/* use for login and register pages layout */
+.auth-page {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* use for homepage layout */
+.homepage {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

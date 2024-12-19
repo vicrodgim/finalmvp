@@ -59,7 +59,7 @@ function Register() {
   };
 
   return (
-    <div className="container">
+    <div className="container auth-page">
       <h2>REGISTER</h2>
       <p>Please fill in this form to create an account</p>
       <form className="form" onSubmit={handleSubmit}>

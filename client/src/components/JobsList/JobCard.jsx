@@ -24,8 +24,10 @@ export const JobCard = ({ job }) => {
       <div className="job-card job-company">{company_name}</div>
       <div className="job-card job-location">{location}</div>
       <div className="job-card job-deadline">{date_range}</div>
-      {/* <div className="job-card job-skills">{skills}</div> */}
-      <div className="job-card job-has-applied">{has_applied}</div>
+      <div className="job-card job-skills">{/* {skills} */}</div>
+      <div className="job-card job-has-applied">
+        {has_applied ? "applied" : "not applied"}
+      </div>
       <div className="job-card more-details">
         <button onClick={handleDetailsClick}>MORE DETAILS</button>
       </div>

@@ -12,8 +12,8 @@ const HomePage = () => {
   };
 
   return (
-    <>
-      <h1>HomePage</h1>
+    <div className="homepage">
+      <h1>HOME PAGE</h1>
       <div>
         <p>
           The Job Application Tracker provides practical tools and resources for
@@ -25,7 +25,7 @@ const HomePage = () => {
         {/* <button onClick={handleLoginClick}>LOG IN</button>
         <button onClick={handleRegisterClick}>REGISTER</button> */}
       </div>
-    </>
+    </div>
   );
 };
 

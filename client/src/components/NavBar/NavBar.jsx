@@ -1,6 +1,7 @@
 import { NavButton } from "./NavButton.jsx";
 import { useContext } from "react";
 import { useLocation, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./NavBar.css";
 import AuthContext from "../../context/AuthContext.js";
 
@@ -8,10 +9,12 @@ export const NavBar = () => {
   // consume context
   const auth = useContext(AuthContext);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const logout = () => {
     console.log("clicked");
     auth.logout();
+    navigate("/login");
   };
 
   console.log("Auth status:", auth.isLoggedIn);
@@ -21,8 +24,8 @@ export const NavBar = () => {
 
   return (
     <nav className="navbar">
-      <Link to="/">
-        <h1 className="app-name">APP NAME</h1>
+      <Link to="/" style={{ textDecoration: "none" }} className="app-name">
+        <h1>APP NAME</h1>
       </Link>
       {isLoginPage && !auth.isLoggedIn && (
         <NavButton text="REGISTER" to="/register" />
