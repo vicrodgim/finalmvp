@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import JobDetailsCard from "./JobDetailsCard";
+import { UpdateJobForm } from "./UpdateJobForm";
 import "./JobDetail.css";
 
 export default function JobDetail() {
@@ -8,9 +9,6 @@ export default function JobDetail() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { id } = useParams();
-
-  //state for the dropdown selection for Update Job UI component
-  const [status, setStatus] = useState("");
 
   const getJobDetail = async () => {
     try {
@@ -36,15 +34,6 @@ export default function JobDetail() {
     setLoading(false);
   };
 
-  const handleStatusChange = (e) => {
-    setStatus(e.target.value);
-    console.log("Status changed to:", e.target.value);
-  };
-
-  const handleArchive = () => {
-    console.log("Archiving job");
-  };
-
   useEffect(() => {
     getJobDetail();
   }, [id]);
@@ -52,19 +41,7 @@ export default function JobDetail() {
   return (
     <div className="job-detail-container">
       {jobDetail && <JobDetailsCard job={jobDetail} />}
-      <h2>UPDATE JOB</h2>
-
-      {/*dropdown menu for job status*/}
-      <select value={status} onChange={handleStatusChange} className="dropdown">
-        <option value="In Progress">In Progress</option>
-        <option value="Interview">Interview</option>
-        <option value="Offer Received">Offer Received</option>
-        <option value="Rejected">Rejected</option>
-      </select>
-      {/* Archive button */}
-      <button onClick={handleArchive} className="archiveButton">
-        Archive
-      </button>
+      <UpdateJobForm jobId={id} onUpdate={getJobDetail} />
     </div>
   );
 }
