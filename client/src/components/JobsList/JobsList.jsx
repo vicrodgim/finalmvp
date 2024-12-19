@@ -39,7 +39,7 @@ const JobsList = () => {
   }, []);
 
   return (
-    <div>
+    <div className="job-list-page">
       <BodyNavButton text="Add a new job" clickFunction={handleClick} />
       {noJobs ? (
         <p className="no-items alert">

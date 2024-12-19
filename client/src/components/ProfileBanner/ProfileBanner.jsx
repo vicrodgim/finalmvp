@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./ProfileBanner.css";
 
 export const ProfileBanner = () => {
@@ -19,6 +20,7 @@ export const ProfileBanner = () => {
         }
       );
       setUserInfo(response.data);
+      console.log(userInfo);
     } catch (error) {
       // handle errors
       console.error(error);
@@ -29,6 +31,12 @@ export const ProfileBanner = () => {
     //call fetchItems function
     fetchUserInfo();
   }, []);
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/edit-profile");
+  };
 
   return (
     <div className="profile-banner container">
@@ -52,7 +60,7 @@ export const ProfileBanner = () => {
         <p>{userInfo.description}</p>
       </div>
       <div className="profile-edit-container">
-        <button>
+        <button onClick={handleClick}>
           <b>EDIT</b>
         </button>
       </div>

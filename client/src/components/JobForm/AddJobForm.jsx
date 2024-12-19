@@ -6,7 +6,8 @@ import { MultiSelect } from "primereact/multiselect";
 import "primereact/resources/themes/md-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
-import "../../App.css";
+/* import "../../App.css"; */
+import "./AddJobForm.css";
 
 const AddJobForm = () => {
   const [form, setForm] = useState({
@@ -86,7 +87,7 @@ const AddJobForm = () => {
   };
 
   return (
-    <>
+    <div className="add-job-page">
       <BodyNavButton text="< back to all jobs" clickFunction={handleClick} />
       <form className="form" onSubmit={handleSubmit}>
         <h3>Add New Job</h3>
@@ -230,7 +231,7 @@ const AddJobForm = () => {
         />
         <button type="submit">Add Job</button>
       </form>
-    </>
+    </div>
   );
 };
 

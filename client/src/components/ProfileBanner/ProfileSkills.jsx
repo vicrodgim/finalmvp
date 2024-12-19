@@ -6,6 +6,7 @@ import "./ProfileSkills.css";
 export const ProfileSkills = () => {
   //variable to store all items
   const [userSkills, setUserSkills] = useState([]);
+  const noSkills = userSkills.length === 0;
 
   //function to fetch all jobs and set result to 'jobs' array
   const fetchUserSkills = async () => {
@@ -32,11 +33,17 @@ export const ProfileSkills = () => {
   return (
     <>
       <h3>SKILLS</h3>
-      <div className="skill-container container">
-        {userSkills.map((skill) => (
-          <SkillCard skill={skill} key={skill.id} />
-        ))}
-      </div>
+      {noSkills ? (
+        <p className="no-items alert">
+          Sorry, you have no skills to display. Why not add one now?
+        </p>
+      ) : (
+        <div className="skill-container container">
+          {userSkills.map((skill) => (
+            <SkillCard skill={skill} key={skill.id} />
+          ))}
+        </div>
+      )}
     </>
   );
 };
