@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 export default function JobDetailsCard({ job }) {
   const {
-    jobTitle,
+    jobs_title: jobTitle,
     jobCompany,
     jobLocation,
     locationType,
