@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 export const JobCard = ({ job }) => {
   const {
     jobs_id,
-    jobTitle,
+    jobs_title,
     jobCompany,
     jobLocation,
     jobDeadline,
@@ -20,7 +20,7 @@ export const JobCard = ({ job }) => {
 
   return (
     <div className="job-card-container">
-      <div className="job-card job-title">{jobTitle}</div>
+      <div className="job-card job-title">{jobs_title}</div>
       <div className="job-card job-company">{jobCompany}</div>
       <div className="job-card job-location">{jobLocation}</div>
       <div className="job-card job-deadline">{jobDeadline}</div>

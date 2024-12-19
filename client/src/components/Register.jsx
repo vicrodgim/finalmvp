@@ -18,8 +18,7 @@ function Register() {
     imageUrl: "",
   };
 
-
-//   states for form fields
+  //   states for form fields
   const [error, setError] = useState(false);
   const [notSubmited, setNotSubmited] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -91,7 +90,7 @@ function Register() {
         <label htmlFor="description">
           <b>
             Please write here about you, your academical and work experience and
-            projects
+            projects.
           </b>
         </label>
         <textarea
@@ -104,7 +103,7 @@ function Register() {
         ></textarea>
 
         <label htmlFor="location">
-          <b>Were are you living currently?</b>
+          <b>Where are you living currently?</b>
         </label>
         <input
           type="text"
