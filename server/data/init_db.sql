@@ -15,7 +15,7 @@ CREATE TABLE `users`(
     `username` VARCHAR(255) NOT NULL,
     `first_name` VARCHAR(255) NOT NULL,
     `last_name` VARCHAR(255) NOT NULL,
-    `description` VARCHAR(255) NOT NULL,
+    `description` VARCHAR(10000) NOT NULL,
     `location` VARCHAR(255) NOT NULL,
     `email` VARCHAR(255) NOT NULL,
     `password` VARCHAR(255) NOT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE `jobs`(
     `company_name` VARCHAR(255) NOT NULL,
     `location` VARCHAR(255) NOT NULL,
     `location_type` VARCHAR(255) NULL,
-    `description` VARCHAR(255) NOT NULL,
+    `description` VARCHAR(10000) NOT NULL,
     `type` VARCHAR(255) NOT NULL,
     `date_range` DATETIME NULL,
     `min_salary` INT NULL,
@@ -60,6 +60,7 @@ CREATE TABLE `resources`(
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `url` VARCHAR(255) NOT NULL,
     `type` VARCHAR(255) NOT NULL,
+    `discipline` VARCHAR(255) NOT NULL,
     `skill_id` INT UNSIGNED NOT NULL
 );
 
@@ -85,7 +86,6 @@ ALTER TABLE
 
 INSERT INTO skills (title, category) VALUES
 
-
 ('HTML', 'frontend'),
 ('CSS', 'frontend'),
 ('JavaScript', 'frontend'),
@@ -108,3 +108,50 @@ INSERT INTO skills (title, category) VALUES
 ('Testing (e.g., Jest/Mocha)', 'fullstack'),
 ('Docker', 'fullstack');
 
+
+-- Insert predefined resources 
+
+INSERT INTO resources (url, type, discipline, skill_id) VALUES
+
+('https://www.udemy.com/course/html-css-javascript-reactjs-nodejs-from-zero-to-expert/', 'course', 'frontend', 1),
+('https://www.w3schools.com/html/', 'tutorial', 'frontend', 1),
+('https://www.udemy.com/course/design-and-develop-a-killer-website-with-html5-and-css3/', 'course', 'frontend', 2),
+('https://developer.mozilla.org/en-US/docs/Web/CSS', 'tutorial', 'frontend', 2),
+('https://www.udemy.com/course/the-complete-javascript-course/', 'course', 'frontend', 3),
+('https://eloquentjavascript.net/', 'book', 'frontend', 3),
+('https://www.udemy.com/course/react-for-beginners-from-html-css-javascript-to-reactjs/', 'course', 'frontend', 4),
+('https://reactjs.org/tutorial/tutorial.html', 'tutorial', 'frontend', 4),
+('https://www.udemy.com/course/vuejs-2-the-complete-guide/', 'course', 'frontend', 5),
+('https://vuejs.org/guide/introduction.html', 'tutorial', 'frontend', 5),
+('https://www.udemy.com/course/understanding-typescript/', 'course', 'frontend', 6),
+('https://www.typescriptlang.org/docs/', 'tutorial', 'frontend', 6),
+('https://www.udemy.com/course/bootstrap-4-from-scratch-with-5-projects/', 'course', 'frontend', 7),
+('https://getbootstrap.com/docs/4.0/getting-started/introduction/', 'tutorial', 'frontend', 7),
+('https://www.udemy.com/course/html-css-javascript-reactjs-nodejs-from-zero-to-expert/', 'course', 'backend', 8),
+('https://www.nodejsdesignpatterns.com/', 'book', 'backend', 8),
+('https://www.udemy.com/course/the-complete-nodejs-developer-course-2/', 'course', 'backend', 9),
+('https://www.manning.com/books/express-in-action', 'book', 'backend', 9),
+('https://www.coursera.org/specializations/python', 'course', 'backend', 10),
+('https://automatetheboringstuff.com/', 'book', 'backend', 10),
+('https://www.coursera.org/specializations/django-for-everybody', 'course', 'backend', 11),
+('https://djangoforbeginners.com/', 'book', 'backend', 11),
+('https://www.coursera.org/specializations/java-programming', 'course', 'backend', 12),
+('https://learning.oreilly.com/library/view/effective-java-3rd/9780134686097/', 'book', 'backend', 12),
+('https://www.udemy.com/course/spring-hibernate-tutorial/', 'course', 'backend', 13),
+('https://www.manning.com/books/spring-boot-in-action', 'book', 'backend', 13),
+('https://www.udemy.com/course/mysql-database-development-masterclass/', 'course', 'backend', 14),
+('https://dev.mysql.com/doc/', 'tutorial', 'backend', 14),
+('https://www.udemy.com/course/designing-restful-apis/', 'course', 'fullstack', 15),
+('https://restfulapi.net/', 'tutorial', 'fullstack', 15),
+('https://www.udemy.com/course/graphql-with-react-course/', 'course', 'fullstack', 16),
+('https://graphql.org/learn/', 'tutorial', 'fullstack', 16),
+('https://www.udemy.com/course/git-complete/', 'course', 'fullstack', 17),
+('https://git-scm.com/doc', 'tutorial', 'fullstack', 17),
+('https://www.udemy.com/course/oauth-2-jwt-the-complete-guide/', 'course', 'fullstack', 18),
+('https://jwt.io/introduction/', 'tutorial', 'fullstack', 18),
+('https://www.udemy.com/course/microservices-with-node-js-and-react/', 'course', 'fullstack', 19),
+('https://martinfowler.com/articles/microservices.html', 'tutorial', 'fullstack', 19),
+('https://www.udemy.com/course/testing-javascript-with-jest/', 'course', 'fullstack', 20),
+('https://jestjs.io/docs/getting-started', 'tutorial', 'fullstack', 20),
+('https://www.udemy.com/course/docker-mastery/', 'course', 'fullstack', 21),
+('https://docs.docker.com/get-started/', 'tutorial', 'fullstack', 21);

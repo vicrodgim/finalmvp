@@ -1,5 +1,4 @@
 import "./MyJobs.css";
-import { Routes, Route } from "react-router-dom";
 
 export const MyJobs = () => {
   return (

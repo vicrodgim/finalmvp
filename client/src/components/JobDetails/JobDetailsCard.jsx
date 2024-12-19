@@ -15,6 +15,7 @@ export default function JobDetailsCard({ job }) {
     min_salary,
     max_salary,
     description,
+
   } = job;
 
   //EXTRACTS THE JOB ID FROM URL
