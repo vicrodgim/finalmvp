@@ -1,11 +1,21 @@
 import { useState, useEffect } from "react";
 import { JobCard } from "./JobCard";
+import BodyNavButton from "../../elements/BodyNavButton";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./JobsList.css";
 
 const JobsList = () => {
   //variable to store all items
   const [jobs, setJobs] = useState([]);
+
+  const noJobs = jobs.length === 0;
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/add-jobs");
+  };
 
   //function to fetch all jobs and set result to 'jobs' array
   const fetchJobs = async () => {
@@ -29,10 +39,19 @@ const JobsList = () => {
   }, []);
 
   return (
-    <div className="job-list-container">
-      {jobs.map((job) => {
-        return <JobCard key={job.jobs_id} job={job} />;
-      })}
+    <div>
+      <BodyNavButton text="Add a new job" clickFunction={handleClick} />
+      {noJobs ? (
+        <p className="no-items alert">
+          Sorry, you have no jobs to display. Why not add one now?
+        </p>
+      ) : (
+        <div className="job-list-container">
+          {jobs.map((job) => {
+            return <JobCard key={job.jobs_id} job={job} />;
+          })}
+        </div>
+      )}
     </div>
   );
 };
