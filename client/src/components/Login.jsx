@@ -12,13 +12,13 @@ const Login = () => {
   // const [isLoading, setIsLoading] = useState(false);
 
   const [credentials, setCredentials] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
   const navigate = useNavigate();
 
-  const { username, password } = credentials;
+  const { email, password } = credentials;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -49,11 +49,11 @@ const Login = () => {
             <h2>LOGIN</h2>
             <input
               type="text"
-              id="username"
-              name="username"
-              value={username}
+              id="email"
+              name="email"
+              value={email}
               onChange={handleChange}
-              placeholder="Please provide your username"
+              placeholder="Example@gmail.com"
             />
             <div>
               <input
