@@ -74,16 +74,18 @@ const getSkillsByUserId = async (req, res) => {
 
 const addSkillToUser = async (req, res) => {
   try {
-    const { user_id, skill_id, proficiency_level } = req.body;
+    const { skill_id, proficiency_level } = req.body;
+    const userId = req.user_id;
 
-    if (!user_id || !skill_id || !proficiency_level) {
+    if (!skill_id || !proficiency_level) {
       return res.status(400).json({
         error: "Failed to add skill",
       });
     }
-    const [result] = await pool.query(
-      `INSERT INTO skills_users(user_id, skill_id, proficiency_level) VALUES (${user_id}, ${skill_id}, '${proficiency_level}')`
-    );
+
+    let sqlQuery = `INSERT INTO skills_users(user_id, skill_id, proficiency_level) VALUES (?, ${skill_id}, '${proficiency_level}')`;
+
+    const [result] = await pool.query(sqlQuery, userId);
 
     return res.status(200).json(result);
   } catch (error) {

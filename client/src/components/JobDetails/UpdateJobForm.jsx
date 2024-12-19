@@ -1,10 +1,14 @@
-/* import "./UpdateJobForm.css"; */
+import "./UpdateJobForm.css";
+
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import "../../App.css";
 
 export const UpdateJobForm = ({ jobId, onUpdate }) => {
   const [status, setStatus] = useState("");
+
+  const navigate = useNavigate();
 
   const handleStatusChange = (e) => {
     setStatus(e.target.value);
@@ -24,6 +28,7 @@ export const UpdateJobForm = ({ jobId, onUpdate }) => {
           },
         }
       );
+      navigate("/jobs");
       console.log("Job application was updated successfully:", response.data);
       alert("job application was updated successfully");
       //refresh the page once it's been submitted
@@ -46,7 +51,7 @@ export const UpdateJobForm = ({ jobId, onUpdate }) => {
           <option value="true">APPLIED</option>
           <option value="false">NOT APPLIED</option>
         </select>
-        <button type="submit">ARCHIVE</button>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );

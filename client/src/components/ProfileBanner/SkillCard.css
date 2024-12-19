@@ -6,7 +6,7 @@
   grid-row-gap: 0px;
   border: solid 1px;
   min-width: 150px;
-
+  max-width: 240px;
   padding: 10px;
   flex-grow: 1;
 }

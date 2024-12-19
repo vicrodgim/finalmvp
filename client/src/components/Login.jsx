@@ -42,11 +42,15 @@ const Login = () => {
   };
 
   return (
-    <>
-      <div>
+    <div className="auth-page">
+      <div className="form">
         {!auth.isLoggedIn ? (
-          <div>
+          <>
             <h2>LOGIN</h2>
+            {/* <form className="form"> */}
+            <label htmlFor="email">
+              <b>Your email</b>
+            </label>
             <input
               type="text"
               id="email"
@@ -55,23 +59,26 @@ const Login = () => {
               onChange={handleChange}
               placeholder="Example@gmail.com"
             />
-            <div>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={handleChange}
-                placeholder="Password"
-              />
-              {/* <button
+
+            <label htmlFor="password">
+              <b>Your password</b>
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+              placeholder="Password"
+            />
+            {/* <button
         type="button"
         onClick={() => setShowPassword(!showPassword)}
       >
         {showPassword ? "Hide" : "Show"}
       </button> */}
-            </div>
-          </div>
+            {/* </form> */}
+          </>
         ) : (
           <h2>Welcome!</h2>
         )}
@@ -88,7 +95,7 @@ const Login = () => {
 
       {/* Submit Button */}
       {/* <button type="submit">{isLoading ? "Loading..." : "Login"}</button> */}
-    </>
+    </div>
   );
 };
 
