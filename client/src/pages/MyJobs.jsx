@@ -1,6 +1,4 @@
 import "./MyJobs.css";
-import AddJobForm from "../components/JobForm/AddJobForm";
-("../components/JobForm/AddJobForm.jsx");
 
 export const MyJobs = () => {
   return (
