@@ -15,7 +15,6 @@ export default function JobDetailsCard({ job }) {
     min_salary,
     max_salary,
     description,
-
   } = job;
 
   //EXTRACTS THE JOB ID FROM URL
@@ -31,7 +30,7 @@ export default function JobDetailsCard({ job }) {
       <div className="job-details">{type}</div>
       {skills.map((skill, index) => (
         <div key={index} className="job-details">
-          {skill}
+          {skill.title}
         </div>
       ))}
       {/* skills is an array in the job object so might need to use the map method here to display all skills for each job */}
