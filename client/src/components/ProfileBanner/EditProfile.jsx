@@ -64,25 +64,14 @@ export const EditProfile = () => {
         }
       );
 
-      console.log("Added job:", response.data);
+      console.log("Added skill:", response.data);
       //reset form
       setForm({
-        /* title: "",
-        company_name: "",
-        location: "",
-        location_type: "",
-        description: "",
-        type: "",
-        date_range: "",
-        min_salary: "",
-        max_salary: "",
-        has_applied: false,
-        created_at: "",
-        url: "", */
-        skills: [],
+        proficiency_level: "",
+        skill_id: "",
       });
     } catch (error) {
-      console.log("Error adding the job:", error.message);
+      console.log("Error adding the skill:", error.message);
     }
   };
 
@@ -124,6 +113,7 @@ export const EditProfile = () => {
             );
           })}
         </select>
+        <button type="submit">Add Skill</button>
       </form>
     </div>
   );
