@@ -9,6 +9,7 @@ import Register from "./components/Register.jsx";
 import Login from "./components/Login.jsx";
 import HomePage from "./components/HomePage.jsx";
 import { LearningPage } from "./pages/LearningPage.jsx";
+import { EditProfile } from "./components/ProfileBanner/EditProfile.jsx";
 import axios from "axios";
 import { useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
@@ -62,9 +63,8 @@ function App() {
           <Route path="/jobs" element={<JobsList />} />
           <Route path="/add-jobs" element={<AddJobForm />} />
           <Route path="/jobs/:id" element={<JobDetail />} />
-     
+          <Route path="/edit-profile" element={<EditProfile />} />
 
-        
           <Route
             path="/learning-page"
             element={
