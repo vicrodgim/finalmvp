@@ -3,10 +3,10 @@ import "../../App.css";
 
 export const UpdateJobForm = () => {
   return (
-    <div /* className="form" */>
+    <div>
       <form className="form">
         <h3>UPDATE JOB</h3>
-        {/* <label htmlFor="category">Category</label> */}
+
         <select>
           <option value="" disabled selected>
             change status to...

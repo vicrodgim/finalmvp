@@ -1,11 +1,19 @@
 import { useState, useEffect } from "react";
 import { JobCard } from "./JobCard";
+import BodyNavButton from "../../elements/BodyNavButton";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./JobsList.css";
 
 const JobsList = () => {
   //variable to store all items
   const [jobs, setJobs] = useState([]);
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/add-jobs");
+  };
 
   //function to fetch all jobs and set result to 'jobs' array
   const fetchJobs = async () => {
@@ -30,6 +38,7 @@ const JobsList = () => {
 
   return (
     <div className="job-list-container">
+      <BodyNavButton text="Add a new job" clickFunction={handleClick} />
       {jobs.map((job) => {
         return <JobCard key={job.jobs_id} job={job} />;
       })}

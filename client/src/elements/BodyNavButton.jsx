@@ -1,5 +1,11 @@
 import "./BodyNavButton.css";
 
-export const BodyNavButton = ({ text }) => {
-  return <button className="body-nav-button">{text}</button>;
+const BodyNavButton = ({ text, clickFunction }) => {
+  return (
+    <button className="body-nav-button" onClick={clickFunction}>
+      {text}
+    </button>
+  );
 };
+
+export default BodyNavButton;

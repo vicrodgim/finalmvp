@@ -15,7 +15,7 @@ export const JobCard = ({ job }) => {
   const navigate = useNavigate();
 
   const handleDetailsClick = () => {
-    navigate(`/jobs/${jobs_id}`);
+    navigate(`/add-jobs`);
   };
 
   return (
