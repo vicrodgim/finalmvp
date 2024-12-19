@@ -1,58 +1,160 @@
 /* This component returns the 'Register' page */
-
 import React from "react";
+import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 import "./Register.css";
 
 function Register() {
-  //states for form fields
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const emptyForm = {
+    username: "",
+    first_name: "",
+    last_name: "",
+    description: "",
+    location: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    imageUrl: "",
+  };
 
-  const handleRegister = (e) => {
-    e.preventDefault();
-    if (password !== confirmPassword) {
-      setError("Password does not match!");
-      return;
+
+//   states for form fields
+  const [error, setError] = useState(false);
+  const [notSubmited, setNotSubmited] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [registerForm, setRegisterForm] = useState(emptyForm);
+  const navigate = useNavigate();
+
+  const handleChange = (event) => {
+    event.preventDefault();
+    const { name, value } = event.target;
+
+    setRegisterForm((prev) => ({ ...prev, [name]: value }));
+    console.log({ name, value });
+  };
+
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+
+      if (registerForm.password !== registerForm.confirmPassword) {
+        setError(true);
+        return;
+      }
+      const response = await axios.post(
+        "http://localhost:4000/api/users",
+        registerForm
+      );
+      console.log(response.config.data.password);
+      console.log(response);
+
+      setSuccess(true);
+      setError(false);
+      setRegisterForm(emptyForm);
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+      setNotSubmited(true);
     }
-
-    setError("");
-    setIsLoading(true);
-
-    setTimeout(() => {
-      setIsLoading(false);
-      alert("Registration successful!");
-      // Clear form
-      setEmail("");
-      setPassword("");
-      setConfirmPassword("");
-    }, 3000);
   };
 
   return (
     <div className="container">
-      <h1>REGISTER</h1>
+      <h2>REGISTER</h2>
       <p>Please fill in this form to create an account</p>
-      <form onSubmit={handleRegister}>
-        {/* Email Input */}
-        <label htmlFor="email">
-          <b>Email</b>
+      <form className="form" onSubmit={handleSubmit}>
+        <label htmlFor="first_name">
+          <b>Your first name</b>
         </label>
         <input
           type="text"
-          placeholder="Enter Email"
-          name="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          name="first_name"
+          id="first_name"
+          value={registerForm.first_name}
+          onChange={handleChange}
           required
         ></input>
 
-        {/* Password Input */}
-        <label htmlFor="psw">
+        <label htmlFor="last_name">
+          <b>Your last name</b>
+        </label>
+        <input
+          type="text"
+          name="last_name"
+          id="last_name"
+          value={registerForm.last_name}
+          onChange={handleChange}
+          required
+        ></input>
+
+        <label htmlFor="description">
+          <b>
+            Please write here about you, your academical and work experience and
+            projects
+          </b>
+        </label>
+        <textarea
+          type="text"
+          name="description"
+          id="description"
+          value={registerForm.description}
+          onChange={handleChange}
+          required
+        ></textarea>
+
+        <label htmlFor="location">
+          <b>Were are you living currently?</b>
+        </label>
+        <input
+          type="text"
+          name="location"
+          id="location"
+          value={registerForm.location}
+          onChange={handleChange}
+          required
+        ></input>
+
+        <label htmlFor="email">
+          <b>Please write your email</b>
+        </label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="example@gmail.com"
+          value={registerForm.email}
+          onChange={handleChange}
+          required
+        ></input>
+
+        <label htmlFor="imageUrl">
+          <b>Submit your profile picture</b>
+        </label>
+        <input
+          type="text"
+          name="imageUrl"
+          id="imageUrl"
+          value={registerForm.imageUrl}
+          onChange={handleChange}
+          required
+        ></input>
+        <h4>Final Steps</h4>
+        <p>Please provide a username and a password in order to log in later</p>
+
+        <label htmlFor="username">
+          <b>Username</b>
+        </label>
+        <input
+          type="username"
+          name="username"
+          id="username"
+          value={registerForm.username}
+          onChange={handleChange}
+          required
+        ></input>
+
+        <label htmlFor="password">
           <b>Password</b>
         </label>
         <input
@@ -60,32 +162,49 @@ function Register() {
           placeholder="Enter Password"
           name="password"
           id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={registerForm.password}
+          onChange={handleChange}
           required
         ></input>
 
         {/* Repeat Password Input */}
-        <label htmlFor="psw-repeat">
+        <label htmlFor="confirmPassword">
           <b>Repeat Password</b>
         </label>
         <input
-          type="password"
+          type="text"
           placeholder="Repeat Password"
-          name="password-repeat"
-          id="password-repeat"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          name="confirmPassword"
+          id="confirmPassword"
+          value={registerForm.confirmPassword}
+          onChange={handleChange}
           required
         ></input>
 
         {/* Submit Button */}
-        <button type="submit" className="registerbtn"></button>
+        <button type="submit" className="registerbtn">
+          Submit
+        </button>
         <div className="container signin">
           <p>
-            Already have an account? <a href="/login">Sign in</a>.
+            Already have an account?<Link to="/login">Sign in</Link>.
           </p>
         </div>
+        {error && (
+          <div className="alert alert-success" role="alert">
+            password does not match!
+          </div>
+        )}
+        {success && (
+          <div className="alert alert-success" role="alert">
+            Register successful, welcome!
+          </div>
+        )}
+        {notSubmited && (
+          <div className="alert alert-danger" role="alert">
+            There has been a problem with your register, please try again!
+          </div>
+        )}
       </form>
     </div>
   );

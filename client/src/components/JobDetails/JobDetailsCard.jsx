@@ -1,6 +1,7 @@
 import "./JobDetailsCard.css";
+import { useParams } from "react-router-dom";
 
-export const JobDetailsCard = ({ job }) => {
+export default function JobDetailsCard({ job }) {
   const {
     jobTitle,
     jobCompany,
@@ -8,13 +9,16 @@ export const JobDetailsCard = ({ job }) => {
     locationType,
     jobDeadline,
     jobType,
-    jobSkills,
+    jobSkills = [],
     hasApplied,
     jobUrl,
     minSalary,
     maxSalary,
     jobDescription,
   } = job;
+
+  //EXTRACTS THE JOB ID FROM URL
+  const { id } = useParams();
 
   return (
     <div className="job-details-container">
@@ -34,4 +38,4 @@ export const JobDetailsCard = ({ job }) => {
       <div className="job-details">{jobDescription}</div>
     </div>
   );
-};
+}

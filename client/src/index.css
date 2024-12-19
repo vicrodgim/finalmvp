@@ -11,15 +11,23 @@ main {
 
 /* use for app name only */
 h1 {
-  font-size: 36px;
+  font-size: 42px;
 }
 
 /* use for page titles only */
 h2 {
+  font-size: 36px;
+  text-align: center;
 }
 
 /* use for subheading like form title, filter menu title, etc. */
 h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+h4 {
+  margin-bottom: 10px;
 }
 
 /* add className="form" to any form to apply these styles */
@@ -27,9 +35,11 @@ h3 {
   border: 1px solid;
   display: flex;
   flex-direction: column;
+  /* align-items: center; */
   gap: 20px;
   padding: 20px;
   margin: 20px;
+  max-width: 800px;
 }
 
 form h3 {
@@ -38,5 +48,14 @@ form h3 {
   align-items: center;
 }
 
+label input[type="checkbox"] {
+  margin-left: 5px;
+}
+
 form button[type="submit"] {
+  min-width: 150px;
+  padding: 10px 15px;
+  margin: 0 auto; /* Centers the button horizontally */
+  display: block; /* Standard block behavior */
+
 }
