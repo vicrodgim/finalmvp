@@ -18,8 +18,7 @@ function Register() {
     imageUrl: "",
   };
 
-
-//   states for form fields
+  //   states for form fields
   const [error, setError] = useState(false);
   const [notSubmited, setNotSubmited] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -104,7 +103,7 @@ function Register() {
         ></textarea>
 
         <label htmlFor="location">
-          <b>Were are you living currently?</b>
+          <b>Where are you living currently?</b>
         </label>
         <input
           type="text"
@@ -115,15 +114,14 @@ function Register() {
           required
         ></input>
 
-        <label htmlFor="email">
-          <b>Please write your email</b>
+        <label htmlFor="username">
+          <b>Please provide an username</b>
         </label>
         <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="example@gmail.com"
-          value={registerForm.email}
+          type="username"
+          name="username"
+          id="username"
+          value={registerForm.username}
           onChange={handleChange}
           required
         ></input>
@@ -140,16 +138,17 @@ function Register() {
           required
         ></input>
         <h4>Final Steps</h4>
-        <p>Please provide a username and a password in order to log in later</p>
+        <p>Please provide an email and a password in order to log in later</p>
 
-        <label htmlFor="username">
-          <b>Username</b>
+        <label htmlFor="email">
+          <b>Email</b>
         </label>
         <input
-          type="username"
-          name="username"
-          id="username"
-          value={registerForm.username}
+          type="email"
+          name="email"
+          id="email"
+          placeholder="example@gmail.com"
+          value={registerForm.email}
           onChange={handleChange}
           required
         ></input>

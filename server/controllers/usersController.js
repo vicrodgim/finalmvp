@@ -143,11 +143,11 @@ const registerUser = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   try {
     const [results] = await pool.query(
-      `SELECT * FROM users WHERE username = "${username}"`
+      `SELECT * FROM users WHERE email = "${email}"`
     );
 
     const user = results[0];

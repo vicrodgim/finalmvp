@@ -13,6 +13,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import AuthContext from "./context/AuthContext.js";
+import PrivateRoute from "./components/PrivateRoute.jsx";
 // import PrivateRoute from "./components/PrivateRoute.jsx";
 
 function App() {
@@ -61,8 +62,22 @@ function App() {
           <Route path="/jobs" element={<JobsList />} />
           <Route path="/add-jobs" element={<AddJobForm />} />
           <Route path="/jobs/:id" element={<JobDetailsCard />} />
-          <Route path="/learning-page" element={<LearningPage />} />
-          <Route path="/my-profile" element={<MyProfile />} />
+          <Route
+            path="/learning-page"
+            element={
+              <PrivateRoute>
+                <LearningPage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/my-profile"
+            element={
+              <PrivateRoute>
+                <MyProfile />
+              </PrivateRoute>
+            }
+          />
         </Routes>
       </main>
     </AuthContext.Provider>
