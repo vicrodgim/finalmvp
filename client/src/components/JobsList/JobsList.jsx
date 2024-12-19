@@ -9,6 +9,8 @@ const JobsList = () => {
   //variable to store all items
   const [jobs, setJobs] = useState([]);
 
+  const noJobs = jobs.length === 0;
+
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -37,11 +39,19 @@ const JobsList = () => {
   }, []);
 
   return (
-    <div className="job-list-container">
+    <div>
       <BodyNavButton text="Add a new job" clickFunction={handleClick} />
-      {jobs.map((job) => {
-        return <JobCard key={job.jobs_id} job={job} />;
-      })}
+      {noJobs ? (
+        <p className="no-items alert">
+          Sorry, you have no jobs to display. Why not add one now?
+        </p>
+      ) : (
+        <div className="job-list-container">
+          {jobs.map((job) => {
+            return <JobCard key={job.jobs_id} job={job} />;
+          })}
+        </div>
+      )}
     </div>
   );
 };

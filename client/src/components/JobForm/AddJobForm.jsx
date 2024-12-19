@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import BodyNavButton from "../../elements/BodyNavButton";
+import { useNavigate } from "react-router-dom";
 import { MultiSelect } from "primereact/multiselect";
 import "primereact/resources/themes/md-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
@@ -23,6 +24,12 @@ const AddJobForm = () => {
     url: "",
     skills: [],
   });
+
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/jobs");
+  };
 
   //handle text and select inputs
   const handleChange = (event) => {
@@ -80,7 +87,7 @@ const AddJobForm = () => {
 
   return (
     <>
-      <BodyNavButton text="< back to all jobs" />
+      <BodyNavButton text="< back to all jobs" clickFunction={handleClick} />
       <form className="form" onSubmit={handleSubmit}>
         <h3>Add New Job</h3>
 
