@@ -24,7 +24,13 @@ export const JobCard = ({ job }) => {
       <div className="job-card job-company">{company_name}</div>
       <div className="job-card job-location">{location}</div>
       <div className="job-card job-deadline">{date_range}</div>
-      <div className="job-card job-skills">{/* {skills} */}</div>
+      <div className="job-card job-skills">
+        {skills.map((skill, index) => (
+          <div className="job-details" key={index}>
+            {skill.skills_title}
+          </div>
+        ))}
+      </div>
       <div className="job-card job-has-applied">
         {has_applied ? "applied" : "not applied"}
       </div>
