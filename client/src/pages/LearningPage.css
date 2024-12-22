@@ -1,0 +1,13 @@
+.learning-page {
+  display: flex;
+}
+
+.resources-container {
+  margin: 20px;
+}
+
+.resources-list {
+  margin: 20px;
+  display: flex;
+  gap: 20px;
+}
