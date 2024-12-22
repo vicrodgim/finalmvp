@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { ProfileBanner } from "../components/ProfileBanner/ProfileBanner";
-import { ProfileSkills } from "../components/ProfileBanner/ProfileSkills";
+import { ProfileBanner } from "../components/ProfilePage/ProfileBanner";
+import { ProfileSkills } from "../components/ProfilePage/ProfileSkills";
 import "./MyProfile.css";
 
 export const MyProfile = () => {
@@ -39,7 +39,6 @@ export const MyProfile = () => {
       <ProfileSkills />
     </div>
   );
-
 };
 
 export default MyProfile;
