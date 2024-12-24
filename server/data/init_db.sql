@@ -2,6 +2,7 @@
 -- (Re)create the tables
 
 DROP TABLE IF EXISTS jobs_skills;
+DROP TABLE IF EXISTS resources_skills;
 DROP TABLE IF EXISTS resources; 
 DROP TABLE IF EXISTS skills_users; 
 DROP TABLE IF EXISTS skills; 
@@ -61,12 +62,20 @@ CREATE TABLE `resources`(
     `title` VARCHAR(255) NOT NULL,
     `url` VARCHAR(255) NOT NULL,
     `type` VARCHAR(255) NOT NULL,
-    `discipline` VARCHAR(255) NOT NULL,
-    `skill_id` INT UNSIGNED NOT NULL
+    `discipline` VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE `resources_skills`(
+    `resource_id` INT UNSIGNED NOT NULL,
+    `skill_id`INT UNSIGNED NOT NULL
+);
+
+-- Used ON CASCADE in both of these entries of the junction table, so that if a resource is erased, it's entry on the resources_skills table is erased too, and the same with the skill
+
+ALTER TABLE 
+    `resources_skills` ADD CONSTRAINT `resources_skills_resource_id_foreign` FOREIGN KEY (`resource_id`) REFERENCES `resources`(`id`) ON DELETE CASCADE;
 ALTER TABLE
-    `resources` ADD CONSTRAINT `resources_skill_id_foreign` FOREIGN KEY(`skill_id`) REFERENCES `skills`(`id`);
+    `resources_skills` ADD CONSTRAINT `resources_skills_skill_id_foreign` FOREIGN KEY (`skill_id`) REFERENCES `skills`(`id`) ON DELETE CASCADE; 
 
 CREATE TABLE `jobs_skills`(
     `job_id` INT UNSIGNED NOT NULL,
@@ -112,46 +121,153 @@ INSERT INTO skills (title, category) VALUES
 
 -- Insert predefined resources 
 
-INSERT INTO resources (title, url, type, discipline, skill_id) VALUES
-('HTML, CSS, JavaScript, React, and Node.js from Zero to Expert', 'https://www.udemy.com/course/html-css-javascript-reactjs-nodejs-from-zero-to-expert/', 'course', 'frontend', 1),
-('HTML Tutorial by W3Schools', 'https://www.w3schools.com/html/', 'tutorial', 'frontend', 1),
-('Design and Develop a Killer Website with HTML5 and CSS3', 'https://www.udemy.com/course/design-and-develop-a-killer-website-with-html5-and-css3/', 'course', 'frontend', 2),
-('CSS Documentation by MDN', 'https://developer.mozilla.org/en-US/docs/Web/CSS', 'tutorial', 'frontend', 2),
-('The Complete JavaScript Course', 'https://www.udemy.com/course/the-complete-javascript-course/', 'course', 'frontend', 3),
-('Eloquent JavaScript Book', 'https://eloquentjavascript.net/', 'book', 'frontend', 3),
-('React for Beginners: From HTML, CSS, JavaScript to ReactJS', 'https://www.udemy.com/course/react-for-beginners-from-html-css-javascript-to-reactjs/', 'course', 'frontend', 4),
-('React Tutorial by ReactJS.org', 'https://reactjs.org/tutorial/tutorial.html', 'tutorial', 'frontend', 4),
-('Vue.js 2: The Complete Guide', 'https://www.udemy.com/course/vuejs-2-the-complete-guide/', 'course', 'frontend', 5),
-('Vue.js Introduction Guide', 'https://vuejs.org/guide/introduction.html', 'tutorial', 'frontend', 5),
-('Understanding TypeScript', 'https://www.udemy.com/course/understanding-typescript/', 'course', 'frontend', 6),
-('TypeScript Documentation', 'https://www.typescriptlang.org/docs/', 'tutorial', 'frontend', 6),
-('Bootstrap 4 from Scratch with 5 Projects', 'https://www.udemy.com/course/bootstrap-4-from-scratch-with-5-projects/', 'course', 'frontend', 7),
-('Bootstrap 4 Documentation', 'https://getbootstrap.com/docs/4.0/getting-started/introduction/', 'tutorial', 'frontend', 7),
-('HTML, CSS, JavaScript, React, and Node.js from Zero to Expert', 'https://www.udemy.com/course/html-css-javascript-reactjs-nodejs-from-zero-to-expert/', 'course', 'backend', 8),
-('Node.js Design Patterns Book', 'https://www.nodejsdesignpatterns.com/', 'book', 'backend', 8),
-('The Complete Node.js Developer Course', 'https://www.udemy.com/course/the-complete-nodejs-developer-course-2/', 'course', 'backend', 9),
-('Express in Action Book', 'https://www.manning.com/books/express-in-action', 'book', 'backend', 9),
-('Python Specialization by Coursera', 'https://www.coursera.org/specializations/python', 'course', 'backend', 10),
-('Automate the Boring Stuff with Python', 'https://automatetheboringstuff.com/', 'book', 'backend', 10),
-('Django for Everybody Specialization', 'https://www.coursera.org/specializations/django-for-everybody', 'course', 'backend', 11),
-('Django for Beginners Book', 'https://djangoforbeginners.com/', 'book', 'backend', 11),
-('Java Programming Specialization', 'https://www.coursera.org/specializations/java-programming', 'course', 'backend', 12),
-('Effective Java, 3rd Edition', 'https://learning.oreilly.com/library/view/effective-java-3rd/9780134686097/', 'book', 'backend', 12),
-('Spring & Hibernate Tutorial', 'https://www.udemy.com/course/spring-hibernate-tutorial/', 'course', 'backend', 13),
-('Spring Boot in Action Book', 'https://www.manning.com/books/spring-boot-in-action', 'book', 'backend', 13),
-('MySQL Database Development Masterclass', 'https://www.udemy.com/course/mysql-database-development-masterclass/', 'course', 'backend', 14),
-('MySQL Official Documentation', 'https://dev.mysql.com/doc/', 'tutorial', 'backend', 14),
-('Designing RESTful APIs', 'https://www.udemy.com/course/designing-restful-apis/', 'course', 'fullstack', 15),
-('RESTful API Guide', 'https://restfulapi.net/', 'tutorial', 'fullstack', 15),
-('GraphQL with React Course', 'https://www.udemy.com/course/graphql-with-react-course/', 'course', 'fullstack', 16),
-('GraphQL Official Documentation', 'https://graphql.org/learn/', 'tutorial', 'fullstack', 16),
-('Git Complete Course', 'https://www.udemy.com/course/git-complete/', 'course', 'fullstack', 17),
-('Git Official Documentation', 'https://git-scm.com/doc', 'tutorial', 'fullstack', 17),
-('OAuth 2.0 and JWT: The Complete Guide', 'https://www.udemy.com/course/oauth-2-jwt-the-complete-guide/', 'course', 'fullstack', 18),
-('JWT Introduction', 'https://jwt.io/introduction/', 'tutorial', 'fullstack', 18),
-('Microservices with Node.js and React', 'https://www.udemy.com/course/microservices-with-node-js-and-react/', 'course', 'fullstack', 19),
-('Microservices Architecture by Martin Fowler', 'https://martinfowler.com/articles/microservices.html', 'tutorial', 'fullstack', 19),
-('Testing JavaScript with Jest', 'https://www.udemy.com/course/testing-javascript-with-jest/', 'course', 'fullstack', 20),
-('Jest Documentation', 'https://jestjs.io/docs/getting-started', 'tutorial', 'fullstack', 20),
-('Docker Mastery', 'https://www.udemy.com/course/docker-mastery/', 'course', 'fullstack', 21),
-('Docker Getting Started Guide', 'https://docs.docker.com/get-started/', 'tutorial', 'fullstack', 21);
+INSERT INTO resources (title, url, type, discipline) VALUES
+('HTML, CSS, JavaScript, React, and Node.js from Zero to Expert', 'https://www.udemy.com/course/html-css-javascript-reactjs-nodejs-from-zero-to-expert/', 'course', 'frontend'),
+('HTML Tutorial by W3Schools', 'https://www.w3schools.com/html/', 'tutorial', 'frontend'),
+('Design and Develop a Killer Website with HTML5 and CSS3', 'https://www.udemy.com/course/design-and-develop-a-killer-website-with-html5-and-css3/', 'course', 'frontend'),
+('CSS Documentation by MDN', 'https://developer.mozilla.org/en-US/docs/Web/CSS', 'tutorial', 'frontend'),
+('The Complete JavaScript Course', 'https://www.udemy.com/course/the-complete-javascript-course/', 'course', 'frontend'),
+('Eloquent JavaScript Book', 'https://eloquentjavascript.net/', 'book', 'frontend'),
+('React for Beginners: From HTML, CSS, JavaScript to ReactJS', 'https://www.udemy.com/course/react-for-beginners-from-html-css-javascript-to-reactjs/', 'course', 'frontend'),
+('React Tutorial by ReactJS.org', 'https://reactjs.org/tutorial/tutorial.html', 'tutorial', 'frontend'),
+('Vue.js 2: The Complete Guide', 'https://www.udemy.com/course/vuejs-2-the-complete-guide/', 'course', 'frontend'),
+('Vue.js Introduction Guide', 'https://vuejs.org/guide/introduction.html', 'tutorial', 'frontend'),
+('Understanding TypeScript', 'https://www.udemy.com/course/understanding-typescript/', 'course', 'frontend'),
+('TypeScript Documentation', 'https://www.typescriptlang.org/docs/', 'tutorial', 'frontend'),
+('Bootstrap 4 from Scratch with 5 Projects', 'https://www.udemy.com/course/bootstrap-4-from-scratch-with-5-projects/', 'course', 'frontend'),
+('Bootstrap 4 Documentation', 'https://getbootstrap.com/docs/4.0/getting-started/introduction/', 'tutorial', 'frontend'),
+('HTML, CSS, JavaScript, React, and Node.js from Zero to Expert', 'https://www.udemy.com/course/html-css-javascript-reactjs-nodejs-from-zero-to-expert/', 'course', 'backend'),
+('Node.js Design Patterns Book', 'https://www.nodejsdesignpatterns.com/', 'book', 'backend'),
+('The Complete Node.js Developer Course', 'https://www.udemy.com/course/the-complete-nodejs-developer-course-2/', 'course', 'backend'),
+('Express in Action Book', 'https://www.manning.com/books/express-in-action', 'book', 'backend'),
+('Python Specialization by Coursera', 'https://www.coursera.org/specializations/python', 'course', 'backend'),
+('Automate the Boring Stuff with Python', 'https://automatetheboringstuff.com/', 'book', 'backend'),
+('Django for Everybody Specialization', 'https://www.coursera.org/specializations/django-for-everybody', 'course', 'backend'),
+('Django for Beginners Book', 'https://djangoforbeginners.com/', 'book', 'backend'),
+('Java Programming Specialization', 'https://www.coursera.org/specializations/java-programming', 'course', 'backend'),
+('Effective Java, 3rd Edition', 'https://learning.oreilly.com/library/view/effective-java-3rd/9780134686097/', 'book', 'backend'),
+('Spring & Hibernate Tutorial', 'https://www.udemy.com/course/spring-hibernate-tutorial/', 'course', 'backend'),
+('Spring Boot in Action Book', 'https://www.manning.com/books/spring-boot-in-action', 'book', 'backend'),
+('MySQL Database Development Masterclass', 'https://www.udemy.com/course/mysql-database-development-masterclass/', 'course', 'backend'),
+('MySQL Official Documentation', 'https://dev.mysql.com/doc/', 'tutorial', 'backend'),
+('Designing RESTful APIs', 'https://www.udemy.com/course/designing-restful-apis/', 'course', 'fullstack'),
+('RESTful API Guide', 'https://restfulapi.net/', 'tutorial', 'fullstack'),
+('GraphQL with React Course', 'https://www.udemy.com/course/graphql-with-react-course/', 'course', 'fullstack'),
+('GraphQL Official Documentation', 'https://graphql.org/learn/', 'tutorial', 'fullstack'),
+('Git Complete Course', 'https://www.udemy.com/course/git-complete/', 'course', 'fullstack'),
+('Git Official Documentation', 'https://git-scm.com/doc', 'tutorial', 'fullstack'),
+('OAuth 2.0 and JWT: The Complete Guide', 'https://www.udemy.com/course/oauth-2-jwt-the-complete-guide/', 'course', 'fullstack'),
+('JWT Introduction', 'https://jwt.io/introduction/', 'tutorial', 'fullstack'),
+('Microservices with Node.js and React', 'https://www.udemy.com/course/microservices-with-node-js-and-react/', 'course', 'fullstack'),
+('Microservices Architecture by Martin Fowler', 'https://martinfowler.com/articles/microservices.html', 'tutorial', 'fullstack'),
+('Testing JavaScript with Jest', 'https://www.udemy.com/course/testing-javascript-with-jest/', 'course', 'fullstack'),
+('Jest Documentation', 'https://jestjs.io/docs/getting-started', 'tutorial', 'fullstack'),
+('Docker Mastery', 'https://www.udemy.com/course/docker-mastery/', 'course', 'fullstack'),
+('Docker Getting Started Guide', 'https://docs.docker.com/get-started/', 'tutorial', 'fullstack');
+
+-- Insert resources-skills relatioship
+INSERT INTO resources_skills (resource_id, skill_id) VALUES
+
+-- Resource 1: HTML, CSS, JavaScript, React, and Node.js
+(1, 1), -- HTML
+(1, 2), -- CSS
+(1, 3), -- JavaScript
+(1, 4), -- React
+(1, 8), -- Node.js
+
+-- Resource 2: HTML
+(2, 1),
+
+-- Resource 3: HTML and CSS
+(3, 1), -- HTML
+(3, 2), -- CSS
+
+-- Resource 4: CSS
+(4, 2),
+
+-- Resources 5 and 6: JavaScript
+(5, 3),
+(6, 3),
+
+-- Resource 7: HTML, CSS, JavaScript, React
+(7, 1), -- HTML
+(7, 2), -- CSS
+(7, 3), -- JavaScript
+(7, 4), -- React
+
+-- Resource 8: React
+(8, 4),
+
+-- Resources 9 and 20: Vue.js
+(9, 5),
+(10, 5),
+
+-- Resources 11 and 12: TypeScript
+(11, 6),
+(12, 6),
+
+-- Resource 13 and 14: Bootstrap
+(13, 7),
+(14, 7),
+
+-- Resource 15 and 16: Node.js
+(15, 8),
+(16, 8),
+
+-- Resource 17: Express
+(17, 9),
+
+-- Resources 18 and 19: Python
+(18, 10),
+(19, 10),
+
+-- Resource 20 and 21: Django 
+(20, 11), 
+(21, 11),
+
+-- Resource 22 and 23: Java 
+(22, 12), 
+(23, 12), 
+
+-- Resource 24 and 25: Spring Boot
+(24, 13), 
+(25, 13), 
+
+-- Resource 26 and 27: MySQL
+(26, 14), 
+(27, 14),
+
+-- Resource 28 and 29: RESTful APIs
+(28, 15), 
+(29, 15), 
+
+-- Resource 30 and 31: GraphQL 
+(30, 16), 
+(31, 16), 
+
+-- Resource 32 and 33: Git 
+(32, 17),
+(33, 17), 
+
+-- Resource 34 and 35: Authentication (OAuth/JWT)
+(34, 18),
+(35, 18), 
+
+-- Resource 36: Microservices with Node.js and React
+(36, 19),
+(36, 4),
+(36, 8),
+
+-- Resource 37: Microservices
+(37, 19),
+
+-- Resource 38: Testing JavaScript with Jest
+(38, 20), 
+(38, 3),
+
+-- Resource 39: Jest Documentation
+(39, 20), 
+
+-- Resource 40 and 41: Docker 
+(40, 21),
+(41, 21);
