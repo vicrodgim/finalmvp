@@ -4,9 +4,10 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const cors = require("cors");
 
-var jobsRoutes = require("./routes/jobsRoutes");
+const jobsRoutes = require("./routes/jobsRoutes");
 const usersRoutes = require("./routes/usersRoutes");
 const skillsRoutes = require("./routes/skillsRoutes");
+const resourcesRoutes = require("./routes/resourcesRoutes");
 
 var app = express();
 
@@ -23,5 +24,7 @@ app.use("/api/jobs", jobsRoutes);
 app.use("/api/users", usersRoutes);
 //manages skills routes
 app.use("/api/skills", skillsRoutes);
+//manages resources routes
+app.use("/api/resources", resourcesRoutes);
 
 module.exports = app;
