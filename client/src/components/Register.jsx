@@ -23,6 +23,8 @@ function Register() {
   const [notSubmited, setNotSubmited] = useState(false);
   const [success, setSuccess] = useState(false);
   const [registerForm, setRegisterForm] = useState(emptyForm);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -56,6 +58,13 @@ function Register() {
       console.log(error);
       setNotSubmited(true);
     }
+  };
+
+  const handleShowPassword = () => {
+    setShowPassword((prev) => !prev);
+  };
+  const handleShowConfirmedPassword = () => {
+    setShowConfirmedPassword((prev) => !prev);
   };
 
   return (
@@ -156,29 +165,39 @@ function Register() {
         <label htmlFor="password">
           <b>Password</b>
         </label>
-        <input
-          type="password"
-          placeholder="Enter Password"
-          name="password"
-          id="password"
-          value={registerForm.password}
-          onChange={handleChange}
-          required
-        ></input>
+        <div>
+          <input
+            type={!showPassword ? "password" : "text"}
+            placeholder="Enter Password"
+            name="password"
+            id="password"
+            value={registerForm.password}
+            onChange={handleChange}
+            required
+          ></input>
+          <button type="button" onClick={handleShowPassword}>
+            {!showPassword ? "Show" : "Hide"}
+          </button>
+        </div>
 
         {/* Repeat Password Input */}
         <label htmlFor="confirmPassword">
           <b>Repeat Password</b>
         </label>
-        <input
-          type="text"
-          placeholder="Repeat Password"
-          name="confirmPassword"
-          id="confirmPassword"
-          value={registerForm.confirmPassword}
-          onChange={handleChange}
-          required
-        ></input>
+        <div>
+          <input
+            type={!showConfirmedPassword ? "password" : "text"}
+            placeholder="Repeat Password"
+            name="confirmPassword"
+            id="confirmPassword"
+            value={registerForm.confirmPassword}
+            onChange={handleChange}
+            required
+          ></input>
+          <button type="button" onClick={handleShowConfirmedPassword}>
+            {!showConfirmedPassword ? "Show" : "Hide"}
+          </button>
+        </div>
 
         {/* Submit Button */}
         <button type="submit" className="registerbtn">
