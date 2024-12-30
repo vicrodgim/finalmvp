@@ -92,7 +92,7 @@ const AddJobForm = () => {
       <form className="form" onSubmit={handleSubmit}>
         <h3>Add New Job</h3>
 
-        <label htmlFor="title">Job Title:</label>
+        <label htmlFor="title">* Job Title:</label>
         <input
           type="text"
           id="title"
@@ -101,7 +101,7 @@ const AddJobForm = () => {
           onChange={handleChange}
           required
         />
-        <label htmlFor="company_name">Company name:</label>
+        <label htmlFor="company_name">* Company name:</label>
         <input
           type="text"
           id="company_name"
@@ -110,7 +110,7 @@ const AddJobForm = () => {
           onChange={handleChange}
           required
         />
-        <label htmlFor="location">Location:</label>
+        <label htmlFor="location">* Location:</label>
         <input
           type="text"
           id="location"
@@ -128,7 +128,7 @@ const AddJobForm = () => {
           onChange={handleChange}
           placeholder="e.g., on-site, remote or hybrid"
         />
-        <label htmlFor="description">Decription:</label>
+        <label htmlFor="description">* Decription:</label>
         <textarea
           id="description"
           name="description"
@@ -136,7 +136,7 @@ const AddJobForm = () => {
           onChange={handleChange}
           required
         />
-        <label htmlFor="type">Job Type:</label>
+        <label htmlFor="type">* Job Type:</label>
         <input
           type="text"
           id="type"
@@ -188,7 +188,7 @@ const AddJobForm = () => {
           value={form.created_at}
           onChange={handleChange}
         />
-        <label htmlFor="url">Job URL:</label>
+        <label htmlFor="url">* Job URL:</label>
         <input
           type="url"
           id="url"
