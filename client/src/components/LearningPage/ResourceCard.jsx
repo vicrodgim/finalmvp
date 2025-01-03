@@ -4,7 +4,7 @@ export const ResourceCard = ({ r }) => {
   return (
     <div className="resource-card">
       <div className="r-title">
-        <h4>{r.title}</h4>
+        <h4>{r.resource_title}</h4>
       </div>
       <div className="r-type">{r.type}</div>
       <div className="r-discipline">{r.discipline}</div>
