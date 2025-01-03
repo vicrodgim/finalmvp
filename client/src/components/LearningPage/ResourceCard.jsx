@@ -8,7 +8,11 @@ export const ResourceCard = ({ r }) => {
       </div>
       <div className="r-type">{r.type}</div>
       <div className="r-discipline">{r.discipline}</div>
-      <div className="r-skill">{r.skill_id}</div>
+      <div className="r-skill">
+        {r.skills.map((skill, index) => (
+          <div key={index}>{skill.skills_title}</div>
+        ))}
+      </div>
     </div>
   );
 };
