@@ -1,33 +1,21 @@
 // import the DB pool from your config folder
 const pool = require("../config/db");
 
-//Gets all jobs for a specific user (can apply filters)
 const getJobs = async (req, res) => {
   try {
-    //get user id from request object
     const userId = req.user_id;
 
-    //get key-value pair from query
     const { key, value } = req.query;
-
-    console.log("key:", key);
-    console.log("value:", value);
-
-    //select all columns in jobs and the title and id from skills FROM jobs, LEFT join  with junction table on jobs.id, LEFT join skills table on job_skills.skils_id.
 
     let sqlQuery = `SELECT jobs.id AS jobs_id, jobs.title AS jobs_title, jobs.company_name, jobs.location, jobs.location_type, jobs.description, jobs.type, jobs.date_range,jobs.min_salary,jobs.max_salary,jobs.has_applied,jobs.created_at,jobs.url, skills.title AS skills_title, skills.id AS skills_id FROM jobs LEFT JOIN jobs_skills ON jobs.id = jobs_skills.job_id LEFT JOIN skills ON jobs_skills.skills_id = skills.id WHERE jobs.user_id = ?`;
 
-    //check if there are some filters
     if (key && value) {
       sqlQuery = `${sqlQuery} AND jobs.${key}=?`;
     }
 
-    //if there are add userId and value as params, otherwise, only userId
     const params = key && value ? [userId, value] : [userId];
 
     const [jobs] = await pool.query(sqlQuery, params);
-
-    //process results to group jobs and skills
 
     //temporary object to track jobs by ID
     const jobsMap = {};
@@ -47,8 +35,6 @@ const getJobs = async (req, res) => {
       // Add the skill to the corresponding job's skills array
       jobsMap[jobs_id].skills.push({ skills_id, skills_title });
     }
-
-    // console.log(jobsMap)
     const result = Object.values(jobsMap);
     console.log(result);
 
@@ -87,7 +73,6 @@ const treatJobsData = (data) => {
   return result;
 };
 
-//Gets a job by specific ID
 const getJobById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -105,10 +90,8 @@ const getJobById = async (req, res) => {
       });
     }
 
-    //apply function
     const job = treatJobsData(data);
 
-    //send it to the client
     res.status(200).send(job);
   } catch (error) {
     console.error(error.message);
@@ -116,7 +99,6 @@ const getJobById = async (req, res) => {
   }
 };
 
-//Adds a job (also adds to the skills table)
 const addJob = async (req, res) => {
   try {
     const userId = req.user_id;
@@ -137,7 +119,6 @@ const addJob = async (req, res) => {
       skills,
     } = req.body;
 
-    // title, company name, description, location, type, has_applied, and url are required
     if (
       !title ||
       !company_name ||
@@ -152,8 +133,6 @@ const addJob = async (req, res) => {
           "title, company name, description, location, type, has_applied, and url are required.",
       });
     }
-
-    //Insert job into jobs table
 
     const [result] = await pool.query(
       "INSERT INTO jobs (user_id, title, company_name, location, location_type, description, type, date_range, min_salary, max_salary, has_applied, created_at, url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
@@ -180,8 +159,6 @@ const addJob = async (req, res) => {
 
     console.log("Resulted Id:", jobId);
 
-    //check if skills exist/non-empty
-    //loop through each skill, insert the id and jobId from result
     if (skills && skills.length > 0) {
       for (let skillId of skills) {
         await pool.query(
@@ -201,14 +178,12 @@ const addJob = async (req, res) => {
   }
 };
 
-//Updates the has_applied column
 const updateJob = async (req, res) => {
   try {
     const { id } = req.params;
     const userId = req.user_id;
     const { has_applied } = req.body;
 
-    //check if it is provided
     if (has_applied === undefined) {
       return res.status(400).json({
         error: "The has_applied field is required",
@@ -220,7 +195,6 @@ const updateJob = async (req, res) => {
       [has_applied, id, userId]
     );
 
-    //check if rows have been affected
     if (result.affectedRows === 0) {
       return res.status(404).json({ error: "This job was not found" });
     }
@@ -234,8 +208,6 @@ const updateJob = async (req, res) => {
   }
 };
 
-//deletes a job
-
 const deleteJob = async (req, res) => {
   try {
     const { id } = req.params;
@@ -246,7 +218,6 @@ const deleteJob = async (req, res) => {
       [id, userId]
     );
 
-    //check if the job was deleted
     if (result.affectedRows === 0) {
       return res.status(404).json({ error: "This job was not found." });
     }
