@@ -1,5 +1,5 @@
 .job-list-page {
-  margin: 20px;
+  display: flex;
 }
 
 .job-list-container {
@@ -7,4 +7,8 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.jobs-container {
+  margin: 20px;
 }
