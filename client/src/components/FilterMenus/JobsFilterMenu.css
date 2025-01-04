@@ -1,6 +1,28 @@
-.filter-menu-container {
+.jobs-filter-menu-container {
   padding: 40px 16px;
   height: 100vw;
   width: 15%;
+  min-width: 220px;
+
   border-right: solid 1px;
+}
+
+.filter-section-title {
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+}
+
+.r-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.filter-radio {
+  margin-right: 10px;
+}
+
+.clear-filter-btn {
+  margin-top: 10px;
 }
