@@ -1,15 +1,9 @@
 .resource-card {
   border: solid 1px;
   border-radius: 5px;
-  display: flex; /* Enables flexbox */
-  flex-direction: column; /* Align children vertically */
-  justify-content: space-between; /* Space out top and bottom sections */
-  /* 
-  grid-template-columns: 1fr;
-  grid-template-rows: 2fr repeat(3, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px; */
-  /* min-width: 200px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 250px;
   height: 250px;
   padding: 0;
@@ -26,7 +20,6 @@ a {
 
 .r-type {
   padding: 0.25rem 0.75rem;
-  /* grid-area: 2 / 1 / 3 / 2; */
 }
 
 .course {
@@ -42,14 +35,11 @@ a {
 }
 
 .r-title {
-  /* grid-area: 1 / 1 / 2 / 2; */
-  /* height: 100%; */
   padding: 1rem 0.75rem;
   margin: 0;
 }
 
 .r-skills {
-  /* grid-area: 4 / 1 / 5 / 2; */
   display: flex;
   padding: 0.25rem 0.75rem;
   display: flex;
@@ -58,7 +48,6 @@ a {
 }
 
 .r-discipline {
-  /* grid-area: 3 / 1 / 4 / 2; */
   padding: 1rem 0.75rem;
 }
 

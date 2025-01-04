@@ -8,3 +8,7 @@
   flex-direction: column;
   gap: 10px;
 }
+
+.no-items.alert {
+  margin-top: 20px;
+}
