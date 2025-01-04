@@ -98,7 +98,7 @@ function Register() {
 
         <label htmlFor="description">
           <b>
-            Please write here about you, your academical and work experience and
+            Please write here about you, your academic and work experience and
             projects.
           </b>
         </label>
@@ -124,7 +124,7 @@ function Register() {
         ></input>
 
         <label htmlFor="username">
-          <b>Please provide an username</b>
+          <b>Please provide a username</b>
         </label>
         <input
           type="username"
@@ -220,7 +220,7 @@ function Register() {
         )}
         {notSubmited && (
           <div className="alert alert-danger" role="alert">
-            There has been a problem with your register, please try again!
+            There has been a problem with your registration, please try again!
           </div>
         )}
       </form>
