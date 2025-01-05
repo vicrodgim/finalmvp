@@ -61,7 +61,7 @@ export const ProfileBanner = () => {
       </div>
       <div className="profile-edit-container">
         <button onClick={handleClick}>
-          <b>EDIT</b>
+          <b>ADD SKILLS</b>
         </button>
       </div>
     </div>

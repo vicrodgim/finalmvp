@@ -6,6 +6,8 @@
   grid-row-gap: 0px;
   border: solid 1px;
   padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .profile-photo-container {
