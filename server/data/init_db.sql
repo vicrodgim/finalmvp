@@ -176,18 +176,18 @@ INSERT INTO resources_skills (resource_id, skill_id) VALUES
 (1, 8), -- Node.js
 
 -- Resource 2: HTML
-(2, 1),
+(2, 1), -- HTML
 
 -- Resource 3: HTML and CSS
 (3, 1), -- HTML
 (3, 2), -- CSS
 
 -- Resource 4: CSS
-(4, 2),
+(4, 2), -- CSS
 
 -- Resources 5 and 6: JavaScript
-(5, 3),
-(6, 3),
+(5, 3), -- JavaScript
+(6, 3), -- JavaScript
 
 -- Resource 7: HTML, CSS, JavaScript, React
 (7, 1), -- HTML
@@ -198,7 +198,7 @@ INSERT INTO resources_skills (resource_id, skill_id) VALUES
 -- Resource 8: React
 (8, 4),
 
--- Resources 9 and 20: Vue.js
+-- Resources 9 and 10: Vue.js
 (9, 5),
 (10, 5),
 
@@ -210,64 +210,63 @@ INSERT INTO resources_skills (resource_id, skill_id) VALUES
 (13, 7),
 (14, 7),
 
--- Resource 15 and 16: Node.js
+-- Resource 15 and 16, 17: Node.js
 (15, 8),
+(15, 1),
+(15, 2),
+(15, 3),
+(15, 4),
 (16, 8),
+(17, 8),
 
--- Resource 17: Express
-(17, 9),
+-- Resource 18: Express
+(18, 9),
 
--- Resources 18 and 19: Python
-(18, 10),
+-- Resources 19 and 20: Python
 (19, 10),
+(20, 10),
 
--- Resource 20 and 21: Django 
-(20, 11), 
-(21, 11),
+-- Resource 21 and 22: Django 
+(21, 11), 
+(22, 11),
 
--- Resource 22 and 23: Java 
-(22, 12), 
+-- Resource 23 and 24: Java 
 (23, 12), 
+(24, 12), 
 
--- Resource 24 and 25: Spring Boot
-(24, 13), 
+-- Resource 25 and 26: Spring Boot
 (25, 13), 
+(26, 13), 
 
--- Resource 26 and 27: MySQL
-(26, 14), 
-(27, 14),
+-- Resource 27 and 28: MySQL
+(27, 14), 
+(28, 14),
 
--- Resource 28 and 29: RESTful APIs
-(28, 15), 
+-- Resource 29 and 30: RESTful APIs
 (29, 15), 
+(30, 15), 
 
--- Resource 30 and 31: GraphQL 
-(30, 16), 
+-- Resource 31 and 32: GraphQL 
 (31, 16), 
+(32, 16), 
 
--- Resource 32 and 33: Git 
-(32, 17),
-(33, 17), 
+-- Resource 33 and 34: Git 
+(33, 17),
+(34, 17), 
 
--- Resource 34 and 35: Authentication (OAuth/JWT)
-(34, 18),
-(35, 18), 
+-- Resource 35 and 36: Authentication (OAuth/JWT)
+(35, 18),
+(36, 18), 
 
--- Resource 36: Microservices with Node.js and React
-(36, 19),
-(36, 4),
-(36, 8),
-
--- Resource 37: Microservices
+-- Resource 37 AND 38: Microservices
 (37, 19),
+(38, 19),
 
--- Resource 38: Testing JavaScript with Jest
-(38, 20), 
-(38, 3),
+-- Resources 39 and 40: Testing JavaScript with Jest
+(39, 3),
+(39, 20),
+(40, 20), 
 
--- Resource 39: Jest Documentation
-(39, 20), 
-
--- Resource 40 and 41: Docker 
-(40, 21),
-(41, 21);
+-- Resource 41 and 42: Docker 
+(41, 21),
+(42, 21);
