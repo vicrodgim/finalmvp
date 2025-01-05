@@ -31,7 +31,7 @@ export const ProfileSkills = () => {
   }, []);
 
   return (
-    <>
+    <div className="profile-skills">
       <h3>SKILLS</h3>
       {noSkills ? (
         <p className="no-items alert">
@@ -44,6 +44,6 @@ export const ProfileSkills = () => {
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 };
