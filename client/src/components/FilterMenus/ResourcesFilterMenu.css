@@ -2,5 +2,21 @@
   padding: 40px 16px;
   height: 100vw;
   width: 15%;
+  min-width: 220px;
   border-right: solid 1px;
+}
+
+.r-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.r-label-discipline {
+  display: flex;
+  align-items: center;
+  margin: 30px 0 10px 0;
+  gap: 10px;
+  font-weight: bold;
 }
