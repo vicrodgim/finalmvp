@@ -8,6 +8,7 @@ const jobsRoutes = require("./routes/jobsRoutes");
 const usersRoutes = require("./routes/usersRoutes");
 const skillsRoutes = require("./routes/skillsRoutes");
 const resourcesRoutes = require("./routes/resourcesRoutes");
+const imagesRoutes = require("./routes/imagesRoutes");
 
 var app = express();
 
@@ -16,7 +17,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
-// app._router.app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "public")));
+
+console.log(path.join(__dirname, "public"));
 
 //manages jobs saved in the database (CRUD)
 app.use("/api/jobs", jobsRoutes);
@@ -26,5 +29,7 @@ app.use("/api/users", usersRoutes);
 app.use("/api/skills", skillsRoutes);
 //manages resources routes
 app.use("/api/resources", resourcesRoutes);
+//manages images routes
+app.use("/api/images", imagesRoutes);
 
 module.exports = app;
