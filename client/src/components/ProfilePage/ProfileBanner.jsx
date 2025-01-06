@@ -37,13 +37,14 @@ export const ProfileBanner = () => {
   const handleClick = () => {
     navigate("/edit-profile");
   };
+  // http://localhost:4000/img/3bdcabba-361f-4f5d-af09-f3c5c302ea7b.jpeg
 
   return (
     <div className="profile-banner container">
       <div className="profile-photo-container">
         <img
           className="profile-photo"
-          src={userInfo.imageUrl}
+          src={"http://localhost:4000/img/" + userInfo.imageUrl}
           alt="profile photo"
         />
       </div>

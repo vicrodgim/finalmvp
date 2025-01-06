@@ -191,7 +191,7 @@ const deleteUser = async (req, res) => {
     //otherwise, it sends a 200 status with a deletion success message.
     return res.status(200).json({ message: "User deleted successfully" });
   } catch (error) {
-    console.error(error.message);
+    console.log(error.message);
     return res.status(500).json({ error: "Failed to delete User" });
   }
 };

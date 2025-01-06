@@ -25,6 +25,8 @@ function Register() {
   const [registerForm, setRegisterForm] = useState(emptyForm);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -32,6 +34,7 @@ function Register() {
     const { name, value } = event.target;
 
     setRegisterForm((prev) => ({ ...prev, [name]: value }));
+    setSelectedFile(event.target.files[0]);
     console.log({ name, value });
   };
 
@@ -47,6 +50,7 @@ function Register() {
         "http://localhost:4000/api/users",
         registerForm
       );
+      onFileUpload();
       console.log(response.config.data.password);
       console.log(response);
 
@@ -65,6 +69,30 @@ function Register() {
   };
   const handleShowConfirmedPassword = () => {
     setShowConfirmedPassword((prev) => !prev);
+  };
+
+  // const onFileChange = (event) => {
+  //   // Update the state
+  //   console.log(event);
+  //   setSelectedFile(event.target.files[0]);
+  // };
+
+  const onFileUpload = async () => {
+    // Create an object of formData
+    const formData = new FormData();
+
+    // Update the formData object
+    formData.append("imageUrl", selectedFile, selectedFile.name);
+    formData.append("email", registerForm.email);
+
+    // Request made to the backend api
+    // Send formData object
+    await axios.post("/api/images", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    setSelectedFile(null);
   };
 
   return (
@@ -135,7 +163,7 @@ function Register() {
           required
         ></input>
 
-        <label htmlFor="imageUrl">
+        {/* <label htmlFor="imageUrl">
           <b>Submit your profile picture</b>
         </label>
         <input
@@ -145,7 +173,23 @@ function Register() {
           value={registerForm.imageUrl}
           onChange={handleChange}
           required
+        ></input> */}
+
+        <label htmlFor="imageUrl">
+          <b>Submit your profile picture</b>
+        </label>
+        <input
+          type="file"
+          name="imageUrl"
+          id="imageUrl"
+          value={registerForm.imageUrl}
+          onChange={handleChange}
+          required
         ></input>
+        {/* <button type="button" onClick={onFileUpload}>
+          LANSDKA
+        </button> */}
+
         <h4>Final Steps</h4>
         <p>Please provide an email and a password in order to log in later</p>
 
