@@ -23,15 +23,15 @@ a {
 }
 
 .course {
-  background-color: yellow;
+  background-color: var(--dakgreen);
 }
 
 .tutorial {
-  background-color: aqua;
+  background-color: var(--lightgreen);
 }
 
 .book {
-  background-color: greenyellow;
+  background-color: var(--blue);
 }
 
 .r-title {
@@ -52,7 +52,7 @@ a {
 }
 
 .skill-badge {
-  border: solid 1px black;
+  border: solid 1px var(--darkcolor);
   border-radius: 1.5rem;
   padding: 5px;
 }

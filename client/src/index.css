@@ -1,24 +1,54 @@
 * {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Poppins-Regular";
+  font-size: 14px;
   margin: 0;
 }
 
+@font-face {
+  font-family: "Poppins-Regular";
+  src: url("./resources/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Poppins-SemiBold";
+  src: url("./resources/Poppins-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: "Poppins-Bold";
+  src: url("./resources/Poppins-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Poppins-ExtraBold";
+  src: url("./resources/Poppins-ExtraBold.ttf");
+}
+
 #root {
+  --darkcolor: #004e64;
+  --blue: #004e64;
+  --lightcolor: #9fffcb;
+  --dakgreen: #25a18e;
+  --lightgreen: #7ae582;
+  --offwhite: #ebfff4;
+  color: var(--darkcolor);
 }
 
 main {
+  /* background-color: var(--offwhite); */
 }
 
 /* use for app name only */
 h1 {
   font-size: 42px;
-  color: black;
+  font-family: "Poppins-ExtraBold";
 }
 
 /* use for page titles only */
 h2 {
   font-size: 36px;
   text-align: center;
+  font-family: "Poppins-SemiBold";
 }
 
 /* use for subheading like form title, filter menu title, etc. */

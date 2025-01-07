@@ -1,9 +1,10 @@
 .navbar {
   padding: 30px;
-  border-bottom: 1px solid black;
   display: flex;
   gap: 20px;
   justify-content: flex-end;
+  background-color: var(--darkcolor);
+  color: var(--lightcolor);
 }
 
 .app-name {
