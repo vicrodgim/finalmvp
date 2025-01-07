@@ -13,246 +13,121 @@ export const ResourcesFilterMenu = ({
   return (
     <div className="filter-menu-container">
       <h3>FILTER MENU</h3>
+      {/*Frontend Dropdown*/}
       <div>
-        <label className="r-label-discipline">
-          <input
-            type="radio"
-            name="discipline"
-            value="frontend"
-            checked={
-              selectedFilters.key === "discipline" &&
-              selectedFilters.value === "frontend"
-            }
-            onChange={handleChange}
-            className="filter-radio"
-          />
-          FRONTEND
-        </label>
-      </div>
-      <div>
-        <label className="r-label">
-          <input
-            type="radio"
+        <div>
+          <label className="r-label-discipline"> FRONTEND</label>
+          <select
             name="skills_title"
-            value="HTML"
-            checked={
-              selectedFilters.key === "skills_title" &&
-              selectedFilters.value === "HTML"
+            value={
+              selectedFilters.key === "skills_title" && selectedFilters.value
             }
             onChange={handleChange}
-            className="filter-radio"
-          />
-          HTML
-        </label>
-      </div>
-      <div>
-        <label className="r-label">
-          <input
-            type="radio"
+            className="filter-dropwdown"
+          >
+            <option value=""> Select a skill</option>
+            <option value="HTML">HTML</option>
+            <option value="CSS">CSS</option>
+            <option value="JavaScript">JavaScript</option>
+            <option value="React">React</option>
+            <option value="Vue.js">Vue.js</option>
+            <option value="TypeScript">TypeScript</option>
+            <option value="Bootstrap">Bootstrap</option>
+          </select>
+        </div>
+        {/*Backend Dropdown*/}
+        <div>
+          <label className="r-label-discipline"> BACKEND</label>
+          <select
             name="skills_title"
-            value="CSS"
-            checked={
-              selectedFilters.key === "skills_title" &&
-              selectedFilters.value === "CSS"
+            value={
+              selectedFilters.key === "skills_title" && selectedFilters.value
             }
             onChange={handleChange}
-            className="filter-radio"
-          />
-          CSS
-        </label>
-      </div>
-      <div>
-        <label className="r-label">
-          <input
-            type="radio"
+            className="filter-dropwdown"
+          >
+            <option value=""> Select a skill</option>
+            <option value="Node.js">Node.js</option>
+            <option value="Express.js">Express.js</option>
+            <option value="Python">Python</option>
+            <option value="Django">Django</option>
+            <option value="Java">Java</option>
+            <option value="Spring Boot">Spring Boot</option>
+            <option value="MySQL">MySQL</option>
+          </select>
+        </div>
+        {/*Fullstack Dropdown*/}
+        <div>
+          <label className="r-label-discipline">FULLSTACK</label>
+          <select
             name="skills_title"
-            value="JavaScript"
-            checked={
-              selectedFilters.key === "skills_title" &&
-              selectedFilters.value === "JavaScript"
+            value={
+              selectedFilters.key === "skills_title" && selectedFilters.value
             }
             onChange={handleChange}
-            className="filter-radio"
-          />
-          JavaScript
-        </label>
+            className="filter-dropwdown"
+          >
+            <option value=""> Select a skill</option>
+            <option value="RESTful APIs">RESTful APIs</option>
+            <option value="GraphQL">GraphQL</option>
+            <option value="Git">Git</option>
+            <option value="Authentication (OAuth/JWT)">(OAuth/JWT)</option>
+            <option value="Microservices">Microservices</option>
+            <option value="Testing (e.g., Jest/Mocha)">Testing</option>
+            <option value="Docker">Docker</option>
+          </select>
+        </div>
+        <div>
+          <label className="r-label-discipline">TYPE OF CONTENT </label>
+          <label className="r-label">
+            <input
+              type="radio"
+              name="type"
+              value="course"
+              checked={
+                selectedFilters.key === "type" &&
+                selectedFilters.value === "course"
+              }
+              onChange={handleChange}
+              className="filter-radio"
+            />
+            course
+          </label>
+        </div>
+        <div>
+          <label className="r-label">
+            <input
+              type="radio"
+              name="type"
+              value="tutorial"
+              checked={
+                selectedFilters.key === "type" &&
+                selectedFilters.value === "tutorial"
+              }
+              onChange={handleChange}
+              className="filter-radio"
+            />
+            tutorial
+          </label>
+        </div>
+        <div>
+          <label className="r-label">
+            <input
+              type="radio"
+              name="type"
+              value="book"
+              checked={
+                selectedFilters.key === "type" &&
+                selectedFilters.value === "book"
+              }
+              onChange={handleChange}
+              className="filter-radio"
+            />
+            book
+          </label>
+        </div>
       </div>
-      <div>
-        <label className="r-label">
-          <input
-            type="radio"
-            name="skills_title"
-            value="React"
-            checked={
-              selectedFilters.key === "skills_title" &&
-              selectedFilters.value === "React"
-            }
-            onChange={handleChange}
-            className="filter-radio"
-          />
-          React
-        </label>
-      </div>
-      <div>
-        <label className="r-label-discipline">
-          <input
-            type="radio"
-            name="discipline"
-            value="backend"
-            checked={
-              selectedFilters.key === "discipline" &&
-              selectedFilters.value === "backend"
-            }
-            onChange={handleChange}
-            className="filter-radio"
-          />
-          BACKEND
-        </label>
-      </div>
-      <div>
-        <label className="r-label">
-          <input
-            type="radio"
-            name="skills_title"
-            value="Express.js"
-            checked={
-              selectedFilters.key === "skills_title" &&
-              selectedFilters.value === "Express.js"
-            }
-            onChange={handleChange}
-            className="filter-radio"
-          />
-          Express.js
-        </label>
-      </div>
-      <div>
-        <label className="r-label">
-          <input
-            type="radio"
-            name="skills_title"
-            value="Node.js"
-            checked={
-              selectedFilters.key === "skills_title" &&
-              selectedFilters.value === "Node.js"
-            }
-            onChange={handleChange}
-            className="filter-radio"
-          />
-          Node.js
-        </label>
-      </div>
-      <div>
-        <label className="r-label">
-          <input
-            type="radio"
-            name="skills_title"
-            value="Python"
-            checked={
-              selectedFilters.key === "skills_title" &&
-              selectedFilters.value === "Phython"
-            }
-            onChange={handleChange}
-            className="filter-radio"
-          />
-          Python
-        </label>
-      </div>
-      <div>
-        <label className="r-label">
-          <input
-            type="radio"
-            name="skills_title"
-            value="MySQL"
-            checked={
-              selectedFilters.key === "skills_title" &&
-              selectedFilters.value === "MySQL"
-            }
-            onChange={handleChange}
-            className="filter-radio"
-          />
-          MySQL
-        </label>
-      </div>
-      <div>
-        <label className="r-label-discipline">
-          <input
-            type="radio"
-            name="discipline"
-            value="fullstack"
-            checked={
-              selectedFilters.key === "discipline" &&
-              selectedFilters.value === "fullstack"
-            }
-            onChange={handleChange}
-            className="filter-radio"
-          />
-          FULLSTACK
-        </label>
-      </div>
-      <div>
-        <label className="r-label">
-          <input
-            type="radio"
-            name="skills_title"
-            value="Git"
-            checked={
-              selectedFilters.key === "skills_title" &&
-              selectedFilters.value === "Git"
-            }
-            onChange={handleChange}
-            className="filter-radio"
-          />
-          Git
-        </label>
-      </div>
-      <div>
-        <label className="r-label">
-          <input
-            type="radio"
-            name="skills_title"
-            value="Authentication (OAuth/JWT)"
-            checked={
-              selectedFilters.key === "skills_title" &&
-              selectedFilters.value === "Authentication (OAuth/JWT)"
-            }
-            onChange={handleChange}
-            className="filter-radio"
-          />
-          OAuth/JWT
-        </label>
-      </div>
-      <div>
-        <label className="r-label">
-          <input
-            type="radio"
-            name="skills_title"
-            value="RESTful APIs"
-            checked={
-              selectedFilters.key === "skills_title" &&
-              selectedFilters.value === "RESTful APIs"
-            }
-            onChange={handleChange}
-            className="filter-radio"
-          />
-          RESTful APIs
-        </label>
-      </div>
-      <div>
-        <label className="r-label">
-          <input
-            type="radio"
-            name="skills_title"
-            value="Microservices"
-            checked={
-              selectedFilters.key === "skills_title" &&
-              selectedFilters.value === "Microservices"
-            }
-            onChange={handleChange}
-            className="filter-radio"
-          />
-          Microservices
-        </label>
-      </div>
+
       <button onClick={clearFilters} className="clear-filter-btn">
         CLEAR
       </button>
