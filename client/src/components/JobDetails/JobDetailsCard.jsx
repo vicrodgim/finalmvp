@@ -7,7 +7,7 @@ export default function JobDetailsCard({ job }) {
     company_name,
     location,
     location_type,
-    date_range,
+    date_range = "No date range available",
     type,
     skills = [],
     has_applied,
@@ -16,6 +16,13 @@ export default function JobDetailsCard({ job }) {
     max_salary,
     description,
   } = job;
+
+  console.log(job); //check to see if date_range exists
+
+  //slice the date_range if it exists
+  const trimmedDateRange = date_range
+    ? date_range.slice(0, 10)
+    : "No date range provided";
 
   //EXTRACTS THE JOB ID FROM URL
   const { id } = useParams();
@@ -26,7 +33,7 @@ export default function JobDetailsCard({ job }) {
       <div className="job-details">{company_name}</div>
       <div className="job-details">{location}</div>
       <div className="job-details">{location_type}</div>
-      <div className="job-details">{date_range}</div>
+      <div className="job-details">{trimmedDateRange}</div>
       <div className="job-details">{type}</div>
 
       {skills.map((skill, index) => (

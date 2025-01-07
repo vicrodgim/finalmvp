@@ -7,12 +7,19 @@ export const JobCard = ({ job }) => {
     jobs_title,
     company_name,
     location,
-    date_range,
-    skills,
+    date_range = "No date range available",
+    skills = [],
     has_applied,
   } = job;
 
   const navigate = useNavigate();
+
+  //slice the date_range if it exists
+  const trimmedDateRange = date_range
+    ? date_range.slice(0, 10)
+    : "No date range provided";
+
+  console.log(trimmedDateRange);
 
   const handleDetailsClick = () => {
     navigate(`/jobs/${jobs_id}`);
@@ -23,7 +30,7 @@ export const JobCard = ({ job }) => {
       <div className="job-card job-title">{jobs_title}</div>
       <div className="job-card job-company">{company_name}</div>
       <div className="job-card job-location">{location}</div>
-      <div className="job-card job-deadline">{date_range}</div>
+      <div className="job-card job-deadline">{trimmedDateRange}</div>
       <div className="job-card job-skills">
         {skills.map((skill, index) => (
           <div className="job-details" key={index}>
