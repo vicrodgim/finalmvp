@@ -32,7 +32,8 @@ function App() {
       localStorage.setItem("token", data.token);
       setIsLoggedIn(true);
     } catch (error) {
-      console.log(error);
+      alert("Wrong email or password, please try again!");
+      console.log("There is an error: ", error);
     }
   };
 
@@ -60,10 +61,40 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/jobs" element={<JobsList />} />
-          <Route path="/add-jobs" element={<AddJobForm />} />
-          <Route path="/jobs/:id" element={<JobDetail />} />
-          <Route path="/edit-profile" element={<EditProfile />} />
+
+          <Route
+            path="/jobs"
+            element={
+              <PrivateRoute>
+                <JobsList />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/add-jobs"
+            element={
+              <PrivateRoute>
+                <AddJobForm />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/jobs/:id"
+            element={
+              <PrivateRoute>
+                <JobDetail />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/edit-profile"
+            element={
+              <PrivateRoute>
+                <EditProfile />
+              </PrivateRoute>
+            }
+          />
 
           <Route
             path="/learning-page"
