@@ -3,8 +3,7 @@
   display: flex;
   gap: 20px;
   justify-content: flex-end;
-  background-color: var(--darkcolor);
-  color: var(--lightcolor);
+  background-color: var(--lightcolor);
 }
 
 .app-name {

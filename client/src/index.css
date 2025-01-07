@@ -26,7 +26,7 @@
 
 #root {
   --darkcolor: #004e64;
-  --blue: #004e64;
+  --blue: #00a5cf;
   --lightcolor: #9fffcb;
   --dakgreen: #25a18e;
   --lightgreen: #7ae582;
@@ -35,13 +35,14 @@
 }
 
 main {
-  /* background-color: var(--offwhite); */
+  background-color: white;
 }
 
 /* use for app name only */
 h1 {
   font-size: 42px;
   font-family: "Poppins-ExtraBold";
+  color: #004e64;
 }
 
 /* use for page titles only */

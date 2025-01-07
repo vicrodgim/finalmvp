@@ -1,5 +1,5 @@
 .resource-card {
-  border: solid 1px;
+  border: 1px solid;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -8,6 +8,7 @@
   height: 250px;
   padding: 0;
   position: relative;
+  background-color: white;
 }
 
 a {
@@ -27,7 +28,7 @@ a {
 }
 
 .tutorial {
-  background-color: var(--lightgreen);
+  background-color: var(--lightcolor);
 }
 
 .book {
