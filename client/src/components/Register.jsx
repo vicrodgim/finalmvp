@@ -71,12 +71,6 @@ function Register() {
     setShowConfirmedPassword((prev) => !prev);
   };
 
-  // const onFileChange = (event) => {
-  //   // Update the state
-  //   console.log(event);
-  //   setSelectedFile(event.target.files[0]);
-  // };
-
   const onFileUpload = async () => {
     // Create an object of formData
     const formData = new FormData();
@@ -163,18 +157,6 @@ function Register() {
           required
         ></input>
 
-        {/* <label htmlFor="imageUrl">
-          <b>Submit your profile picture</b>
-        </label>
-        <input
-          type="text"
-          name="imageUrl"
-          id="imageUrl"
-          value={registerForm.imageUrl}
-          onChange={handleChange}
-          required
-        ></input> */}
-
         <label htmlFor="imageUrl">
           <b>Submit your profile picture</b>
         </label>
@@ -186,9 +168,6 @@ function Register() {
           onChange={handleChange}
           required
         ></input>
-        {/* <button type="button" onClick={onFileUpload}>
-          LANSDKA
-        </button> */}
 
         <h4>Final Steps</h4>
         <p>Please provide an email and a password in order to log in later</p>

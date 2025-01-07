@@ -1,5 +1,3 @@
-/* This component returns the 'Login' page */
-
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext.js";
@@ -7,10 +5,6 @@ import AuthContext from "../context/AuthContext.js";
 import "./Login.css";
 
 const Login = () => {
-  // const [showPassword, setShowPassword] = useState(false);
-  // const [error, setError] = useState("");
-  // const [isLoading, setIsLoading] = useState(false);
-
   const [credentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -33,7 +27,7 @@ const Login = () => {
       await auth.login(credentials);
       navigate("/jobs");
     } catch (error) {
-      console.error("Login failed:", error);
+      console.log("Login failed:", error);
     }
   };
 
@@ -47,7 +41,6 @@ const Login = () => {
         {!auth.isLoggedIn ? (
           <>
             <h2>LOGIN</h2>
-            {/* <form className="form"> */}
             <label htmlFor="email">
               <b>Your email</b>
             </label>
@@ -71,13 +64,6 @@ const Login = () => {
               onChange={handleChange}
               placeholder="Password"
             />
-            {/* <button
-        type="button"
-        onClick={() => setShowPassword(!showPassword)}
-      >
-        {showPassword ? "Hide" : "Show"}
-      </button> */}
-            {/* </form> */}
           </>
         ) : (
           <h2>Welcome!</h2>
@@ -92,9 +78,6 @@ const Login = () => {
           </button>
         )}
       </div>
-
-      {/* Submit Button */}
-      {/* <button type="submit">{isLoading ? "Loading..." : "Login"}</button> */}
     </div>
   );
 };
