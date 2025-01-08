@@ -31,9 +31,10 @@ function App() {
       //store it locally
       localStorage.setItem("token", data.token);
       setIsLoggedIn(true);
+      return { message: "login successful" };
     } catch (error) {
-      alert("Wrong email or password, please try again!");
       console.log("There is an error: ", error);
+      return error.response.data;
     }
   };
 
