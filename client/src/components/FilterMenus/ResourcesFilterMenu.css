@@ -1,9 +1,10 @@
 .filter-menu-container {
   padding: 40px 16px;
-  height: 100vw;
+
   width: 15%;
   min-width: 220px;
-  border-right: solid 1px;
+  /* border-right: solid 1px; */
+  background-color: var(--lightcolor);
 }
 
 .r-label {

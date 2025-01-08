@@ -55,9 +55,12 @@ function App() {
     <AuthContext.Provider value={authObj}>
       <header>{!isHomePage ? <NavBar /> : null}</header>
 
-      <body>
+      <main>
         <Routes>
-          <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} />} />
+          <Route
+            path="/"
+            element={<HomePage /* isLoggedIn={isLoggedIn} */ />}
+          />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
 
@@ -112,7 +115,7 @@ function App() {
             }
           />
         </Routes>
-      </body>
+      </main>
     </AuthContext.Provider>
   );
 }

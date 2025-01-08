@@ -35,7 +35,7 @@
   background-color: var(--offwhite);
 }
 
-body {
+main {
   background-color: var(--offwhite);
   /* background-color: white; */
   height: 100%;

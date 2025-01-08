@@ -41,7 +41,7 @@ export const UpdateJobForm = ({ jobId, onUpdate }) => {
 
   return (
     <div>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form update-job" onSubmit={handleSubmit}>
         <h3>UPDATE JOB</h3>
 
         <select value={status} onChange={handleStatusChange}>

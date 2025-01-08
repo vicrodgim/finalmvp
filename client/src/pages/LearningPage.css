@@ -1,11 +1,9 @@
 .learning-page {
   display: flex;
-  height: 100vw;
 }
 
 .resources-container {
   margin: 20px;
-  /* height: 100vw; */
 }
 
 .resources-list {

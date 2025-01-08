@@ -24,7 +24,7 @@ export const NavBar = () => {
 
   return (
     <nav className="navbar">
-      <Link to="/jobs" style={{ textDecoration: "none" }} className="app-name">
+      <Link to="/" style={{ textDecoration: "none" }} className="app-name">
         <h1>DevSteps</h1>
       </Link>
 

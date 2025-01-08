@@ -7,7 +7,7 @@
 
 .job-card-container {
   overflow: hidden;
-  /* border: 1px solid; */
+  border: 1px solid;
   border-radius: 5px;
   padding: 10px 10px;
   display: grid;
@@ -57,7 +57,8 @@
 .job-card.job-skills {
   grid-area: 1 / 5 / 2 / 6;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: npwrap;
+  overflow: hidden;
   gap: 5px;
   padding: 0 10px;
   display: flex;

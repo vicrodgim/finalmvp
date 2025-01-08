@@ -7,11 +7,12 @@
   font-size: 16px;
 }
 
-/* button.body-nav-button:hover {
+button.body-nav-button:hover {
   background-color: var(--darkgreen);
   border: none;
+  border-radius: 32px;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   padding: 10px 15px;
   font-size: 16px;
   cursor: pointer;
 }
- */
