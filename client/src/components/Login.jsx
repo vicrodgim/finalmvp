@@ -27,19 +27,14 @@ const Login = () => {
 
   const login = async () => {
     try {
-      await auth.login(credentials);
-      navigate("/jobs");
+      const result = await auth.login(credentials);
+      if (result.message === "login successful") {
+        navigate("/jobs");
+      } else {
+        setErrorMessage(result.message);
+      }
     } catch (error) {
       console.log("Login failed:", error);
-
-      //handle error messages
-      if (error.message === "Incorrect email") {
-        setErrorMessage("Cannot log in due to wrong email.");
-      } else if (error.message === "Incorrect password") {
-        setErrorMessage("Cannot log in due to wrong password");
-      } else {
-        setErrorMessage("Failed to login. Please try again");
-      }
     }
   };
 
