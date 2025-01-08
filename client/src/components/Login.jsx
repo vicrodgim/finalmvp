@@ -10,6 +10,9 @@ const Login = () => {
     password: "",
   });
 
+  //state for error messages
+  const [errorMessage, setErrorMessage] = useState("");
+
   const navigate = useNavigate();
 
   const { email, password } = credentials;
@@ -24,8 +27,12 @@ const Login = () => {
 
   const login = async () => {
     try {
-      await auth.login(credentials);
-      navigate("/jobs");
+      const result = await auth.login(credentials);
+      if (result.message === "login successful") {
+        navigate("/jobs");
+      } else {
+        setErrorMessage(result.message);
+      }
     } catch (error) {
       console.log("Login failed:", error);
     }
@@ -41,7 +48,9 @@ const Login = () => {
         {!auth.isLoggedIn ? (
           <>
             <h2>LOGIN</h2>
-            {/* <label htmlFor="email">Your email</label> */}
+
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
+
             <input
               type="text"
               id="email"
@@ -51,7 +60,6 @@ const Login = () => {
               placeholder="Your Email"
             />
 
-            {/* <label htmlFor="password">Your password</label> */}
             <input
               type="password"
               id="password"
