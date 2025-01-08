@@ -1,10 +1,15 @@
 import { useNavigate } from "react-router-dom";
 
-const HomePage = () => {
+import "./HomePage.css";
+
+const HomePage = ({ isLoggedIn }) => {
   const navigate = useNavigate();
 
   const handleLoginClick = () => {
     navigate("/login");
+    /* {
+      !isLoggedIn ? navigate("/login") : navigate("/jobs");
+    } */
   };
 
   const handleRegisterClick = () => {
@@ -13,17 +18,20 @@ const HomePage = () => {
 
   return (
     <div className="homepage">
-      <h1>HOME PAGE</h1>
-      <div>
+      <div className="homepage-box">
+        <h1>DevSteps</h1>
         <p>
-          The Job Application Tracker provides practical tools and resources for
-          new developers to become job-ready and confidently navigate the tech
-          industry.
+          DevSteps provides practical tools and resources for new developers to
+          become job-ready and confidently navigate the tech industry.
         </p>
-      </div>
-      <div>
-        {/* <button onClick={handleLoginClick}>LOG IN</button>
-        <button onClick={handleRegisterClick}>REGISTER</button> */}
+        <div className="hmpg-nav-buttons">
+          <button className="nav-button" onClick={handleLoginClick}>
+            LOG IN
+          </button>
+          <button className="nav-button" onClick={handleRegisterClick}>
+            REGISTER
+          </button>
+        </div>
       </div>
     </div>
   );

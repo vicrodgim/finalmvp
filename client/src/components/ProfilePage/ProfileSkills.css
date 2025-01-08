@@ -10,3 +10,7 @@
   margin: 0 auto;
   max-width: 800px;
 }
+
+.profile-skills h3 {
+  font-family: "Poppins-SemiBold";
+}

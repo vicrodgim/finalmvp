@@ -1,16 +1,37 @@
 .job-details-container {
+  width: 100%;
   max-width: 800px;
   margin: 20px;
-  border-top: 1px solid;
-  border-right: 1px solid;
-  border-left: 1px solid;
+  /* border: 1px solid; */
+  border-radius: 5px;
+  padding: 20px;
+  background-color: white;
+  /* background-color: var(--offwhite); */
 }
 
 .job-details {
-  border-bottom: 1px solid;
+  /* border-bottom: 1px solid; */
+  min-height: 30px;
+  padding: 10px;
+}
+
+.job-details b {
+  margin-right: 5px;
+}
+
+.job-details.skills {
+  display: flex;
+  gap: 5px;
+  padding: 10px 10px;
+  align-items: center;
+}
+
+.job-skill {
   min-height: 30px;
   display: flex;
   justify-content: start;
   align-items: center;
-  padding-left: 10px;
+  padding: 5px;
+  border: solid 1px var(--darkcolor);
+  border-radius: 1.5rem;
 }

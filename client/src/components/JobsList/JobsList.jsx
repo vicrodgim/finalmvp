@@ -64,6 +64,7 @@ const JobsList = () => {
         clearFilters={clearFilters}
       />
       <div className="jobs-container">
+        <h2> MY JOBS</h2>
         <BodyNavButton text="Add a new job" clickFunction={handleClick} />
         {noJobs ? (
           <p className="no-items alert">
@@ -71,6 +72,30 @@ const JobsList = () => {
           </p>
         ) : (
           <div className="job-list-container">
+            <div className="job-card-container header">
+              <div className="job-card job-title">
+                Job Title<span className="vl-dark"></span>
+              </div>
+              <span className="vl-dark"></span>
+              <div className="job-card job-company">
+                Company Name
+                <span className="vl-dark"></span>
+              </div>
+              <div className="job-card job-location">
+                Location<span className="vl-dark"></span>
+              </div>
+              <div className="job-card job-deadline">
+                Deadline<span className="vl-dark"></span>
+              </div>
+              <div className="job-card job-skills">Skills Required</div>
+              <div className="job-card job-has-applied">
+                <span className="vl-dark"></span>Status
+              </div>
+              <div className="job-card more-details">
+                <span className="vl-dark"></span>
+                <button className="fake-button">MORE DETAILS</button>
+              </div>
+            </div>
             {jobs.map((job) => {
               return <JobCard key={job.jobs_id} job={job} />;
             })}

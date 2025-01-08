@@ -1,0 +1,31 @@
+.homepage {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.homepage-box {
+  background-color: var(--darkcolor);
+  padding: 50px;
+  border-radius: 32px;
+  max-width: 800px;
+  max-height: 400px;
+}
+
+.homepage p {
+  margin: 20px 100px;
+  font-size: 20px;
+  color: var(--lightgreen);
+}
+
+.homepage h1 {
+  font-size: 80px !important;
+}
+
+.hmpg-nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-top: 20px;
+}

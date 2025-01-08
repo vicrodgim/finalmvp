@@ -11,17 +11,29 @@
   margin: 20px 0 10px 0;
 }
 
-.r-label {
+/* .r-label {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   gap: 10px;
-}
+} */
 
 .filter-radio {
   margin-right: 10px;
 }
 
 .clear-filter-btn {
-  margin-top: 10px;
+  margin-top: 20px;
+  border-radius: 32px;
+  border: none;
+  background-color: var(--darkgreen);
+  color: var(--offwhite);
+  padding: 2px 20px;
+}
+
+input {
+  border: none;
+}
+
+.jobs-filter-menu-container input {
 }

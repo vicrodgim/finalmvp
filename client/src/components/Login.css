@@ -1,3 +1,11 @@
 /* Login.css */
+.form.login {
+  margin: 50px auto;
+  max-width: 300px;
+}
 
+.form.login input,
+.form.login button {
+  margin-bottom: 10px;
+}
 /* Container */

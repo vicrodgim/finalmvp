@@ -1,10 +1,13 @@
 .profile-banner {
+  background-color: var(--darkcolor);
+  color: var(--offwhite);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  border: solid 1px;
+  /* border: solid 1px; */
+  border-radius: 4px;
   padding: 20px;
   max-width: 800px;
   margin: 0 auto;
@@ -18,10 +21,15 @@
 }
 
 img.profile-photo {
-  border: 1px solid;
+  border: 0.5px solid;
   width: 150px;
   height: 150px;
   border-radius: 50%;
+}
+
+.user-fullname {
+  font-family: "Poppins-SemiBold";
+  font-size: 18px;
 }
 
 .profile-data-container {
@@ -31,6 +39,7 @@ img.profile-photo {
 
 .profile-description-container {
   grid-area: 2 / 2 / 3 / 6;
+  margin-top: 10px;
 }
 
 .profile-edit-container {
@@ -43,4 +52,7 @@ img.profile-photo {
 .profile-edit-container button {
   width: 70%;
   height: 50%;
+  border: none;
+  background-color: var(--offwhite);
+  border-radius: 36px;
 }

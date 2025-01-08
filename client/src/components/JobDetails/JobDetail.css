@@ -2,6 +2,7 @@
 
 .job-details-page {
   margin: 20px;
+  height: 100vw;
 }
 
 .job-detail-container {
@@ -10,6 +11,7 @@
   margin: auto;
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .dropdown {

@@ -1,3 +1,7 @@
 .add-job-page {
   margin: 20px;
 }
+
+.add-job-form-container form {
+  margin: 20px auto;
+}

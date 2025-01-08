@@ -91,9 +91,11 @@ function Register() {
 
   return (
     <div className="container auth-page">
-      <h2>REGISTER</h2>
-      <p>Please fill in this form to create an account</p>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form register" onSubmit={handleSubmit}>
+        <h2>REGISTER</h2>
+        <p className="subtitle">
+          Please fill in this form to create an account
+        </p>
         <label htmlFor="first_name">
           <b>Your first name</b>
         </label>
@@ -119,10 +121,10 @@ function Register() {
         ></input>
 
         <label htmlFor="description">
-          <b>
+          <p>
             Please write here about you, your academic and work experience and
             projects.
-          </b>
+          </p>
         </label>
         <textarea
           type="text"
@@ -133,9 +135,7 @@ function Register() {
           required
         ></textarea>
 
-        <label htmlFor="location">
-          <b>Where are you living currently?</b>
-        </label>
+        <label htmlFor="location">Where are you living currently?</label>
         <input
           type="text"
           name="location"
@@ -145,9 +145,7 @@ function Register() {
           required
         ></input>
 
-        <label htmlFor="username">
-          <b>Please provide a username</b>
-        </label>
+        <label htmlFor="username">Please provide a username</label>
         <input
           type="username"
           name="username"
@@ -157,9 +155,7 @@ function Register() {
           required
         ></input>
 
-        <label htmlFor="imageUrl">
-          <b>Submit your profile picture</b>
-        </label>
+        <label htmlFor="imageUrl">Submit your profile picture</label>
         <input
           type="file"
           name="imageUrl"
@@ -170,7 +166,9 @@ function Register() {
         ></input>
 
         <h4>Final Steps</h4>
-        <p>Please provide an email and a password in order to log in later</p>
+        <p className="final-steps-subtitle">
+          Please provide an email and a password in order to log in later
+        </p>
 
         <label htmlFor="email">
           <b>Email</b>
@@ -185,10 +183,8 @@ function Register() {
           required
         ></input>
 
-        <label htmlFor="password">
-          <b>Password</b>
-        </label>
-        <div>
+        <label htmlFor="password">Password</label>
+        <div className="password-input">
           <input
             type={!showPassword ? "password" : "text"}
             placeholder="Enter Password"
@@ -204,10 +200,8 @@ function Register() {
         </div>
 
         {/* Repeat Password Input */}
-        <label htmlFor="confirmPassword">
-          <b>Repeat Password</b>
-        </label>
-        <div>
+        <label htmlFor="confirmPassword">Repeat Password</label>
+        <div className="password-input">
           <input
             type={!showConfirmedPassword ? "password" : "text"}
             placeholder="Repeat Password"
@@ -228,7 +222,7 @@ function Register() {
         </button>
         <div className="container signin">
           <p>
-            Already have an account?<Link to="/login">Sign in</Link>.
+            Already have an account?<Link to="/login"> Log in</Link>.
           </p>
         </div>
         {error && (

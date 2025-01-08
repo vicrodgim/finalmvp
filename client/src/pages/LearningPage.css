@@ -1,9 +1,11 @@
 .learning-page {
   display: flex;
+  height: 100vw;
 }
 
 .resources-container {
   margin: 20px;
+  /* height: 100vw; */
 }
 
 .resources-list {
@@ -11,9 +13,4 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  /* grid-template-columns: repeat(12, minmax(0, 1fr));
-  display: grid;
-  width: 100%;
-  padding-left: 0;
-  row-gap: 2rem; */
 }

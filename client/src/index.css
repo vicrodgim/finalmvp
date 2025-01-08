@@ -28,21 +28,24 @@
   --darkcolor: #004e64;
   --blue: #00a5cf;
   --lightcolor: #9fffcb;
-  --dakgreen: #25a18e;
+  --darkgreen: #25a18e;
   --lightgreen: #7ae582;
   --offwhite: #ebfff4;
   color: var(--darkcolor);
+  background-color: var(--offwhite);
 }
 
-main {
-  background-color: white;
+body {
+  background-color: var(--offwhite);
+  /* background-color: white; */
+  height: 100%;
 }
 
 /* use for app name only */
 h1 {
   font-size: 42px;
   font-family: "Poppins-ExtraBold";
-  color: #004e64;
+  color: var(--lightgreen);
 }
 
 /* use for page titles only */
@@ -62,16 +65,23 @@ h4 {
   margin-bottom: 10px;
 }
 
+b {
+  font-family: "Poppins-SemiBold";
+}
+
 /* add className="form" to any form to apply these styles */
 .form {
   border: 1px solid;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   gap: 20px;
   padding: 20px;
   margin: 20px;
   max-width: 800px;
+  border: none;
+  border-radius: 4px;
+  background-color: #004e64;
+  color: #ebfff4;
 }
 
 form h3 {
@@ -80,31 +90,55 @@ form h3 {
   align-items: center;
 }
 
+button {
+  cursor: pointer;
+}
+
+.form input[type="text"],
+.form textarea,
+.form input[type="date"],
+.form input[type="url"],
+.form input[type="select"],
+.form input[type="password"],
+.form input[type="email"],
+.form input[type="username"],
+.form select,
+.p-multiselect-label-container {
+  border: none;
+  border-radius: 8px;
+  background-color: #ebfff4;
+  padding-left: 10px;
+}
+
+::placeholder {
+  color: #004e64;
+}
+
 label input[type="checkbox"] {
   margin-left: 5px;
 }
 
-form button[type="submit"] {
+.form button[type="submit"] {
   min-width: 150px;
   padding: 10px 15px;
   margin: 0 auto; /* Centers the button horizontally */
   display: block; /* Standard block behavior */
+  background-color: #ebfff4;
+  border: none;
+  border-radius: 32px;
 }
 
 /* use for login and register pages layout */
 .auth-page {
   margin: 20px;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+  /* margin: 0 auto; */
 }
 
-/* use for homepage layout */
-.homepage {
-  margin: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.homepage,
+.auth-page {
+  height: 100vh;
 }

@@ -48,17 +48,16 @@ function App() {
     logout,
   };
 
-  const excludeNavBar = ["/"];
+  // Check if the current location matches the `to` prop
+  const isHomePage = location.pathname === "/";
 
   return (
     <AuthContext.Provider value={authObj}>
-      <header>
-        <NavBar />
-      </header>
+      <header>{!isHomePage ? <NavBar /> : null}</header>
 
-      <main>
+      <body>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage isLoggedIn={isLoggedIn} />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
 
@@ -113,7 +112,7 @@ function App() {
             }
           />
         </Routes>
-      </main>
+      </body>
     </AuthContext.Provider>
   );
 }

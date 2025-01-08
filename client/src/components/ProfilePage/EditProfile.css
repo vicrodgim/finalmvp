@@ -1,3 +1,9 @@
 .edit-profile-page {
   margin: 20px;
+  height: 100vh;
+}
+
+.edit-profile-page form {
+  margin: 0 auto;
+  max-width: 400px;
 }

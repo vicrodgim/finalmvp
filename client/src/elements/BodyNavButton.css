@@ -1,15 +1,17 @@
 .body-nav-button {
-  /* background-color: var(--lightgreen); */
+  background-color: var(--darkgreen);
+  color: var(--offwhite);
   border: none;
   border-radius: 32px;
   padding: 10px 15px;
   font-size: 16px;
 }
 
-button.body-nav-button:hover {
-  background-color: rgb(220, 217, 217);
+/* button.body-nav-button:hover {
+  background-color: var(--darkgreen);
   border: none;
   padding: 10px 15px;
   font-size: 16px;
   cursor: pointer;
 }
+ */

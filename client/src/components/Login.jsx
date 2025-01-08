@@ -37,39 +37,35 @@ const Login = () => {
 
   return (
     <div className="auth-page">
-      <div className="form">
+      <div className="form login">
         {!auth.isLoggedIn ? (
           <>
             <h2>LOGIN</h2>
-            <label htmlFor="email">
-              <b>Your email</b>
-            </label>
+            {/* <label htmlFor="email">Your email</label> */}
             <input
               type="text"
               id="email"
               name="email"
               value={email}
               onChange={handleChange}
-              placeholder="Example@gmail.com"
+              placeholder="Your Email"
             />
 
-            <label htmlFor="password">
-              <b>Your password</b>
-            </label>
+            {/* <label htmlFor="password">Your password</label> */}
             <input
               type="password"
               id="password"
               name="password"
               value={password}
               onChange={handleChange}
-              placeholder="Password"
+              placeholder="Your Password"
             />
           </>
         ) : (
           <h2>Welcome!</h2>
         )}
         {!auth.isLoggedIn ? (
-          <button className="btn btn-primary" onClick={login}>
+          <button type="submit" className="btn btn-primary" onClick={login}>
             Log in
           </button>
         ) : (

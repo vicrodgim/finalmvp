@@ -24,11 +24,11 @@ a {
 }
 
 .course {
-  background-color: var(--dakgreen);
+  background-color: var(--darkgreen);
 }
 
 .tutorial {
-  background-color: var(--lightcolor);
+  background-color: var(--lightgreen);
 }
 
 .book {

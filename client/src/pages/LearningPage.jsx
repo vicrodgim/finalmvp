@@ -6,33 +6,7 @@ import "./LearningPage.css";
 
 export const LearningPage = () => {
   //variable to store resources
-  const [resources, setResources] = useState([
-    /* 
-    {
-      id: 1,
-      title: "HTML, CSS, JavaScript, React, and Node.js from Zero to Expert",
-      url: "https://www.udemy.com/course/html-css-javascript-reactjs-nodejs-from-zero-to-expert/",
-      type: "course",
-      discipline: "frontend",
-      skill_id: 1,
-    },
-    {
-      id: 2,
-      title: "HTML Tutorial by W3Schools",
-      url: "https://www.w3schools.com/html/",
-      type: "tutorial",
-      discipline: "frontend",
-      skill_id: 1,
-    },
-    {
-      id: 3,
-      title: "Design and Develop a Killer Website with HTML5 and CSS3",
-      url: "https://www.udemy.com/course/design-and-develop-a-killer-website-with-html5-and-css3/",
-      type: "course",
-      discipline: "frontend",
-      skill_id: 2,
-    }, */
-  ]);
+  const [resources, setResources] = useState([]);
 
   const [filters, setFilters] = useState({});
 

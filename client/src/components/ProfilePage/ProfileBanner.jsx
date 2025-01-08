@@ -49,10 +49,8 @@ export const ProfileBanner = () => {
         />
       </div>
       <div className="profile-data-container">
-        <p>
-          <b>
-            {userInfo.first_name} {userInfo.last_name}
-          </b>
+        <p className="user-fullname">
+          {userInfo.first_name} {userInfo.last_name}
         </p>
         <p>@{userInfo.username}</p>
         <p>{userInfo.location}</p>
@@ -61,9 +59,7 @@ export const ProfileBanner = () => {
         <p>{userInfo.description}</p>
       </div>
       <div className="profile-edit-container">
-        <button onClick={handleClick}>
-          <b>ADD SKILLS</b>
-        </button>
+        <button onClick={handleClick}>ADD SKILLS</button>
       </div>
     </div>
   );
