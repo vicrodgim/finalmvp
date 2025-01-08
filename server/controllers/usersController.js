@@ -123,8 +123,23 @@ const registerUser = async (req, res) => {
     ) {
       return res.status(400).json({
         error: "Failed to create user",
+        message: "All fields are required",
       });
     }
+
+    //check if email already exists
+    const [existingUser] = await pool.query(
+      `SELECT * FROM users WHERE email = ?`,
+      [email]
+    );
+
+    if (existingUser.length > 0) {
+      return res.status(409).json({
+        error: "Email already exists",
+        message: "The email address is already registered",
+      });
+    }
+    //inserting user into the datab
     const [result] = await pool.query(
       `INSERT INTO users (username,
               first_name,
@@ -171,7 +186,6 @@ const login = async (req, res) => {
     res.status(400).send({ message: err.message });
   }
 };
-
 //Maybe here put the JOIN query to select the skills_users
 const getProfile = async (req, res) => {
   const [results] = await pool.query(

@@ -18,7 +18,7 @@ function Register() {
     imageUrl: "",
   };
 
-  //   states for form fields
+  //   states for form fields and error handling
   const [error, setError] = useState(false);
   const [notSubmited, setNotSubmited] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -26,6 +26,7 @@ function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmedPassword, setShowConfirmedPassword] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [emailExistsError, setEmailExistsError] = useState(false);
 
   const navigate = useNavigate();
 
@@ -46,6 +47,10 @@ function Register() {
         setError(true);
         return;
       }
+
+      //Reset emailExistsError before submission
+      setEmailExistsError(false);
+
       const response = await axios.post(
         "http://localhost:4000/api/users",
         registerForm
@@ -59,11 +64,13 @@ function Register() {
       setRegisterForm(emptyForm);
       navigate("/login");
     } catch (error) {
-      console.log(error);
-      setNotSubmited(true);
+      if (error.response?.status === 409) {
+        setEmailExistsError(true); //error code 409 means email already exists
+      } else {
+        setNotSubmited(true);
+      }
     }
   };
-
   const handleShowPassword = () => {
     setShowPassword((prev) => !prev);
   };
@@ -231,9 +238,16 @@ function Register() {
             Already have an account?<Link to="/login">Sign in</Link>.
           </p>
         </div>
+
+        {/* Error Messages */}
         {error && (
           <div className="alert alert-success" role="alert">
             password does not match!
+          </div>
+        )}
+        {emailExistsError && (
+          <div className="alert alert-danger" role="alert">
+            Email already exists. Please use a different email or login instead.
           </div>
         )}
         {success && (

@@ -10,6 +10,9 @@ const Login = () => {
     password: "",
   });
 
+  //state for error messages
+  const [errorMessage, setErrorMessage] = useState("");
+
   const navigate = useNavigate();
 
   const { email, password } = credentials;
@@ -28,6 +31,15 @@ const Login = () => {
       navigate("/jobs");
     } catch (error) {
       console.log("Login failed:", error);
+
+      //handle error messages
+      if (error.message === "Incorrect email") {
+        setErrorMessage("Cannot log in due to wrong email.");
+      } else if (error.message === "Incorrect password") {
+        setErrorMessage("Cannot log in due to wrong password");
+      } else {
+        setErrorMessage("Failed to login. Please try again");
+      }
     }
   };
 
@@ -41,6 +53,7 @@ const Login = () => {
         {!auth.isLoggedIn ? (
           <>
             <h2>LOGIN</h2>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
             <label htmlFor="email">
               <b>Your email</b>
             </label>
