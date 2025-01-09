@@ -1,5 +1,5 @@
 .resource-card {
-  border: solid 1px;
+  border: 1px solid var(--darkgreen);
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -8,6 +8,7 @@
   height: 250px;
   padding: 0;
   position: relative;
+  background-color: var(--offwhite);
 }
 
 a {
@@ -23,36 +24,41 @@ a {
 }
 
 .course {
-  background-color: yellow;
+  background-color: var(--darkgreen);
+  color: var(--offwhite);
 }
 
 .tutorial {
-  background-color: aqua;
+  background-color: var(--blue);
+  color: var(--offwhite);
 }
 
 .book {
-  background-color: greenyellow;
+  background-color: var(--lightgreen);
 }
 
 .r-title {
-  padding: 1rem 0.75rem;
+  padding: 0.75rem;
   margin: 0;
+  font-size: 16px;
+  font-family: "Poppins-SemiBold";
 }
 
 .r-skills {
   display: flex;
-  padding: 0.25rem 0.75rem;
-  display: flex;
+  padding: 0.75rem;
   flex-wrap: wrap;
   gap: 5px;
 }
 
 .r-discipline {
-  padding: 1rem 0.75rem;
+  padding: 0.75rem;
+  border-top: 1px dotted;
 }
 
 .skill-badge {
-  border: solid 1px black;
+  /* border: solid 1px var(--darkcolor); */
   border-radius: 1.5rem;
-  padding: 5px;
+  padding: 5px 10px;
+  background-color: var(--lightgreen);
 }

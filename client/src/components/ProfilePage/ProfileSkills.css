@@ -1,6 +1,6 @@
 .skill-container {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   flex-wrap: wrap;
   flex: 1 1 0px;
   gap: 25px;
@@ -9,4 +9,8 @@
 .profile-skills {
   margin: 0 auto;
   max-width: 800px;
+}
+
+.profile-skills h3 {
+  font-family: "Poppins-SemiBold";
 }

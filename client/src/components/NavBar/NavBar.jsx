@@ -25,8 +25,9 @@ export const NavBar = () => {
   return (
     <nav className="navbar">
       <Link to="/" style={{ textDecoration: "none" }} className="app-name">
-        <h1>APP NAME</h1>
+        <h1>DevSteps</h1>
       </Link>
+
       {isLoginPage && !auth.isLoggedIn && (
         <NavButton text="REGISTER" to="/register" />
       )}
@@ -43,7 +44,7 @@ export const NavBar = () => {
         <>
           <NavButton text="MY JOBS" to="/jobs" />
           <NavButton text="MY PROFILE" to="/my-profile" />
-          <NavButton text="LEARN" to="/learning-page" />
+          <NavButton text="RESOURCES" to="/learning-page" />
           <NavButton text="LOG OUT" onClick={logout} />
         </>
       )}

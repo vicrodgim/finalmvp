@@ -14,8 +14,14 @@ export const NavButton = ({ text, to, onClick }) => {
     }
   };
 
+  // Check if the current location matches the `to` prop
+  const isActive = location.pathname === to;
+
   return (
-    <button className="nav-button" onClick={handleClick}>
+    <button
+      className={`nav-button ${isActive ? "active" : ""}`}
+      onClick={handleClick}
+    >
       {text}
     </button>
   );

@@ -1,10 +1,13 @@
 .profile-banner {
+  background-color: var(--darkcolor);
+  color: var(--offwhite);
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  border: solid 1px;
+  /* border: solid 1px; */
+  border-radius: 4px;
   padding: 20px;
   max-width: 800px;
   margin: 0 auto;
@@ -18,24 +21,32 @@
 }
 
 img.profile-photo {
-  border: 1px solid;
+  border: 0.5px solid;
   width: 150px;
   height: 150px;
   border-radius: 50%;
 }
 
+.user-fullname {
+  font-family: "Poppins-SemiBold";
+  font-size: 18px;
+}
+
 .profile-data-container {
   grid-area: 1 / 2 / 2 / 5;
   padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .profile-description-container {
   grid-area: 2 / 2 / 3 / 6;
+  margin-top: 20px;
 }
 
 .profile-edit-container {
   grid-area: 1 / 5 / 2 / 6;
-
   display: flex;
   flex-direction: row-reverse;
 }
@@ -43,4 +54,23 @@ img.profile-photo {
 .profile-edit-container button {
   width: 70%;
   height: 50%;
+  border: none;
+  background-color: var(--offwhite);
+  border-radius: 36px;
+}
+
+.profile-edit-container button:hover {
+  background-color: var(--lightgreen);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.userinfo-location,
+.userinfo-username {
+  display: flex;
+  align-items: center;
+}
+
+.userinfo-location svg,
+.userinfo-username svg {
+  margin-right: 2px;
 }

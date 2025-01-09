@@ -1,39 +1,93 @@
 .job-card {
-  border: 1px solid;
-
   height: 30px;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
 }
 
 .job-card-container {
+  overflow: hidden;
+  border: 1px solid var(--darkgreen);
+  border-radius: 5px;
+  padding: 10px 10px;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: 1fr 1fr 0.5fr 0.75fr 3fr 0.75fr 1fr;
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  /* background-color: white; */
+  background-color: var(--offwhite);
+}
+
+.vl {
+  border-right: 1px solid var(--darkcolor);
+}
+
+.vl-dark {
+  border-right: 1px solid var(--lightgreen);
+}
+
+.vl,
+.vl-dark {
+  display: inline-block;
+  margin: 0 10px;
+  height: 90%;
 }
 
 .job-card.job-title {
   grid-area: 1 / 1 / 2 / 2;
+  display: flex;
+  justify-content: space-between;
 }
 .job-card.job-company {
   grid-area: 1 / 2 / 2 / 3;
+  display: flex;
+  justify-content: space-between;
 }
 .job-card.job-location {
   grid-area: 1 / 3 / 2 / 4;
+  display: flex;
+  justify-content: space-between;
 }
 .job-card.job-deadline {
   grid-area: 1 / 4 / 2 / 5;
+  display: flex;
+  justify-content: space-between;
 }
 .job-card.job-skills {
   grid-area: 1 / 5 / 2 / 6;
+  display: flex;
+  flex-wrap: npwrap;
+  overflow: hidden;
+  gap: 5px;
+  padding: 0 10px;
+  display: flex;
+  justify-content: start;
 }
+
+.job-card.skill {
+  background-color: var(--lightgreen);
+  /* border: solid 1px var(--darkcolor); */
+  border-radius: 1.5rem;
+  padding: 5px 10px;
+}
+
 .job-card.job-has-applied {
   grid-area: 1 / 6 / 2 / 7;
+  /*   display: flex;
+  justify-content: space-between; */
 }
 
 .job-card.more-details {
   grid-area: 1 / 7 / 2 / 8;
+  justify-self: end;
+}
+
+.job-card.more-details button {
+  border: none;
+  border-radius: 32px;
+  padding: 5px 10px;
+  background-color: var(--darkgreen);
+  color: var(--offwhite);
+  cursor: pointer;
 }
