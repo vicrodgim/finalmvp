@@ -29,28 +29,53 @@ export default function JobDetailsCard({ job }) {
 
   return (
     <div className="job-details-container">
-      <div className="job-details">{jobs_title}</div>
-      <div className="job-details">{company_name}</div>
-      <div className="job-details">{location}</div>
-      <div className="job-details">{location_type}</div>
-      <div className="job-details">{trimmedDateRange}</div>
-      <div className="job-details">{type}</div>
-
-      {skills.map((skill, index) => (
-        <div className="job-details" key={index}>
-          {skill.title}
-        </div>
-      ))}
-
-      {/* skills is an array in the job object so might need to use the map method here to display all skills for each job */}
       <div className="job-details">
+        <b>Job Title: </b>
+        {jobs_title}
+      </div>
+      <div className="job-details">
+        <b>Company Name:</b> {company_name}
+      </div>
+      <div className="job-details">
+        <b>Location:</b>
+        {location}
+      </div>
+      <div className="job-details">
+        <b>Company Location type:</b>
+        {location_type}
+      </div>
+      <div className="job-details">
+        <b>Deadline :</b>
+        {trimmedDateRange}
+      </div>
+      <div className="job-details">
+        <b>Hours:</b>
+        {type}
+      </div>
+      <div className="job-details skills">
+        <b>Skills required: </b>
+        {skills.map((skill, index) => (
+          <div className="job-skill" key={index}>
+            {skill.title}
+          </div>
+        ))}
+      </div>
+      <div className="job-details">
+        <b>Status:</b>
         {has_applied ? "applied" : "not applied"}
       </div>
-      <div className="job-details">{url}</div>
       <div className="job-details">
+        <b>URL: </b>
+        <a href={url}>{url}</a>
+      </div>
+      <div className="job-details">
+        <b>Salary:</b>
         {min_salary} - {max_salary}
       </div>
-      <div className="job-details">{description}</div>
+      <div className="job-details">
+        <b>Description:</b>
+        {description}
+      </div>
     </div>
   );
 }

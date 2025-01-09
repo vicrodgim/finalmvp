@@ -1,29 +1,57 @@
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext.js";
 
-const HomePage = () => {
+import "./HomePage.css";
+
+const HomePage = (/* { isLoggedIn } */) => {
   const navigate = useNavigate();
 
-  const handleLoginClick = () => {
-    navigate("/login");
-  };
-
-  const handleRegisterClick = () => {
-    navigate("/register");
-  };
+  //Context consume
+  const auth = useContext(AuthContext); // auth = {isLoggedIn, login, logout}
 
   return (
     <div className="homepage">
-      <h1>HOME PAGE</h1>
-      <div>
+      <div className="homepage-box">
+        <h1>DevSteps</h1>
         <p>
-          The Job Application Tracker provides practical tools and resources for
-          new developers to become job-ready and confidently navigate the tech
-          industry.
+          DevSteps is a job tracking and learning platform tailored for coding
+          bootcamp graduates. It streamlines the job search process by helping
+          users efficiently organize opportunities, track applications, and work
+          toward securing their first developer role.
         </p>
-      </div>
-      <div>
-        {/* <button onClick={handleLoginClick}>LOG IN</button>
-        <button onClick={handleRegisterClick}>REGISTER</button> */}
+        <p>
+          Alongside job tracking, DevSteps provides learning resources to
+          enhance coding skills, ensuring that users stay competitive and
+          continue growing their skills throughout their job hunt.
+        </p>
+        <div className="hmpg-nav-buttons">
+          {!auth.isLoggedIn ? (
+            <button className="nav-button" onClick={() => navigate("/login")}>
+              LOG IN
+            </button>
+          ) : (
+            <button
+              className="nav-button"
+              onClick={() => navigate("/my-profile")}
+            >
+              MY PROFILE
+            </button>
+          )}
+
+          {!auth.isLoggedIn ? (
+            <button
+              className="nav-button"
+              onClick={() => navigate("/register")}
+            >
+              REGISTER
+            </button>
+          ) : (
+            <button className="nav-button" onClick={auth.logout}>
+              LOG OUT
+            </button>
+          )}
+        </div>
       </div>
     </div>
   );

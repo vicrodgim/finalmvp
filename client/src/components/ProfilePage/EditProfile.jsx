@@ -76,6 +76,7 @@ export const EditProfile = () => {
   return (
     <div className="edit-profile-page">
       <BodyNavButton text="< back to my profile" clickFunction={handleClick} />
+
       <form className="form" onSubmit={handleSubmit}>
         <label htmlFor="skill_id">Choose a skill:</label>
         <select id="skill_id" name="skill_id" onChange={(e) => handleChange(e)}>

@@ -9,6 +9,14 @@
   gap: 10px;
 }
 
+
+
+
+.job-list-container .header {
+  background-color: var(--darkcolor);
+  color: var(--lightgreen);
+  border: none;
+}
 .no-items.alert {
   margin-top: 20px;
 }
@@ -16,3 +24,8 @@
 .jobs-container {
   margin: 20px;
 }
+
+.fake-button {
+ background-color: var(--darkcolor) !important;
+ color: var(--darkcolor) !important;
+

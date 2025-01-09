@@ -1,6 +1,15 @@
 /* Login.css */
+.form.login {
+  margin: 50px auto;
+  max-width: 300px;
+}
+
+.form.login input,
+.form.login button {
+  margin-bottom: 10px;
+}
 .error-message {
-  color: red;
+  color: var(--lightgreen);
   margin-top: 10px;
 }
 /* Container */

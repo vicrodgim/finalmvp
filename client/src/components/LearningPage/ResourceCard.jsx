@@ -14,11 +14,9 @@ export const ResourceCard = ({ r }) => {
                 : "r-type book"
             }
           >
-            {r.type}
+            <b>{r.type}</b>
           </div>
-          <div className="r-title">
-            <h4>{r.resource_title}</h4>
-          </div>
+          <div className="r-title">{r.resource_title}</div>
         </div>
         <div className="r-bottom-container">
           <div className="r-skills">

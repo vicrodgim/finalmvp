@@ -1,9 +1,10 @@
 .jobs-filter-menu-container {
-  padding: 40px 16px;
+  padding: 40px 20px;
   height: 100vw;
   width: 15%;
   min-width: 220px;
-  border-right: solid 1px;
+  /* border-right: solid 1px; */
+  background-color: var(--lightcolor);
 }
 
 .filter-section-title {
@@ -11,17 +12,26 @@
   margin: 20px 0 10px 0;
 }
 
-.r-label {
+/* .r-label {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   gap: 10px;
-}
+} */
 
-.filter-radio {
+/* .filter-radio {
   margin-right: 10px;
-}
+} */
 
 .clear-filter-btn {
-  margin-top: 10px;
+  margin-top: 20px;
+  border-radius: 32px;
+  border: none;
+  background-color: var(--darkgreen);
+  color: var(--offwhite);
+  padding: 2px 20px;
+}
+
+input {
+  border: none;
 }
