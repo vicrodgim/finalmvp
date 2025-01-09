@@ -101,6 +101,7 @@ form h3 {
 
 button {
   cursor: pointer;
+  text-transform: uppercase;
 }
 
 .form input[type="text"],
@@ -168,6 +169,7 @@ label input[type="checkbox"] {
   height: 100vh;
 }
 
+/* used to style icons */
 .material-symbols-outlined {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
