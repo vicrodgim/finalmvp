@@ -17,6 +17,7 @@
 .add-job-form-container form input[type="date"],
 .add-job-form-container form input[type="url"],
 .add-job-form-container form textarea,
+.add-job-form-container form select,
 #skills {
   margin-top: 0.2em;
   width: 100%;
@@ -36,4 +37,13 @@
   flex-direction: column;
   gap: 15px;
   padding: 40px;
+}
+
+.radio-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.radio-buttons input {
+  margin-right: 5px;
 }

@@ -2,15 +2,20 @@
   display: flex;
 }
 
+.jobs-container {
+  margin: 20px;
+  width: 100%;
+}
+
 .job-list-container {
+
   padding: 20px 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  
 }
-
-
-
 
 .job-list-container .header {
   background-color: var(--darkcolor);
@@ -19,10 +24,7 @@
 }
 .no-items.alert {
   margin-top: 20px;
-}
-
-.jobs-container {
-  margin: 20px;
+  text-align: center;
 }
 
 .fake-button {

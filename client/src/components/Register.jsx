@@ -55,14 +55,18 @@ function Register() {
         "http://localhost:4000/api/users",
         registerForm
       );
-      onFileUpload();
+      await onFileUpload();
       console.log(response.config.data.password);
       console.log(response);
 
       setSuccess(true);
       setError(false);
       setRegisterForm(emptyForm);
-      navigate("/login");
+
+      //delay navigation by 2 seconds to allow success alert to display
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
     } catch (error) {
       if (error.response?.status === 409) {
         setEmailExistsError(true); //error code 409 means email already exists

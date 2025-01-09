@@ -29,7 +29,7 @@ const Login = () => {
     try {
       const result = await auth.login(credentials);
       if (result.message === "login successful") {
-        navigate("/jobs");
+        navigate("/my-profile");
       } else {
         setErrorMessage(result.message);
       }

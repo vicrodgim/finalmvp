@@ -17,13 +17,13 @@ const HomePage = (/* { isLoggedIn } */) => {
         <p>
           DevSteps is a job tracking and learning platform tailored for coding
           bootcamp graduates. It streamlines the job search process by helping
-          users efficiently organize opportunities, track applications, and work
-          toward securing their first developer role.
+          you efficiently organize opportunities, track applications, and work
+          toward securing your first developer role.
         </p>
         <p>
           Alongside job tracking, DevSteps provides learning resources to
-          enhance coding skills, ensuring that users stay competitive and
-          continue growing their skills throughout their job hunt.
+          enhance coding skills, ensuring that you stay competitive and continue
+          growing your skills throughout their job hunt.
         </p>
         <div className="hmpg-nav-buttons">
           {!auth.isLoggedIn ? (

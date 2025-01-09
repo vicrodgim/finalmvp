@@ -81,6 +81,7 @@ const AddJobForm = () => {
         url: "",
         skills: [],
       });
+      navigate("/jobs");
     } catch (error) {
       console.log("Error adding the job:", error.message);
     }
@@ -116,6 +117,7 @@ const AddJobForm = () => {
                   required
                 />
               </label>
+
               <label htmlFor="location">
                 * Location:
                 <input
@@ -127,7 +129,7 @@ const AddJobForm = () => {
                   required
                 />
               </label>
-              <label htmlFor="location_type">
+              {/* <label htmlFor="location_type">
                 Location Type:
                 <input
                   type="text"
@@ -149,6 +151,67 @@ const AddJobForm = () => {
                   placeholder="e.g., full-time or part-time"
                   required
                 />
+              </label> */}
+              <label htmlFor="location_type">
+                Location Type:
+                <div className="radio-buttons">
+                  <label>
+                    <input
+                      type="radio"
+                      name="location_type"
+                      value="on-site"
+                      checked={form.location_type === "on-site"}
+                      onChange={handleChange}
+                    />
+                    On-site
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="location_type"
+                      value="remote"
+                      checked={form.location_type === "remote"}
+                      onChange={handleChange}
+                    />
+                    Remote
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="location_type"
+                      value="hybrid"
+                      checked={form.location_type === "hybrid"}
+                      onChange={handleChange}
+                    />
+                    Hybrid
+                  </label>
+                </div>
+              </label>
+
+              <label htmlFor="type">
+                Job Type:
+                <div className="radio-buttons">
+                  <label>
+                    <input
+                      type="radio"
+                      name="type"
+                      value="full-time"
+                      checked={form.type === "full-time"}
+                      onChange={handleChange}
+                    />
+                    Full-time
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      name="type"
+                      value="part-time"
+                      checked={form.type === "part-time"}
+                      onChange={handleChange}
+                    />
+                    Part-time
+                  </label>
+                </div>
               </label>
 
               <label htmlFor="date_range">
