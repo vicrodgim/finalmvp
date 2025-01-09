@@ -3,12 +3,13 @@
 }
 
 .resources-container {
-  margin: 20px;
+  margin: 65px;
 }
 
 .resources-list {
   margin: 20px;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
 }

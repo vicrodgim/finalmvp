@@ -7,7 +7,7 @@
 
 .job-card-container {
   overflow: hidden;
-  border: 1px solid;
+  border: 1px solid var(--darkgreen);
   border-radius: 5px;
   padding: 10px 10px;
   display: grid;
@@ -15,8 +15,8 @@
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  background-color: white;
-  /* background-color: var(--offwhite); */
+  /* background-color: white; */
+  background-color: var(--offwhite);
 }
 
 .vl {
@@ -66,9 +66,10 @@
 }
 
 .job-card.skill {
-  border: solid 1px var(--darkcolor);
+  background-color: var(--lightgreen);
+  /* border: solid 1px var(--darkcolor); */
   border-radius: 1.5rem;
-  padding: 5px;
+  padding: 5px 10px;
 }
 
 .job-card.job-has-applied {

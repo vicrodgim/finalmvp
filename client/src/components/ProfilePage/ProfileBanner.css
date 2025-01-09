@@ -35,16 +35,18 @@ img.profile-photo {
 .profile-data-container {
   grid-area: 1 / 2 / 2 / 5;
   padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .profile-description-container {
   grid-area: 2 / 2 / 3 / 6;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .profile-edit-container {
   grid-area: 1 / 5 / 2 / 6;
-
   display: flex;
   flex-direction: row-reverse;
 }
@@ -55,4 +57,20 @@ img.profile-photo {
   border: none;
   background-color: var(--offwhite);
   border-radius: 36px;
+}
+
+.profile-edit-container button:hover {
+  background-color: var(--lightgreen);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.userinfo-location,
+.userinfo-username {
+  display: flex;
+  align-items: center;
+}
+
+.userinfo-location svg,
+.userinfo-username svg {
+  margin-right: 2px;
 }

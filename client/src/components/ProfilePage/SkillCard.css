@@ -4,11 +4,10 @@
   grid-template-rows: repeat(2, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
-  /* border: solid 1px; */
-  border-radius: 5px;
+  border-radius: 1.5rem;
   min-width: 150px;
   max-width: 240px;
-  padding: 10px;
+  padding: 10px 20px;
   flex-grow: 1;
   background-color: var(--lightgreen);
 }
@@ -23,4 +22,5 @@
 }
 .skill-category {
   grid-area: 2 / 2 / 3 / 3;
+  text-align: center;
 }

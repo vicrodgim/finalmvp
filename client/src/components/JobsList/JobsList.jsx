@@ -64,8 +64,12 @@ const JobsList = () => {
         clearFilters={clearFilters}
       />
       <div className="jobs-container">
+        <BodyNavButton
+          className="add-new-job"
+          text="Add a new job"
+          clickFunction={handleClick}
+        />
         <h2> MY JOBS</h2>
-        <BodyNavButton text="Add a new job" clickFunction={handleClick} />
         {noJobs ? (
           <p className="no-items alert">
             Sorry, you have no jobs to display. Why not add one now?

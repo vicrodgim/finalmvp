@@ -1,5 +1,5 @@
 .jobs-filter-menu-container {
-  padding: 40px 16px;
+  padding: 40px 20px;
   height: 100vw;
   width: 15%;
   min-width: 220px;
@@ -19,9 +19,9 @@
   gap: 10px;
 } */
 
-.filter-radio {
+/* .filter-radio {
   margin-right: 10px;
-}
+} */
 
 .clear-filter-btn {
   margin-top: 20px;
@@ -34,7 +34,4 @@
 
 input {
   border: none;
-}
-
-.jobs-filter-menu-container input {
 }

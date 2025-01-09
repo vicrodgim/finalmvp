@@ -100,127 +100,126 @@ function Register() {
     <div className="container auth-page">
       <form className="form register" onSubmit={handleSubmit}>
         <h2>REGISTER</h2>
+
         <p className="subtitle">
           Please fill in this form to create an account
         </p>
-        <label htmlFor="first_name">
-          <b>Your first name</b>
-        </label>
-        <input
-          type="text"
-          name="first_name"
-          id="first_name"
-          value={registerForm.first_name}
-          onChange={handleChange}
-          required
-        ></input>
+        <div className="form-content">
+          <div className="column-1">
+            <p className="final-steps-subtitle">Tell us a bit about yourself</p>
+            <input
+              placeholder="Your first name"
+              type="text"
+              name="first_name"
+              id="first_name"
+              value={registerForm.first_name}
+              onChange={handleChange}
+              required
+            />
 
-        <label htmlFor="last_name">
-          <b>Your last name</b>
-        </label>
-        <input
-          type="text"
-          name="last_name"
-          id="last_name"
-          value={registerForm.last_name}
-          onChange={handleChange}
-          required
-        ></input>
+            <input
+              placeholder="Your last name"
+              type="text"
+              name="last_name"
+              id="last_name"
+              value={registerForm.last_name}
+              onChange={handleChange}
+              required
+            />
 
-        <label htmlFor="description">
-          <p>
-            Please write here about you, your academic and work experience and
-            projects.
-          </p>
-        </label>
-        <textarea
-          type="text"
-          name="description"
-          id="description"
-          value={registerForm.description}
-          onChange={handleChange}
-          required
-        ></textarea>
+            <textarea
+              placeholder="Please write here about you, your academic and work experience and projects."
+              type="text"
+              name="description"
+              id="description"
+              value={registerForm.description}
+              onChange={handleChange}
+              required
+            />
+            {/* </label> */}
 
-        <label htmlFor="location">Where are you living currently?</label>
-        <input
-          type="text"
-          name="location"
-          id="location"
-          value={registerForm.location}
-          onChange={handleChange}
-          required
-        ></input>
+            <input
+              placeholder=" Where are you living currently?"
+              type="text"
+              name="location"
+              id="location"
+              value={registerForm.location}
+              onChange={handleChange}
+              required
+            />
 
-        <label htmlFor="username">Please provide a username</label>
-        <input
-          type="username"
-          name="username"
-          id="username"
-          value={registerForm.username}
-          onChange={handleChange}
-          required
-        ></input>
+            <input
+              placeholder="Please provide a username"
+              type="username"
+              name="username"
+              id="username"
+              value={registerForm.username}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="column-2">
+            <div className="profile-picture-upload">
+              <label className="final-steps-subtitle" htmlFor="imageUrl">
+                Submit your profile picture
+              </label>
+              <input
+                type="file"
+                name="imageUrl"
+                id="imageUrl"
+                value={registerForm.imageUrl}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="login-details">
+              <p className="final-steps-subtitle">
+                Please provide an email and a password in order to log in later
+              </p>
 
-        <label htmlFor="imageUrl">Submit your profile picture</label>
-        <input
-          type="file"
-          name="imageUrl"
-          id="imageUrl"
-          value={registerForm.imageUrl}
-          onChange={handleChange}
-          required
-        ></input>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Your Email"
+                value={registerForm.email}
+                onChange={handleChange}
+                required
+              />
 
-        <h4>Final Steps</h4>
-        <p className="final-steps-subtitle">
-          Please provide an email and a password in order to log in later
-        </p>
+              <div className="password-input">
+                <input
+                  type={!showPassword ? "password" : "text"}
+                  placeholder="Enter Password"
+                  name="password"
+                  id="password"
+                  value={registerForm.password}
+                  onChange={handleChange}
+                  required
+                ></input>
+                <button type="button" onClick={handleShowPassword}>
+                  {!showPassword ? "Show" : "Hide"}
+                </button>
+              </div>
 
-        <label htmlFor="email">
-          <b>Email</b>
-        </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="example@gmail.com"
-          value={registerForm.email}
-          onChange={handleChange}
-          required
-        ></input>
+              {/* Repeat Password Input */}
 
-        <label htmlFor="password">Password</label>
-        <div className="password-input">
-          <input
-            type={!showPassword ? "password" : "text"}
-            placeholder="Enter Password"
-            name="password"
-            id="password"
-            value={registerForm.password}
-            onChange={handleChange}
-            required
-          ></input>
-          <button type="button" onClick={handleShowPassword}>
-            {!showPassword ? "Show" : "Hide"}
-          </button>
-        </div>
-
-        {/* Repeat Password Input */}
-        <label htmlFor="confirmPassword">Repeat Password</label>
-        <div className="password-input">
-          <input
-            type={!showConfirmedPassword ? "password" : "text"}
-            placeholder="Repeat Password"
-            name="confirmPassword"
-            id="confirmPassword"
-            value={registerForm.confirmPassword}
-            onChange={handleChange}
-            required
-          ></input>
-          <button type="button" onClick={handleShowConfirmedPassword}>
-            {!showConfirmedPassword ? "Show" : "Hide"}
-          </button>
+              <div className="password-input">
+                <input
+                  type={!showConfirmedPassword ? "password" : "text"}
+                  placeholder="Repeat Password"
+                  name="confirmPassword"
+                  id="confirmPassword"
+                  value={registerForm.confirmPassword}
+                  onChange={handleChange}
+                  required
+                ></input>
+                <button type="button" onClick={handleShowConfirmedPassword}>
+                  {!showConfirmedPassword ? "Show" : "Hide"}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Submit Button */}

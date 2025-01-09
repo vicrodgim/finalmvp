@@ -1,20 +1,50 @@
 .form.register {
   margin: 50px auto;
+  max-width: 1000px;
+}
+
+.column-1 {
+  flex: 1 1 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 40px;
+}
+
+.column-2 {
+  flex: 1 1 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* gap: 15px; */
+  padding: 40px;
+}
+
+.profile-picture-upload,
+.login-details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form.register textarea {
+  height: 140px;
+  width: 100%;
 }
 
 .subtitle {
   text-align: center;
+  font-size: 16px;
 }
 
-.final-steps-subtitle,
-.subtitle {
+.final-steps-subtitle {
   font-size: 16px;
   font-family: "Poppins-SemiBold";
 }
 
 .password-input button {
   border: none;
-  /* border-radius: 8px; */
+
   background-color: #ebfff4;
   margin-left: 10px;
 }

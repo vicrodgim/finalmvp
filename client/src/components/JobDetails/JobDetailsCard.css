@@ -1,16 +1,13 @@
 .job-details-container {
-  width: 100%;
   max-width: 800px;
   margin: 20px;
-  border: 1px solid;
+  border: 1px solid var(--darkgreen);
   border-radius: 5px;
   padding: 20px;
-  background-color: white;
-  /* background-color: var(--offwhite); */
+  background-color: var(--offwhite);
 }
 
 .job-details {
-  /* border-bottom: 1px solid; */
   min-height: 30px;
   padding: 10px;
 }
@@ -31,7 +28,8 @@
   display: flex;
   justify-content: start;
   align-items: center;
-  padding: 5px;
-  border: solid 1px var(--darkcolor);
+  padding: 5px 10px;
+  background-color: var(--lightgreen);
+  /* border: solid 1px var(--darkcolor); */
   border-radius: 1.5rem;
 }

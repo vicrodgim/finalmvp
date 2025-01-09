@@ -10,19 +10,6 @@ const HomePage = (/* { isLoggedIn } */) => {
   //Context consume
   const auth = useContext(AuthContext); // auth = {isLoggedIn, login, logout}
 
-  /*   const handleLoginClick = () => {
-    navigate("/login");
-    {
-      !auth.isLoggedIn ? navigate("/login") : navigate("/my-profile");
-    }
-  };
-
-  const handleRegisterClick = () => {
-    {
-      !auth.isLoggedIn ? navigate("/register") : auth.logout;
-    }
-  }; */
-
   return (
     <div className="homepage">
       <div className="homepage-box">
@@ -31,10 +18,12 @@ const HomePage = (/* { isLoggedIn } */) => {
           DevSteps is a job tracking and learning platform tailored for coding
           bootcamp graduates. It streamlines the job search process by helping
           users efficiently organize opportunities, track applications, and work
-          toward securing their first developer role. Alongside job tracking,
-          DevSteps provides learning resources to enhance coding skills,
-          ensuring that users stay competitive and continue growing their skills
-          throughout their job hunt.
+          toward securing their first developer role.
+        </p>
+        <p>
+          Alongside job tracking, DevSteps provides learning resources to
+          enhance coding skills, ensuring that users stay competitive and
+          continue growing their skills throughout their job hunt.
         </p>
         <div className="hmpg-nav-buttons">
           {!auth.isLoggedIn ? (

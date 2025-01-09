@@ -1,4 +1,8 @@
 .form.update-job button,
 .form.update-job select {
-  background-color: white;
+  background-color: var(--offwhite);
+}
+
+.form.update-job button:hover {
+  background-color: var(--lightgreen);
 }

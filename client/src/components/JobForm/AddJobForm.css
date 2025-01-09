@@ -3,5 +3,37 @@
 }
 
 .add-job-form-container form {
-  margin: 20px auto;
+  margin: 40px auto;
+  padding: 40px !important;
+  max-width: 1200px;
+}
+
+.add-job-form-container form textarea {
+  height: 240px;
+  width: 100%;
+}
+
+.add-job-form-container form input[type="text"],
+.add-job-form-container form input[type="date"],
+.add-job-form-container form input[type="url"],
+.add-job-form-container form textarea,
+#skills {
+  margin-top: 0.2em;
+  width: 100%;
+}
+
+.form-content {
+  display: flex;
+  flex-direction: row;
+  flex: 1 1 0px;
+
+  /* margin-bottom: 40px; */
+}
+
+.column {
+  flex: 1 1 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 40px;
 }
