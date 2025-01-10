@@ -4,7 +4,7 @@ import AuthContext from "../context/AuthContext.js";
 
 import "./HomePage.css";
 
-const HomePage = (/* { isLoggedIn } */) => {
+const HomePage = () => {
   const navigate = useNavigate();
 
   //Context consume
@@ -23,7 +23,7 @@ const HomePage = (/* { isLoggedIn } */) => {
         <p>
           Alongside job tracking, DevSteps provides learning resources to
           enhance coding skills, ensuring that you stay competitive and continue
-          growing your skills throughout their job hunt.
+          growing your skills throughout your job hunt.
         </p>
         <div className="hmpg-nav-buttons">
           {!auth.isLoggedIn ? (
