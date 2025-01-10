@@ -6,10 +6,26 @@
 
 .form.login input,
 .form.login button {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 .error-message {
   color: var(--lightgreen);
   margin-top: 10px;
+}
+.forgot-password-link {
+  background: none;
+  border: none;
+  color: #0869fa;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: -20px;
+  display: block;
+  text-align: center;
+}
+.forgot-password input {
+  width: 100%;
+  margin-bottom: 30px;
+  font-size: 14px;
 }
 /* Container */
