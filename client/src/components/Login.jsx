@@ -12,6 +12,7 @@ const Login = () => {
 
   //state for error messages
   const [errorMessage, setErrorMessage] = useState("");
+  const [showForgotPassword, setShowForgotPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -68,6 +69,27 @@ const Login = () => {
               onChange={handleChange}
               placeholder="Your Password"
             />
+
+            <button
+              type="button"
+              className="forgot-password-link"
+              onClick={() => setShowForgotPassword(!showForgotPassword)}
+            >
+              Forgot Password?
+            </button>
+
+            {showForgotPassword && (
+              <div className="forgot-password">
+                <input
+                  type="email"
+                  placeholder="Enter your password"
+                  disabled
+                />
+                <p className="info-message">
+                  This feature will be available soon.
+                </p>
+              </div>
+            )}
           </>
         ) : (
           <h2>Welcome!</h2>
