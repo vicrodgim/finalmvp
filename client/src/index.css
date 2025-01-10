@@ -45,7 +45,6 @@
 }
 
 main {
-  /* background-color: var(--offwhite); */
   background-color: white;
   height: 100%;
 }
@@ -130,10 +129,6 @@ button {
 
 .filter-radio {
   margin-right: 10px;
-  /* border: white; */
-  /* opacity: 0;
-  position: fixed;
-  width: 0; */
 }
 
 ::placeholder {

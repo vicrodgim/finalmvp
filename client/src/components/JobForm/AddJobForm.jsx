@@ -6,7 +6,6 @@ import { MultiSelect } from "primereact/multiselect";
 import "primereact/resources/themes/md-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
-/* import "../../App.css"; */
 import "./AddJobForm.css";
 
 const AddJobForm = () => {
@@ -129,29 +128,6 @@ const AddJobForm = () => {
                   required
                 />
               </label>
-              {/* <label htmlFor="location_type">
-                Location Type:
-                <input
-                  type="text"
-                  id="location-type"
-                  name="location_type"
-                  value={form.location_type}
-                  onChange={handleChange}
-                  placeholder="e.g., on-site, remote or hybrid"
-                />
-              </label>
-              <label htmlFor="type">
-                * Job Type:
-                <input
-                  type="text"
-                  id="type"
-                  name="type"
-                  value={form.type}
-                  onChange={handleChange}
-                  placeholder="e.g., full-time or part-time"
-                  required
-                />
-              </label> */}
               <label htmlFor="location_type">
                 Location Type:
                 <div className="radio-buttons">

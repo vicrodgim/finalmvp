@@ -34,9 +34,9 @@ export const EditProfile = () => {
   ]);
 
   const [level, setLevel] = useState([
-    { label: "advanced", value: "advanced" },
     { label: "beginner", value: "beginner" },
     { label: "intermediate", value: "intermediate" },
+    { label: "advanced", value: "advanced" },
   ]);
 
   const navigate = useNavigate();
@@ -67,6 +67,7 @@ export const EditProfile = () => {
         proficiency_level: "",
         skill_id: "",
       });
+
       navigate("/my-profile");
     } catch (error) {
       console.log("Error adding the skill:", error.message);

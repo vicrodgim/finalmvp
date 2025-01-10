@@ -1,6 +1,5 @@
 import { NavBar } from "./components/NavBar/NavBar.jsx";
 import "./App.css";
-import { MyJobs } from "./pages/MyJobs.jsx";
 import JobsList from "./components/JobsList/JobsList.jsx";
 import JobDetail from "./components/JobDetails/JobDetail.jsx";
 import AddJobForm from "./components/JobForm/AddJobForm.jsx";

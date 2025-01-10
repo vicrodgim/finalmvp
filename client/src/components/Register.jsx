@@ -140,7 +140,6 @@ function Register() {
               onChange={handleChange}
               required
             />
-            {/* </label> */}
 
             <input
               placeholder=" Where are you living currently?"
