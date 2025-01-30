@@ -17,14 +17,12 @@ export default function JobDetailsCard({ job }) {
     description,
   } = job;
 
-  console.log(job); //check to see if date_range exists
+  console.log(job);
 
-  //slice the date_range if it exists
   const trimmedDateRange = date_range
     ? date_range.slice(0, 10)
     : "No date range provided";
 
-  //EXTRACTS THE JOB ID FROM URL
   const { id } = useParams();
 
   return (

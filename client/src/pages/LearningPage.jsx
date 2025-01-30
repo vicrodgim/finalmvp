@@ -5,9 +5,7 @@ import { ResourcesFilterMenu } from "../components/FilterMenus/ResourcesFilterMe
 import "./LearningPage.css";
 
 export const LearningPage = () => {
-  //variable to store resources
   const [resources, setResources] = useState([]);
-
   const [filters, setFilters] = useState({});
 
   const handleFilterChange = (key, value) => {
@@ -18,10 +16,8 @@ export const LearningPage = () => {
     setFilters({});
   };
 
-  //function to fetch all resources info and set result to 'resources' array. Returns...
   const fetchResources = async () => {
     try {
-      //communicate with database
       const { key, value } = filters;
       const query = key && value ? `key=${key}&value=${value}` : "";
       let response = await axios.get(
@@ -34,14 +30,13 @@ export const LearningPage = () => {
       );
       setResources(response.data);
     } catch (error) {
-      //handle errors
       console.error(error);
     }
   };
 
   useEffect(() => {
     fetchResources();
-  }, [filters]); //re-fetch when filters change
+  }, [filters]);
 
   return (
     <div className="learning-page">

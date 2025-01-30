@@ -7,7 +7,6 @@ export const JobsFilterMenu = ({
 }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
-    //pass filter key-value to parent (joblist)
     onFilterChange(name, value);
   };
 

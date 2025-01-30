@@ -19,7 +19,6 @@ export const UpdateJobForm = ({ jobId, onUpdate }) => {
     try {
       const token = localStorage.getItem("token");
 
-      //Send delete request to remove job
       if (status === "DELETE") {
         const response = await axios.delete(`/api/jobs/${jobId}`, {
           headers: { Authorization: `Bearer ${token}` },
@@ -27,7 +26,6 @@ export const UpdateJobForm = ({ jobId, onUpdate }) => {
 
         console.log("Job deleted successfully:", response.data);
         alert("Job was deleted successfully");
-        //redirect to the job list page
         navigate("/jobs");
       } else {
         const has_applied = status === "true" ? 1 : 0;
@@ -43,7 +41,6 @@ export const UpdateJobForm = ({ jobId, onUpdate }) => {
 
         console.log("Job application was updated successfully:", response.data);
         alert("job application was updated successfully");
-        //refresh the page once it's been submitted
         onUpdate();
       }
     } catch (error) {
