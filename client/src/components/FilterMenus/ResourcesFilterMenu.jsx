@@ -13,7 +13,6 @@ export const ResourcesFilterMenu = ({
   return (
     <div className="filter-menu-container">
       <h3>FILTER MENU</h3>
-      {/*Frontend Dropdown*/}
       <div>
         <div>
           <label className="r-label-discipline"> FRONTEND</label>
@@ -35,7 +34,6 @@ export const ResourcesFilterMenu = ({
             <option value="Bootstrap">Bootstrap</option>
           </select>
         </div>
-        {/*Backend Dropdown*/}
         <div>
           <label className="r-label-discipline"> BACKEND</label>
           <select
@@ -56,7 +54,6 @@ export const ResourcesFilterMenu = ({
             <option value="MySQL">MySQL</option>
           </select>
         </div>
-        {/*Fullstack Dropdown*/}
         <div>
           <label className="r-label-discipline">FULLSTACK</label>
           <select

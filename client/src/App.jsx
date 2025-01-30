@@ -14,7 +14,6 @@ import { useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import AuthContext from "./context/AuthContext.js";
 import PrivateRoute from "./components/PrivateRoute.jsx";
-// import PrivateRoute from "./components/PrivateRoute.jsx";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem("token"));
@@ -27,7 +26,6 @@ function App() {
         data: userData,
       });
 
-      //store it locally
       localStorage.setItem("token", data.token);
       setIsLoggedIn(true);
       return { message: "login successful" };
@@ -48,7 +46,6 @@ function App() {
     logout,
   };
 
-  // Check if the current location matches the `to` prop
   const isHomePage = location.pathname === "/";
 
   return (

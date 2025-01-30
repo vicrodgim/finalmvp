@@ -22,8 +22,6 @@ export default function JobDetail() {
     try {
       setLoading(true);
 
-      // make a fetch request to getJobById and pass the id of the job
-      // '/api/jobs/${id}'
       const response = await fetch(`/api/jobs/${id}`, {
         headers: {
           authorization: "Bearer " + localStorage.getItem("token"),
@@ -32,7 +30,6 @@ export default function JobDetail() {
       if (!response.ok) {
         throw Error("Failed to fetch job details");
       }
-      // get the job detail
       const data = await response.json();
       setJobDetail(data);
     } catch (error) {

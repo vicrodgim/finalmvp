@@ -5,13 +5,10 @@ import { ProfileSkills } from "../components/ProfilePage/ProfileSkills";
 import "./MyProfile.css";
 
 export const MyProfile = () => {
-  //variable to store current user info
   const [currentUser, setCurrentUser] = useState([]);
 
-  //function to fetch all jobs and set result to 'currentUser' array. Returns username, first_name, last_name, description, location, email, imageUrl
   const fetchUserProfile = async () => {
     try {
-      //communcate with databasa
       let response = await axios.get(
         "http://localhost:4000/api/users/profile",
         {
@@ -22,13 +19,11 @@ export const MyProfile = () => {
       );
       setCurrentUser(response.data);
     } catch (error) {
-      // handle errors
       console.error(error);
     }
   };
 
   useEffect(() => {
-    //call fetchItems function
     fetchUserProfile();
   }, []);
 
