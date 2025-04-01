@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { ResourceCard } from "../components/LearningPage/ResourceCard";
 import { ResourcesFilterMenu } from "../components/FilterMenus/ResourcesFilterMenu";
+import { RecommendedResources } from "../components/LearningPage/RecommendedResources";
 import "./LearningPage.css";
 
 export const LearningPage = () => {
@@ -52,6 +53,9 @@ export const LearningPage = () => {
       />
       <div className="resources-container">
         <h2>LEARNING PAGE</h2>
+        <div className="recommended">
+          <RecommendedResources resources={resources} />
+        </div>
         <div className="resources-list">
           {resources.map((r) => (
             <ResourceCard r={r} key={r.resource_id} />
