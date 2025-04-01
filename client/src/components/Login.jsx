@@ -80,11 +80,11 @@ const Login = () => {
 
             {showForgotPassword && (
               <div className="forgot-password">
-                <input
+                {/* <input
                   type="email"
                   placeholder="Enter your password"
                   disabled
-                />
+                /> */}
                 <p className="info-message">
                   This feature will be available soon.
                 </p>

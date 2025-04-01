@@ -15,7 +15,7 @@
 .forgot-password-link {
   background: none;
   border: none;
-  color: #0869fa;
+  color: #468df8;
   text-decoration: underline;
   cursor: pointer;
   font-size: 14px;
@@ -23,9 +23,3 @@
   display: block;
   text-align: center;
 }
-.forgot-password input {
-  width: 100%;
-  margin-bottom: 30px;
-  font-size: 14px;
-}
-/* Container */

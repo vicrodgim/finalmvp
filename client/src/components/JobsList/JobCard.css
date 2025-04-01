@@ -67,7 +67,7 @@
 
 .job-card.skill {
   background-color: var(--lightgreen);
-  /* border: solid 1px var(--darkcolor); */
+  border: solid 1px var(--darkcolor);
   border-radius: 1.5rem;
   padding: 5px 10px;
 }
