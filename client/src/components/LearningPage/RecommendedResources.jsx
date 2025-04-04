@@ -14,7 +14,6 @@ export const RecommendedResources = ({ resources }) => {
           authorization: "Bearer " + localStorage.getItem("token"),
         },
       });
-      console.log("done");
       setUserSkills(response.data);
       console.log(userSkills);
     } catch (error) {
@@ -33,5 +32,5 @@ export const RecommendedResources = ({ resources }) => {
   // if jobs skills is not included in users_skills
   // display resources where resources_skills strictly equal to jobs skill
 
-  return <div>hello</div>;
+  return <div></div>;
 };
