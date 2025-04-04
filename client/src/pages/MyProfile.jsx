@@ -8,7 +8,7 @@ export const MyProfile = () => {
   //variable to store current user info
   const [currentUser, setCurrentUser] = useState([]);
 
-  //function to fetch all jobs and set result to 'currentUser' array. Returns username, first_name, last_name, description, location, email, imageUrl
+  //function to fetch user profile and set result to 'currentUser' array. Returns username, first_name, last_name, description, location, email, imageUrl
   const fetchUserProfile = async () => {
     try {
       //communcate with databasa
