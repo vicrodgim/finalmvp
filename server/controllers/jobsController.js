@@ -236,10 +236,51 @@ const deleteJob = async (req, res) => {
   }
 };
 
+//Helper function to process get all skills for saved jobs
+const treatSkillsData = (data) => {
+  const result = {
+    user_id: data[0].user_id,
+    skills: [],
+  };
+
+  data.forEach((info) => {
+    result.skills.push({
+      skills_id: info.skills_id,
+      title: info.title,
+      category: info.category,
+    });
+  });
+  return result;
+};
+
+//get all skills for saved jobs
+const getJobsSkills = async (req, res) => {
+  try {
+    //get user id from request object
+    const userId = req.user_id;
+    let sqlQuery = `SELECT * FROM jobs JOIN jobs_skills ON jobs.id = jobs_skills.job_id JOIN skills ON jobs_skills.skills_id = skills.id WHERE jobs.user_id = ?`;
+    const [result] = await pool.query(sqlQuery, userId);
+
+    if (result.length === 0) {
+      return res.status(404).json({
+        error: "These jobs skills are not found",
+      });
+    }
+    console.log(treatSkillsData(result).skills);
+    return res.status(200).json(treatSkillsData(result));
+  } catch (error) {
+    console.log(error.message);
+    return res.status(500).json({
+      error: "Failed to get jobs skills",
+    });
+  }
+};
+
 module.exports = {
   getJobs,
   getJobById,
   addJob,
   updateJob,
   deleteJob,
+  getJobsSkills,
 };

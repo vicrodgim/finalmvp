@@ -7,6 +7,8 @@ const jobsController = require("../controllers/jobsController");
 
 //any route in this file is pre-pended with /api/jobs
 
+router.get("/skills", userShouldBeLoggedIn, jobsController.getJobsSkills); //get all skills for saved jobs
+
 router.get("/", userShouldBeLoggedIn, jobsController.getJobs); //fetches all jobs for a user
 
 router.get("/:id", userShouldBeLoggedIn, jobsController.getJobById); //fetches a job by ID

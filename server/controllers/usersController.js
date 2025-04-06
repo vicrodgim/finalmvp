@@ -44,14 +44,8 @@ const treatSkillsData = (data) => {
 
 const getSkillsByUserId = async (req, res) => {
   try {
-    /* const { id } = req.params; */
     //get user id from request object
     const userId = req.user_id;
-    /* const [result] = await pool.query(
-      `select * from skills_users
-	JOIN skills on skills_users.skill_id = skills.id
-		and skills_users.user_id = ${id};`
-    ); */
     let sqlQuery = `select * from skills_users
 	JOIN skills on skills_users.skill_id = skills.id
 		and skills_users.user_id = ?`;
