@@ -41,11 +41,10 @@ export const RecommendedResources = ({ resources }) => {
   }, []);
 
   // LOGIC FOR RECOMMENDED RESOURCES
-  // check jobs_skills
-  // check users_skills
-  // loop through jobs_skills
-  // if jobs skills is not included in users_skills
-  // display resources where resources_skills strictly equal to jobs skill
+  // loop through jobsSkills
+  // loop through userSkills
+  // if jobs skill is not included in userSkills
+  // display resources where resources.skills strictly equal to jobs skill
 
   return <div></div>;
 };
