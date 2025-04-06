@@ -21,8 +21,23 @@ export const RecommendedResources = ({ resources }) => {
     }
   };
 
+  const fetchJobsSkills = async () => {
+    try {
+      let response = await axios.get("http://localhost:4000/api/jobs/skills", {
+        headers: {
+          authorization: "Bearer " + localStorage.getItem("token"),
+        },
+      });
+      setJobsSkills(response.data);
+      console.log(jobsSkills);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     fetchUserSkills();
+    fetchJobsSkills();
   }, []);
 
   // LOGIC FOR RECOMMENDED RESOURCES
