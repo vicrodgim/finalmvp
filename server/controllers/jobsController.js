@@ -1,6 +1,7 @@
 // import the DB pool from your config folder
 const pool = require("../config/db");
 
+//fetches all jobs for a user
 const getJobs = async (req, res) => {
   try {
     const userId = req.user_id;
@@ -73,6 +74,7 @@ const treatJobsData = (data) => {
   return result;
 };
 
+//fetched a job by ID
 const getJobById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -99,6 +101,7 @@ const getJobById = async (req, res) => {
   }
 };
 
+//adds a new job
 const addJob = async (req, res) => {
   try {
     const userId = req.user_id;
@@ -178,6 +181,7 @@ const addJob = async (req, res) => {
   }
 };
 
+//updates has_applied column
 const updateJob = async (req, res) => {
   try {
     const { id } = req.params;
@@ -208,6 +212,7 @@ const updateJob = async (req, res) => {
   }
 };
 
+//deletes a job
 const deleteJob = async (req, res) => {
   try {
     const { id } = req.params;
