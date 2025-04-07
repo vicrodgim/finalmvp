@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { ResourceCard } from "./ResourceCard";
 import { SkillCard } from "../ProfilePage/SkillCard";
+import "./RecommendedResources.css";
 
 export const RecommendedResources = ({ resources }) => {
   //variable to store users_skills
@@ -42,8 +43,11 @@ export const RecommendedResources = ({ resources }) => {
     }
   };
 
+  // Filter recommended skills: get skills from jobs that are not in user skills
   const filterRecommendedSkills = () => {
+    // Extract skill_ids from userSkills
     const userSkillsId = userSkills.map((skill) => skill.skill_id);
+    // Filter jobsSkills based on whether the skill_id is not in userSkillsId
     let filtered = jobsSkills.filter(
       (skill) => !userSkillsId.includes(skill.skills_id)
     );
@@ -51,7 +55,20 @@ export const RecommendedResources = ({ resources }) => {
     console.log("recommended skills:", recommendedSkills);
   };
 
-  const filterRecommendedResources = () => {};
+  // Filter recommended resources based on recommendedSkills
+  const filterRecommendedResources = () => {
+    let filtered = resources.filter((resource) =>
+      // Check if any of the resource's skills match a recommended skill
+      resource.skills.some((resourceSkill) =>
+        recommendedSkills.some(
+          (recommendedSkill) =>
+            recommendedSkill.skills_id === resourceSkill.skills_id
+        )
+      )
+    );
+    setRecommendedResources(filtered);
+    console.log("recommended resources:", filtered);
+  };
 
   //for every resource in resources
   //check its skills
@@ -82,7 +99,7 @@ export const RecommendedResources = ({ resources }) => {
 
   return (
     <>
-      <div>USER SKILLS</div>
+      {/* <div>USER SKILLS</div>
       <div className="skill-container container">
         {userSkills.map((skill, index) => (
           <SkillCard skill={skill} key={index} />
@@ -99,9 +116,13 @@ export const RecommendedResources = ({ resources }) => {
         {recommendedSkills.map((skill, index) => (
           <SkillCard skill={skill} key={index} />
         ))}
-      </div>
+      </div> */}
       <div>RECOMMENDED RESOURCES</div>
-      <div>{}</div>
+      <div className="recommended-resources">
+        {recommendedResources.map((r) => (
+          <ResourceCard r={r} key={r.resource_id} />
+        ))}
+      </div>
     </>
   );
 };
