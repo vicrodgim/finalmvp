@@ -182,28 +182,72 @@ const updateJob = async (req, res) => {
   try {
     const { id } = req.params;
     const userId = req.user_id;
-    const { has_applied } = req.body;
+    const fields = req.body;
 
-    if (has_applied === undefined) {
-      return res.status(400).json({
-        error: "The has_applied field is required",
-      });
+    const allowedFields = [
+      "title",
+      "company_name",
+      "location",
+      "location_type",
+      "description",
+      "type",
+      "date_range",
+      "min_salary",
+      "max_salary",
+      "has_applied",
+      "created_at",
+      "url",
+    ];
+
+    const updates = [];
+    const values = [];
+
+    for (let field of allowedFields) {
+      if (fields[field] !== undefined) {
+        updates.push(`${field}=?`);
+        values.push(fields[field]);
+      }
     }
 
-    const [result] = await pool.query(
-      "UPDATE jobs SET has_applied=? WHERE id=? AND user_id=?",
-      [has_applied, id, userId]
-    );
-
-    if (result.affectedRows === 0) {
-      return res.status(404).json({ error: "This job was not found" });
+    if (updates.length === 0) {
+      return res
+        .status(400)
+        .json({ error: "No field were provided to update" });
     }
 
-    res.status(200).send({ message: "has_applied status has been updated" });
+    values.push(id, userId);
+
+    if (updates.length > 0) {
+      const [result] = await pool.query(
+        `UPDATE jobs SET ${updates.join(", ")} WHERE id=? AND user_id=?`,
+        values
+      );
+
+      if (result.affectedRows === 0) {
+        return res.status(404).json({ error: "This job was not found" });
+      }
+    }
+
+    //handle skills if provided, first, delete them, then, insert the new ones.
+    const skills = fields.skills;
+    if (skills) {
+      await pool.query("DELETE FROM jobs_skills WHERE job_id=?", [id]);
+
+      if (skills.length > 0) {
+        for (let skillId of skills) {
+          await pool.query(
+            "INSERT INTO jobs_skills (job_id, skills_id) VALUES (?,?)",
+            [id, skillId]
+          );
+        }
+      }
+    }
+
+    res.status(200).send({ message: "Job has been updated" });
   } catch (error) {
     console.error(error.message);
     return res.status(500).json({
-      error: "Failed to update has_applied status",
+      error: "Failed to update job",
     });
   }
 };

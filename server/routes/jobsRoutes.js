@@ -13,7 +13,7 @@ router.get("/:id", userShouldBeLoggedIn, jobsController.getJobById); //fetches a
 
 router.post("/", userShouldBeLoggedIn, jobsController.addJob); //adds a new job
 
-router.put("/:id/has_applied", userShouldBeLoggedIn, jobsController.updateJob); //updates has_aplied column
+router.put("/:id", userShouldBeLoggedIn, jobsController.updateJob); //updates all job columns
 
 router.delete("/:id", userShouldBeLoggedIn, jobsController.deleteJob); //deletes a job
 
