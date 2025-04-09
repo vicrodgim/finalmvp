@@ -1,14 +1,15 @@
-import React, { useState } from "react";
-import axios from "axios";
-import BodyNavButton from "../../elements/BodyNavButton";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { MultiSelect } from "primereact/multiselect";
+import axios from "axios";
+import BodyNavButton from "../../elements/BodyNavButton";
 import "primereact/resources/themes/md-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
-import "./AddJobForm.css";
+import "./JobForm.css";
 
-const AddJobForm = () => {
+const JobForm = ({ mode }) => {
   const [form, setForm] = useState({
     title: "",
     company_name: "",
@@ -26,10 +27,46 @@ const AddJobForm = () => {
   });
 
   const navigate = useNavigate();
+  const { id } = useParams();
 
   const handleClick = () => {
     navigate("/jobs");
   };
+
+  useEffect(() => {
+    if (mode === "edit" && id) {
+      const fetchJobs = async () => {
+        try {
+          const token = localStorage.getItem("token");
+          const response = await axios.get(`/api/jobs/${id}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          const job = response.data;
+          console.log(job);
+          setForm({
+            title: job.jobs_title,
+            company_name: job.company_name,
+            location: job.location,
+            location_type: job.location_type,
+            description: job.description,
+            type: job.type,
+            date_range: job.date_range ? job.date_range.slice(0, 10) : null,
+            min_salary: job.min_salary,
+            max_salary: job.max_salary,
+            has_applied: job.has_applied,
+            created_at: job.created_at ? job.created_at.slice(0, 10) : null,
+            url: job.url,
+            skills: job.skills.map((s) => s.skills_id.toString()),
+          });
+        } catch (error) {
+          console.error("Error fetching jobs:", error);
+        }
+      };
+      fetchJobs();
+    }
+  }, [mode, id]);
 
   //handle text and select inputs
   const handleChange = (event) => {
@@ -52,35 +89,53 @@ const AddJobForm = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem("token");
+      if (mode === "add") {
+        const response = await axios.post(
+          "http://localhost:4000/api/jobs",
+          form,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
-      const response = await axios.post(
-        "http://localhost:4000/api/jobs",
-        form,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      console.log("Added job:", response.data);
-      //reset form
-      setForm({
-        title: "",
-        company_name: "",
-        location: "",
-        location_type: "",
-        description: "",
-        type: "",
-        date_range: "",
-        min_salary: "",
-        max_salary: "",
-        has_applied: false,
-        created_at: "",
-        url: "",
-        skills: [],
-      });
-      navigate("/jobs");
+        console.log("Added job:", response.data);
+        //reset form
+        setForm({
+          title: "",
+          company_name: "",
+          location: "",
+          location_type: "",
+          description: "",
+          type: "",
+          date_range: "",
+          min_salary: "",
+          max_salary: "",
+          has_applied: false,
+          created_at: "",
+          url: "",
+          skills: [],
+        });
+        navigate("/jobs");
+      } else if (mode === "edit" && id) {
+        const clearForm = {
+          ...form,
+          date_range: form.date_range ? form.date_range.slice(0, 10) : null,
+          created_at: form.created_at ? form.created_at.slice(0, 10) : null,
+        };
+        const response = await axios.put(
+          `http://localhost:4000/api/jobs/${id}`,
+          clearForm,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        console.log("Updated job:", response.data);
+        navigate(`/jobs/${id}`);
+      }
     } catch (error) {
       console.log("Error adding the job:", error.message);
     }
@@ -91,7 +146,7 @@ const AddJobForm = () => {
       <BodyNavButton text="< back to all jobs" clickFunction={handleClick} />
       <div className="add-job-form-container">
         <form className="form" onSubmit={handleSubmit}>
-          <h2>ADD NEW JOB</h2>
+          <h2>{mode === "add" ? "ADD NEW JOB" : "EDIT JOB"}</h2>
           <div className="form-content">
             <div className="column">
               <label htmlFor="title">
@@ -306,11 +361,13 @@ const AddJobForm = () => {
               </label>
             </div>
           </div>
-          <button type="submit">ADD JOB</button>
+          <button type="submit">
+            {mode === "add" ? "ADD JOB" : "SAVE CHANGES"}
+          </button>
         </form>
       </div>
     </div>
   );
 };
 
-export default AddJobForm;
+export default JobForm;

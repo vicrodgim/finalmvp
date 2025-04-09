@@ -1,3 +1,4 @@
+import axios from "axios";
 import BodyNavButton from "../../elements/BodyNavButton";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
@@ -43,13 +44,40 @@ export default function JobDetail() {
     getJobDetail();
   }, [id]);
 
+  const handleDelete = async () => {
+    const confirmDelete = window.confirm(
+      "Are you sure you want to delete the job?"
+    );
+    if (!confirmDelete) return;
+
+    try {
+      const token = localStorage.getItem("token");
+      const response = await axios.delete(`/api/jobs/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      console.log("Job deleted successfully:", response.data);
+      alert("Job was deleted successfully");
+      navigate("/jobs");
+    } catch {}
+  };
+
+  const handleEditClick = () => {
+    navigate(`/jobs/${id}/edit`);
+  };
+
   return (
     <div className="job-details-page">
       <BodyNavButton text="< back to all jobs" clickFunction={handleClick} />
       <div className="job-detail-container">
-        {jobDetail && <JobDetailsCard job={jobDetail} />}
+        {jobDetail && (
+          <JobDetailsCard
+            job={jobDetail}
+            onDeleteClick={handleDelete}
+            onEditClick={handleEditClick}
+          />
+        )}
 
-        <UpdateJobForm jobId={id} onUpdate={getJobDetail} />
+        {/* <UpdateJobForm jobId={id} onUpdate={getJobDetail} /> */}
       </div>
     </div>
   );

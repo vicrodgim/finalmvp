@@ -2,7 +2,7 @@ import { NavBar } from "./components/NavBar/NavBar.jsx";
 import "./App.css";
 import JobsList from "./components/JobsList/JobsList.jsx";
 import JobDetail from "./components/JobDetails/JobDetail.jsx";
-import AddJobForm from "./components/JobForm/AddJobForm.jsx";
+import JobForm from "./components/JobForm/JobForm.jsx";
 import MyProfile from "./pages/MyProfile.jsx";
 import Register from "./components/Register.jsx";
 import Login from "./components/Login.jsx";
@@ -71,10 +71,18 @@ function App() {
           />
 
           <Route
-            path="/add-jobs"
+            path="/jobs/new"
             element={
               <PrivateRoute>
-                <AddJobForm />
+                <JobForm mode="add" />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/jobs/:id/edit"
+            element={
+              <PrivateRoute>
+                <JobForm mode="edit" />
               </PrivateRoute>
             }
           />

@@ -1,7 +1,7 @@
 import "./JobDetailsCard.css";
 import { useParams } from "react-router-dom";
 
-export default function JobDetailsCard({ job }) {
+export default function JobDetailsCard({ job, onDeleteClick, onEditClick }) {
   const {
     jobs_title,
     company_name,
@@ -73,6 +73,14 @@ export default function JobDetailsCard({ job }) {
       <div className="job-details">
         <b>Description:</b>
         {description}
+      </div>
+      <div className="edit-delete">
+        <button onClick={onEditClick} type="submit">
+          EDIT
+        </button>
+        <button onClick={onDeleteClick} type="submit">
+          DELETE
+        </button>
       </div>
     </div>
   );

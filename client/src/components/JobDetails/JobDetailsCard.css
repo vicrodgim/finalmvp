@@ -32,3 +32,23 @@
   background-color: var(--lightgreen);
   border-radius: 1.5rem;
 }
+
+.edit-delete {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0.5rem 1.5rem 0.5rem 0;
+  gap: 1rem;
+}
+
+.edit-delete button {
+  border: none;
+  border-radius: 36px;
+  padding: 10px 20px;
+  background-color: var(--darkcolor);
+  color: var(--offwhite);
+  cursor: pointer;
+}
+
+.edit-delete button:hover {
+  background-color: var(--lightgreen);
+}

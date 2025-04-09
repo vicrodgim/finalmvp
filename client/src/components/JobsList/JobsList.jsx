@@ -16,7 +16,7 @@ const JobsList = () => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/add-jobs");
+    navigate("/jobs/new");
   };
 
   const handleFilterChange = (key, value) => {
