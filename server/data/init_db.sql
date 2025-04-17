@@ -31,7 +31,7 @@ CREATE TABLE `jobs`(
     `location_type` VARCHAR(255) NULL,
     `description` VARCHAR(10000) NOT NULL,
     `type` VARCHAR(255) NOT NULL,
-    `date_range` DATETIME NULL,
+    `date_range` DATE NULL,
     `min_salary` INT NULL,
     `max_salary` INT NULL,
     `has_applied` BOOLEAN NOT NULL,

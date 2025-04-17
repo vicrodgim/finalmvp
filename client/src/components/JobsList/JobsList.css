@@ -8,13 +8,10 @@
 }
 
 .job-list-container {
-
   padding: 20px 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
-
-  
 }
 
 .job-list-container .header {
@@ -28,6 +25,6 @@
 }
 
 .fake-button {
- background-color: var(--darkcolor) !important;
- color: var(--darkcolor) !important;
-
+  background-color: var(--darkcolor) !important;
+  color: var(--darkcolor) !important;
+}

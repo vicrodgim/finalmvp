@@ -1,7 +1,10 @@
 import "./JobDetailsCard.css";
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 
-export default function JobDetailsCard({ job }) {
+export default function JobDetailsCard({ job, onDeleteClick, onEditClick }) {
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
   const {
     jobs_title,
     company_name,
@@ -19,11 +22,20 @@ export default function JobDetailsCard({ job }) {
 
   console.log(job);
 
-  const trimmedDateRange = date_range
-    ? date_range.slice(0, 10)
-    : "No date range provided";
-
   const { id } = useParams();
+
+  const handleDeleteClick = () => {
+    setShowConfirmation(true);
+  };
+
+  const confirmDelete = () => {
+    setShowConfirmation(false);
+    onDeleteClick();
+  };
+
+  const cancelDelete = () => {
+    setShowConfirmation(false);
+  };
 
   return (
     <div className="job-details-container">
@@ -44,7 +56,7 @@ export default function JobDetailsCard({ job }) {
       </div>
       <div className="job-details">
         <b>Deadline :</b>
-        {trimmedDateRange}
+        {date_range || "No date range provided"}
       </div>
       <div className="job-details">
         <b>Hours:</b>
@@ -74,6 +86,29 @@ export default function JobDetailsCard({ job }) {
         <b>Description:</b>
         {description}
       </div>
+      <div className="edit-delete">
+        <button onClick={onEditClick} type="submit">
+          EDIT
+        </button>
+        <button onClick={handleDeleteClick} type="submit">
+          DELETE
+        </button>
+      </div>
+      {showConfirmation && (
+        <div className="modal-overlay">
+          <div className="modal">
+            <p>Are you sure you want to delete this job?</p>
+            <div className="modal-buttons">
+              <button className="confirm" onClick={confirmDelete}>
+                Yes
+              </button>
+              <button className="cancel" onClick={cancelDelete}>
+                No
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
