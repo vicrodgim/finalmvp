@@ -52,11 +52,11 @@ const JobForm = ({ mode }) => {
             location_type: job.location_type,
             description: job.description,
             type: job.type,
-            date_range: job.date_range ? job.date_range.slice(0, 10) : null,
+            date_range: job.date_range ? job.date_range : null,
             min_salary: job.min_salary,
             max_salary: job.max_salary,
             has_applied: job.has_applied,
-            created_at: job.created_at ? job.created_at.slice(0, 10) : null,
+            created_at: job.created_at ? job.created_at : null,
             url: job.url,
             skills: job.skills.map((s) => s.skills_id.toString()),
           });
@@ -119,14 +119,14 @@ const JobForm = ({ mode }) => {
         });
         navigate("/jobs");
       } else if (mode === "edit" && id) {
-        const clearForm = {
-          ...form,
-          date_range: form.date_range ? form.date_range.slice(0, 10) : null,
-          created_at: form.created_at ? form.created_at.slice(0, 10) : null,
-        };
+        // const clearForm = {
+        //   ...form,
+        //   date_range: form.date_range ? form.date_range.slice(0, 10) : null,
+        //   created_at: form.created_at ? form.created_at.slice(0, 10) : null,
+        // };
         const response = await axios.put(
           `http://localhost:4000/api/jobs/${id}`,
-          clearForm,
+          form,
           {
             headers: {
               Authorization: `Bearer ${token}`,

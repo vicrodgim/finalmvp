@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import JobDetailsCard from "./JobDetailsCard";
-import { UpdateJobForm } from "./UpdateJobForm";
 import "./JobDetail.css";
 
 export default function JobDetail() {
@@ -45,18 +44,12 @@ export default function JobDetail() {
   }, [id]);
 
   const handleDelete = async () => {
-    const confirmDelete = window.confirm(
-      "Are you sure you want to delete the job?"
-    );
-    if (!confirmDelete) return;
-
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(`/api/jobs/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log("Job deleted successfully:", response.data);
-      alert("Job was deleted successfully");
       navigate("/jobs");
     } catch {}
   };
@@ -76,8 +69,6 @@ export default function JobDetail() {
             onEditClick={handleEditClick}
           />
         )}
-
-        {/* <UpdateJobForm jobId={id} onUpdate={getJobDetail} /> */}
       </div>
     </div>
   );
