@@ -23,54 +23,62 @@ ChartJs.register(
 export const SkillGap = () => {
   const [jobs, setJobs] = useState([]);
   const [skills, setSkills] = useState([]);
+  const [jobMatches, setJobMatches] = useState([]);
 
-  const fetchUserSkills = async () => {
-    try {
-      let response = await axios.get("/api/users/skills", {
-        headers: {
-          authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      });
-      setSkills(response.data.skills);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const fetchJobs = async () => {
-    try {
-      let response = await axios.get("/api/jobs", {
-        headers: {
-          authorization: "Bearer " + localStorage.getItem("token"),
-        },
-      });
-      setJobs(response.data.jobs);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchUserSkills();
-    fetchJobs();
-  }, []);
-
-  const userSkillsTitles = skills.map((skill) => skill.title);
-
+  // function to compare matching and missing skills
   const getJobMatches = (jobs, userSkillsTitles) => {
     return jobs.map((job) => {
-      const total = job.skills.length;
-      const matched = job.skills.filter((skill) =>
+      const jobSkillsTitles = job.skills.map((skill) => skill.skills_title);
+      const total = jobSkillsTitles.length;
+      const matched = jobSkillsTitles.filter((skill) =>
         userSkillsTitles.includes(skill)
-      );
+      ).length;
+
+      const match = Math.round((matched / total) * 100);
+      const missing = 100 - match;
+
+      return {
+        title: job.jobs_title,
+        match,
+        missing,
+      };
     });
   };
 
-  const jobMatches = [
-    { title: "Frontend Dev", match: 20, missing: 80 },
-    { title: "Backend Dev", match: 40, missing: 60 },
-    { title: "Junior Dev", match: 90, missing: 10 },
-  ];
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const jobsRes = await axios.get("http://localhost:4000/api/jobs", {
+          headers: {
+            authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        });
+
+        const skillsRes = await axios.get(
+          "http://localhost:4000/api/users/skills",
+          {
+            headers: {
+              authorization: "Bearer " + localStorage.getItem("token"),
+            },
+          }
+        );
+
+        const jobs = jobsRes.data;
+        const skills = skillsRes.data.skills;
+        setJobs(jobs);
+        setSkills(skills);
+        const userSkillsTitles = skills.map((skill) => skill.title);
+        console.log("jobs:", jobs);
+        console.log("skills:", userSkillsTitles);
+        const matches = getJobMatches(jobs, userSkillsTitles);
+        console.log("Job matches:", matches);
+        setJobMatches(matches);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchData();
+  }, []);
 
   const data = {
     labels: jobMatches.map((job) => job.title),
@@ -78,40 +86,72 @@ export const SkillGap = () => {
       {
         label: "Skills you have",
         data: jobMatches.map((job) => job.match),
-        backgroundColor: "#4ade80",
+        backgroundColor: "#044c64",
         stack: "stack1",
+        barThickness: 30,
       },
       {
         label: "Skills Missing",
         data: jobMatches.map((job) => job.missing),
         backgroundColor: "#d4d4d4",
         stack: "stack1",
+        barThickness: 30,
       },
     ],
   };
 
   const options = {
-    indexAxis: "y",
+    indexAxis: "y", // horizontal bars
     responsive: true,
     plugins: {
       legend: {
-        position: "bottom",
+        position: "top",
+        labels: {
+          color: "#004e64",
+          font: {
+            size: 12,
+          },
+        },
       },
       title: {
         display: true,
         text: "Skill Coverage by Job",
+        color: "#004e64",
+        font: {
+          size: 13,
+        },
       },
-      scales: {
-        x: {
-          max: 100,
-          stacked: true,
-          title: {
-            display: true,
-            text: "Total Required Skills (%)",
+    },
+    scales: {
+      x: {
+        stacked: true,
+        max: 100,
+        title: {
+          display: true,
+          text: "Total Required Skills (%)",
+          color: "#004e64",
+          font: {
+            size: 13,
+            weight: "bold",
+          },
+          padding: {
+            top: 10,
           },
         },
-        y: {
-          stacked: true,
+        ticks: {
+          color: "#004e64",
+        },
+        grid: {
+          color: "#e5e5e5",
+        },
+      },
+      y: {
+        stacked: true,
+        ticks: {
+          color: "#004e64",
+        },
+        grid: {
+          color: "#f0f0f0",
         },
       },
     },
