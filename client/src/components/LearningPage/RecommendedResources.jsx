@@ -11,6 +11,8 @@ export const RecommendedResources = ({ resources }) => {
   const [jobsSkills, setJobsSkills] = useState([]);
   const [recommendedSkills, setRecommendedSkills] = useState([]);
   const [recommendedResources, setRecommendedResources] = useState([]);
+  const [x, setX] = useState(0);
+  const [y, setY] = useState(3);
 
   const fetchUserSkills = async () => {
     try {
@@ -52,7 +54,7 @@ export const RecommendedResources = ({ resources }) => {
       (skill) => !userSkillsId.includes(skill.skills_id)
     );
     setRecommendedSkills(filtered);
-    console.log("recommended skills:", recommendedSkills);
+    //console.log("recommended skills:", recommendedSkills);
   };
 
   // Filter recommended resources based on recommendedSkills
@@ -67,7 +69,7 @@ export const RecommendedResources = ({ resources }) => {
       )
     );
     setRecommendedResources(filtered);
-    console.log("recommended resources:", filtered);
+    //console.log("recommended resources:", filtered);
   };
 
   //for every resource in resources
@@ -91,11 +93,23 @@ export const RecommendedResources = ({ resources }) => {
     }
   }, [recommendedSkills]);
 
-  // LOGIC FOR RECOMMENDED RESOURCES
-  // loop through jobsSkills
-  // loop through userSkills
-  // if jobs skill is not included in userSkills
-  // display resources where resources.skills strictly equal to jobs skill
+  /* let x = 0;
+  let y = 3; */
+  //const slicedArray = recommendedResources.slice(x, y);
+
+  const next = () => {
+    if (y < recommendedResources.length) {
+      setX((prevX) => prevX + 1);
+      setY((prevY) => prevY + 1);
+    }
+  };
+
+  const prev = () => {
+    if (x > 0) {
+      setX((prevX) => prevX - 1);
+      setY((prevY) => prevY - 1);
+    }
+  };
 
   return (
     <>
@@ -117,11 +131,15 @@ export const RecommendedResources = ({ resources }) => {
           <SkillCard skill={skill} key={index} />
         ))}
       </div> */}
-      <div>RECOMMENDED RESOURCES</div>
-      <div className="recommended-resources">
-        {recommendedResources.map((r) => (
-          <ResourceCard r={r} key={r.resource_id} />
-        ))}
+      <h3>RECOMMENDED</h3>
+      <div className="recommended-wrapper">
+        <button onClick={prev}>PREV</button>
+        <div className="recommended-resources">
+          {recommendedResources.slice(x, y).map((r) => (
+            <ResourceCard r={r} key={r.resource_id} />
+          ))}
+        </div>
+        <button onClick={next}>NEXT</button>
       </div>
     </>
   );

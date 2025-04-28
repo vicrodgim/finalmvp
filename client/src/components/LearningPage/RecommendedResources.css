@@ -5,3 +5,9 @@
   flex-wrap: wrap;
   gap: 20px;
 }
+.recommended-wrapper {
+  border: 1px solid var(--darkgreen);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
