@@ -45,6 +45,7 @@ export const ProfileSkills = () => {
           ))}
         </div>
       )}
+      <h3 className="dashboard-title">DASHBOARD</h3>
       <div className="chart-container">
         <SkillGap />
       </div>

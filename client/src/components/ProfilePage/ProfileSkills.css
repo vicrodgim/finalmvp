@@ -15,9 +15,13 @@
   font-family: "Poppins-SemiBold";
 }
 
+.dashboard-title {
+  margin-top: 50px;
+  margin-bottom: 10xpx;
+}
 .chart-container {
   display: flex;
-  justify-content: flex-start;
-  padding: 30px 20px;
+  justify-content: center;
+  padding: 5px 20px 40px 20px;
   height: 400px;
 }
