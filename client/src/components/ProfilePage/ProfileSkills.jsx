@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { SkillCard } from "./SkillCard";
 import "./ProfileSkills.css";
+import { SkillGap } from "./SkillGap";
 
 export const ProfileSkills = () => {
   //variable to store all items
@@ -44,6 +45,10 @@ export const ProfileSkills = () => {
           ))}
         </div>
       )}
+      <h3 className="dashboard-title">DASHBOARD</h3>
+      <div className="chart-container">
+        <SkillGap />
+      </div>
     </div>
   );
 };

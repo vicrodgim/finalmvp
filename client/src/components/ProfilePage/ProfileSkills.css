@@ -14,3 +14,14 @@
 .profile-skills h3 {
   font-family: "Poppins-SemiBold";
 }
+
+.dashboard-title {
+  margin-top: 50px;
+  margin-bottom: 10xpx;
+}
+.chart-container {
+  display: flex;
+  justify-content: center;
+  padding: 5px 20px 40px 20px;
+  height: 400px;
+}
